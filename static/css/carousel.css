@@ -1,9 +1,10 @@
 .carousel {
-    overflow:hidden;
+    overflow: hidden;
+    background: #777;
+    height: 250px;
 }
 
 .carousel .item img {
     margin: 0 auto;
-    height: 200px;
     max-width: none;
 }
