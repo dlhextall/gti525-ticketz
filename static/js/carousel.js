@@ -9,7 +9,8 @@ $(function() {
     });
 
     function updateFeaturedInfo() {
-        $("#featuredInfo h1").html($("#featuredShows .carousel-inner .active h1").html());
-        $("#featuredInfo .description").html($("#featuredShows .carousel-inner .active .description").html());
+        console.log($("#featuredShows .carousel-inner .active .description").html());
+        $("#featuredInfo h1").text($("#featuredShows .carousel-inner .active h1").text());
+        $("#featuredInfo .description").html($("#featuredShows .carousel-inner .active div.description").html());
     }
 });
