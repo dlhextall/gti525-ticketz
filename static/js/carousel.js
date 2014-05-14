@@ -9,7 +9,6 @@ $(function() {
     });
 
     function updateFeaturedInfo() {
-        console.log($("#featuredShows .carousel-inner .active .description").html());
         $("#featuredInfo h1").text($("#featuredShows .carousel-inner .active h1").text());
         $("#featuredInfo .description").html($("#featuredShows .carousel-inner .active div.description").html());
     }
