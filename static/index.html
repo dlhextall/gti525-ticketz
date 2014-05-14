@@ -40,9 +40,9 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li><a href="#">Link</a></li>
-                            <li><a href="#">Cart</a></li>
+                            <li><a href="panier.html">Panier</a></li>
                         </ul>
-                        <form action="" class="nav navbar-form navbar-right">
+                        <form action="recherche.html" class="nav navbar-form navbar-right">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>
@@ -54,7 +54,7 @@
         </div>
 
         <!-- Carousel -->
-        <div id="featuredShows" class="carousel slide container" data-ride="carousel">
+        <div id="featuredShows" class="carousel slide" data-interval="false">
             <ol class="carousel-indicators">
                 <li data-target="#featuredShows" data-slide-to="0" class="active"></li>
                 <li data-target="#featuredShows" data-slide-to="1"></li>
@@ -62,17 +62,44 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/carousel/img1.jpg" alt="">
+                    <img src="images/carousel/img1.jpg" alt="First image">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>First image</h1>
+                            <div class="description">
+                                <p>Description for the first image</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="item">
-                    <img src="images/carousel/img2.jpg" alt="">
+                    <img src="images/carousel/img2.jpg" alt="Second image">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Second image</h1>
+                            <p>Description for the second image</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="item">
-                    <img src="images/carousel/img3.jpg" alt="">
+                    <img src="images/carousel/img3.jpg" alt="Third image">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Third image</h1>
+                            <p>Description for the third image</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <a class="left carousel-control" href="#featuredShows" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
             <a class="right carousel-control" href="#featuredShows" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+
+        <!-- Show info -->
+        <div id="featuredInfo" class="container">
+            <h1></h1>
+            <div class="description"></div>
+            <p class="text-right"><a href="#" class="btn btn-default">More info</a></p>
         </div>
 
         <!-- Footer -->
@@ -86,5 +113,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <!-- Custom javascript -->
+        <script src="js/carousel.js"></script>
     </body>
 </html>
