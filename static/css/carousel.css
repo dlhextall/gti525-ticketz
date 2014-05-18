@@ -1,10 +1,41 @@
 .carousel {
     overflow: hidden;
-    background: #777;
+    background: #E8E8E8;
     height: 250px;
 }
+
 
 .carousel .item img {
     margin: 0 auto;
     max-width: none;
 }
+/*This is the left section of the banner with the show information*/
+#left-banner{
+width: 50%;
+height: 250px;
+float: left;
+margin-left: 
+ }
+
+/*This is the right section of the banner with the picture of the artist*/
+ #right-banner{
+width: 50%;
+height: 250px;
+float: right;
+margin-right: 
+
+ }
+
+ #left-body{
+width: 50%;
+height: 170px;
+float: left;
+margin-left: 
+ }
+ 
+ #right-body{
+width: 50%;
+height: 170px;
+float: right;
+margin-left: 
+ }
