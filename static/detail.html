@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="css/sticky-footer.css">
         <!-- Custom styles -->
         <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/carousel.css">
-        <link rel="stylesheet" href="css/InfoBox.css">
+        <!-- <link rel="stylesheet" href="css/carousel.css"> -->
+        <link rel="stylesheet" href="css/detail.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,92 +52,85 @@
                 </div>
             </div>
         </div>
-<div class="container">
-        <!-- MainInfoBox -->
-        <div id="featuredShows" class="carousel slide" data-interval="false">
 
-            <div id="left-banner">
-            <p align:left><H2>Snoop Dogg</h2></p>
-            <H4 align:left>From january 1st to january 1st</h4>
-            <br>
-            <H3 align:left>Bell Center</h3>
-            <H4 align:left>Montreal,Qc</h4>
-            </div>
-            <div id="right-banner">
-                    <img src="images/general/snoop.jpg" height="100%" >
-            </div>
-
-
-            <div class="carousel-inner">
-                <div class="item active">
-                   
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>First image</h1>
-                            <div class="description">
-                                <p>Description about the show.</p>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Show preview -->
+        <div class="row show-preview">
+            <div class="container">
+                <div class="col-md-6">
+                    <h2>Snoop Dogg</h2>
+                    <h4>From January 1st to January 1st</h4>
+                    <h3>Centre Bell</h3>
+                    <h4>Montréal, Qc</h4>
                 </div>
-             
-         
+                <div class="col-md-6">
+                    <img src="images/general/snoop.jpg">
+                </div>
             </div>
-            
         </div>
-  
-        <div id="text" class="left-body">
-           
-            <br>
-            <br>
-            <H2>Show's detail</h2>
-            <p style="width : 516px; text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <br><br><br>
+
+        <!-- Show details -->
+        <div class="row show-details">
+            <div class="container">
+                <h2>Détails</h2>
+                <div class="col-md-12">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Ticket option -->
-        <div id="left-body">
-            <br>
-        <p>Number of tickets :</p>
-        <select>
-        <option value="one">1</option>
-        <option value="two">2</option>
-        <option value="three">3</option>
-        <option value="four">4</option>
-        </select>
-        <p>Date of the show:</p>
-        <select>
-        <option value="1">January 1st</option>
-        <option value="2">January 2nd</option>
-        </select>
-        <br><br>
-        <p>Seat section :
-        <select>
-        <option value="0">Floor</option>    
-        <option value="1">100</option>
-        <option value="2">200</option>
-        <option value="3">300</option>
-        <option value="4">400</option>
-        <option value="5">500</option>
-        </select></p>
-    </div>
-        <!-- buttons -->
-       <div id="right-body">
-        
-       <p class="text-right" width="34px"> <div id="AddToCart" class="container">
-            
-            <h4><p class="text-right" width="34px">0.00$</p></h4>
-    
-            <p class="text-right"><a href="#" class="btn btn-default">Add to cart</a></p>
+        <div class="row show-buying">
+            <div class="container">
+                <h2>Achat</h2>
+                <form action="" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="nbTickets" class="col-sm-4 control-label">Nombre de billets</label>
+                        <div class="col-sm-6">
+                            <select name="nbTickets" id="nbTickets" class="form-control">
+                                <option value="one">1</option>
+                                <option value="two">2</option>
+                                <option value="three">3</option>
+                                <option value="four">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="showDate" class="col-sm-4 control-label">Date du spectacle</label>
+                        <div class="col-sm-6">
+                            <select name="showDate" id="showDate" class="form-control">
+                                <option value="1">January 1st</option>
+                                <option value="2">January 2nd</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticketSection" class="col-sm-4 control-label">Section</label>
+                        <div class="col-sm-6">
+                            <select name="ticketSection" id="ticketSection" class="form-control">
+                                <option value="0">Floor</option>    
+                                <option value="1">100</option>
+                                <option value="2">200</option>
+                                <option value="3">300</option>
+                                <option value="4">400</option>
+                                <option value="5">500</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice" class="col-sm-4 control-label">Total</label>
+                        <div class="col-sm-6">
+                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="0.00$" readonly>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-10 text-right">
+                        <button class="btn btn-default">Ajouter au panier</button>
+                        <a href="panier.html" class="btn btn-default">Checkout</a>
+                    </div>
+                </form>
+            </div>
         </div>
 
-         <div id="Checkout" class="container">
-            
-            <div class="Checkout button"></div>
-            <p class="text-right"><a href="#" class="btn btn-default">Checkout</a></p>
-        </div>
-    </div>
-</div>
         <!-- Footer -->
         <div id="footer">
             <div class="container">
