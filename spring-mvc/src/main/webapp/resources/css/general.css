@@ -1,0 +1,12 @@
+.header-image {
+    height: 200px;
+    background-image: url("../images/logo/logo.png");
+    background-repeat: no-repeat;
+}
+.navbar {
+    margin-bottom: 0;
+}
+
+#footer {
+    margin-top: 25px;
+}
