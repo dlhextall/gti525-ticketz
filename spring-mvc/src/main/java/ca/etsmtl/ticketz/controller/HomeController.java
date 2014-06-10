@@ -1,4 +1,4 @@
-package ca.etsmtl.ticketz;
+package ca.etsmtl.ticketz.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

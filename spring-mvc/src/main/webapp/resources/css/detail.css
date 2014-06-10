@@ -1,0 +1,8 @@
+.show-preview {
+    height: 250px;
+    background: #E8E8E8;
+    overflow: hidden;
+}
+.show-preview img {
+    height: 100%;
+}
