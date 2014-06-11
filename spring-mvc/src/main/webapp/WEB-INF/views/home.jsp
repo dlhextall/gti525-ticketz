@@ -23,7 +23,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/carousel/img1.jpg" alt="First image">
+                    <img src="<c:url value="/resources/images/carousel/img1.jpg" />" alt="First image">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Premier spectacle</h1>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/carousel/img2.jpg" alt="Second image">
+                    <img src="<c:url value="/resources/images/carousel/img2.jpg" />" alt="Second image">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Second spectacle</h1>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/carousel/img3.jpg" alt="Third image">
+                    <img src="<c:url value="/resources/images/carousel/img3.jpg" />" alt="Third image">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Troisième spectacle</h1>
