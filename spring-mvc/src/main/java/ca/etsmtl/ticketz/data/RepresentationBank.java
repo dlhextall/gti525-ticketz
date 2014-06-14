@@ -8,11 +8,10 @@ public class RepresentationBank {
 	public int id;
 	public double prix;
 	public Calendar calendar;
-	public BilletBank billets;
-	public ArrayList<RepresentationBank>lstRepresentation;
+	public ArrayList<BilletBank> billets;
 	
 
-	private RepresentationBank(int id, double prix, Calendar calendar, BilletBank billets){
+	private RepresentationBank(int id, double prix, Calendar calendar, ArrayList<BilletBank> billets){
 		this.id =id;
 		this.prix = prix;
 		this.calendar = calendar;
@@ -21,21 +20,16 @@ public class RepresentationBank {
 	}
 	
 	public RepresentationBank(){
-		lstRepresentation = Initialize();
+		
 	}
 	
 	
-	public ArrayList<RepresentationBank> getLstRepresentation() {
-		return lstRepresentation;
-	}
-
-	public void setLstRepresentation(ArrayList<RepresentationBank> lstRepresentation) {
-		this.lstRepresentation = lstRepresentation;
-	}
+	
 	
 	public ArrayList<RepresentationBank> Initialize(){
 		ArrayList<RepresentationBank>lstRepresentation = new ArrayList<RepresentationBank>();
-		BilletBank billets = new BilletBank();
+		BilletBank billet = new BilletBank();
+		ArrayList<BilletBank> billets = billet.Initialize();
 		lstRepresentation.add(new RepresentationBank(1,50.00,Calendar.getInstance(),billets));
 		lstRepresentation.add(new RepresentationBank(2,150.00,Calendar.getInstance(),billets));
 		lstRepresentation.add(new RepresentationBank(3,150.00,Calendar.getInstance(),billets));

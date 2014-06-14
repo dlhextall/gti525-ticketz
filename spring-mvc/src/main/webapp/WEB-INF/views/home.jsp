@@ -26,7 +26,7 @@
                     <img src="<c:url value="/resources/images/carousel/img1.jpg" />" alt="First image">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Premier spectacle</h1>
+                            <h1>Premier spectacle ${Titre}</h1>
                             <div class="description">
                                 <p>Description du premier spectacle.</p>
                             </div>

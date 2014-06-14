@@ -26,7 +26,7 @@ public class DAOStub implements IStubs {
 		ArrayList<Representation> lstRepresentation = new ArrayList<Representation>();
 		ArrayList<Billet> lstBillets = new ArrayList<Billet>();
 		
-		for(SpectacleBank spectacleBank:spectacles.getLstSpectacle()){
+		for(SpectacleBank spectacleBank:spectacles.Initialize()){
 			Spectacle spectacle = new Spectacle();
 			spectacle.setId(spectacleBank.id);
 			spectacle.setDescription(spectacleBank.description);
@@ -34,13 +34,13 @@ public class DAOStub implements IStubs {
 			spectacle.setSalle(spectacleBank.salle);
 			spectacle.setUrlImage(spectacleBank.urlImage);
 			
-			for(RepresentationBank representationBank:spectacleBank.representations.getLstRepresentation()){
+			for(RepresentationBank representationBank:spectacleBank.representations){
 				Representation representation = new Representation();
 				representation.setId(representationBank.id);
 				representation.setPrix(representationBank.prix);
 				representation.setCalendar(representationBank.calendar);
 				
-				for(BilletBank billetBank:spectacleBank.representations.billets.getLstBillets()){
+				for(BilletBank billetBank:representationBank.billets){
 					Billet billet = new Billet();
 					billet.setId(billetBank.id);
 					if(billetBank.etat==Etat.EnVente){

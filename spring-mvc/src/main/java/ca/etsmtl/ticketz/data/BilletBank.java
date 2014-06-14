@@ -13,15 +13,10 @@ public class BilletBank {
 		this.etat = etat;
 	}
 	public BilletBank(){
-		lstBillets = Initialize();
+		
 	}
 	
-	public ArrayList<BilletBank> getLstBillets() {
-		return lstBillets;
-	}
-	public void setLstBillets(ArrayList<BilletBank> lstBillets) {
-		this.lstBillets = lstBillets;
-	}
+	
 	
 	public ArrayList<BilletBank> Initialize(){
 		ArrayList<BilletBank>lstBillets = new ArrayList<BilletBank>();
