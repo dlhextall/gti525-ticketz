@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PanierController {
-	
-
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)
-	public String checkout(Locale locale, Model model) {		
+	public String panier(Locale locale, Model model) {		
 		return "Panier";
 	}
 
