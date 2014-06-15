@@ -1,0 +1,288 @@
+<%@ page language="java" contentType="text/html; charset=US-ASCII"
+    pageEncoding="US-ASCII"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+ <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ticketz</title>
+
+        <!-- Bootstrap -->
+        <link href="bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/sticky-footer.css">
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/panier.css">
+        <link rel="stylesheet" href="css/carousel.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+<title>Mon Panier</title>
+</head>
+<body>
+ <div class="header-image"></div>
+
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-b"></span>
+                            <span class="icon-b"></span>
+                            <span class="icon-b"></span>
+                        </button>
+                        <a href="index.html" class="navbar-brand">Ticketz</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="spectacle.html">Spectacles</a></li>
+                            <li><a href="panier.html">Panier</a></li>
+                        </ul>
+                        <form action="recherche.html" class="nav navbar-form navbar-right">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button class="btn btn-default">Rechercher</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <div class="container">
+        <div class="thumbnail row">
+            <div class="col-md-7" >
+                <div class="thumbnail row">
+                    <div class="row show-grid">
+                        <div class="col-md-6">                        
+                               <H4>The Black Keys</H4>   
+                        </div>
+                        <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
+
+                  </div>
+                    <div class"col-md-6">
+                         <div class="row show-grid">
+                        <div class="col-md-6">
+                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="right">
+                                <span class="prix">0.00$</span>
+                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            </div>
+                             
+                        </div>
+                    </div>
+                    </div>
+                   
+                </div>
+
+               <div class="thumbnail row">
+                    <div class="row show-grid">
+
+                    <div class="col-md-6">
+                        
+                           <H4>The Black Keys</H4>   
+                    </div>
+                    <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
+                </div>
+                    <div class"col-md-6">
+                         <div class="row show-grid">
+                        <div class="col-md-6">
+                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="right">
+                                <span class="prix">0.00$</span>
+                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            </div>
+                             
+                        </div>
+                    </div>
+                    </div>
+                   
+                </div>
+
+                <div class="thumbnail row">
+                    <div class="row show-grid">
+
+                    <div class="col-md-6">
+                        
+                           <H4>The Black Keys</H4>   
+                    </div>
+                    <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
+                </div>
+                    <div class"col-md-6">
+                         <div class="row show-grid">
+                        <div class="col-md-6">
+                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="right">
+                                <span class="prix">0.00$</span>
+                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            </div>
+                             
+                        </div>
+                    </div>
+                    </div>
+                   
+                </div>
+
+                  <div class="thumbnail row">
+                    <div class="row show-grid">
+
+                    <div class="col-md-6">
+                        
+                           <H4>The Black Keys</H4>   
+                    </div>
+                    <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
+                </div>
+                    <div class"col-md-6">
+                         <div class="row show-grid">
+                        <div class="col-md-6">
+                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="right">
+                                <span class="prix">0.00$</span>
+                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            </div>
+                             
+                        </div>
+                    </div>
+                    </div>
+                   
+                </div>
+                
+
+            </div>
+            <div class="col-md-5" style= "border-left: 1px solid">
+                <div class="rightColumnRows">
+                    <div class ="row show-grid">
+                        <div class="col-md-7">
+                            <H4>The Black Keys</H4>
+                        </div>
+                    </div>
+                
+                    <div class="row show-grid">
+                        <div class="col-md-5">
+                            <small><strong> Quantité: </strong>2</small>
+                        </div>
+                        <div class="col-md-5">
+                             <small><strong> Total: </strong>10.00$</small>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+               
+                <div class="rightColumnRows">
+                    <div class ="row show-grid">
+                        <div class="col-md-7">
+                            <H4>The Black Keys</H4>
+                        </div>
+                    </div>
+
+                    <div class="row show-grid">
+                        <div class="col-md-5">
+                            <small><strong> Quantité: </strong>2</small>
+                        </div>
+                        <div class="col-md-5">
+                             <small><strong> Total: </strong>10.00$</small>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+
+                <div class="rightColumnRows">
+                    <div class ="row show-grid">
+                        <div class="col-md-7">
+                            <H4>The Black Keys</H4>
+                        </div>
+                    </div>
+                    <div class="row show-grid">
+                        <div class="col-md-5">
+                            <small><strong> Quantité: </strong>2</small>
+                        </div>
+                        <div class="col-md-5">
+                             <small><strong> Total: </strong>10.00$</small>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+
+                <div class="rightColumnRows">
+                    <div class ="row show-grid">
+                        <div class="col-md-7">
+                            <H4>The Black Keys</H4>
+                        </div>
+                    </div>
+                    <div class="row show-grid">
+                        <div class="col-md-5">
+                            <small><strong> Quantité: </strong>2</small>
+                        </div>
+                        <div class="col-md-5">
+                             <small><strong> Total: </strong>10.00$</small>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+
+
+                <div class="rightColumnRows">
+                    <div class ="row show-grid">
+                        <div class="col-md-9">
+                            <big><strong> Sous-Total: </strong>100.00$</big>
+                        </div>
+                    </div>
+                    <div class="row show-grid">
+                        <div class="col-md-6">
+                            <big><strong> TVQ: </strong>10.00$</big>
+                        </div>
+                    </div>
+                    <div class="row show-grid">
+                        <div class="col-md-6">
+                            <big><strong> TPS: </strong>10.00$</big>
+                        </div>                    
+                        <div class="row show-grid">
+                            <div class="col-md-6">
+                                <big><strong> Total: </strong>1000.00$</big>
+                            </div>  
+                        </div>
+                    </div>
+                    <a href="checkout.html" class="btn btn-default">Checkout</a>
+                </div>        
+        </div>
+
+        
+</div>
+</div>
+       
+
+        <!-- Footer -->
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted">Tous droits réservés, Ticketz™.</p>
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <!-- Custom javascript -->
+        <script src="js/carousel.js"></script>
+</body>
+</html>
