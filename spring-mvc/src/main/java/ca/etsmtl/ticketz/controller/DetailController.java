@@ -14,7 +14,7 @@ public class DetailController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String panier(Locale locale, Model model) {		
+	public String detail(Locale locale, Model model) {		
 		return "Detail";
 	}
 }

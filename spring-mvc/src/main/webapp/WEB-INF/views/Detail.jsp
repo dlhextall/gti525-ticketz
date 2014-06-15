@@ -85,7 +85,7 @@
                     <div class="clearfix"></div>
                     <div class="col-md-10 text-right">
                         <button class="btn btn-default">Ajouter au panier</button>
-                        <a href="panier.html" class="btn btn-default">Checkout</a>
+                        <a href="/ticketz/checkout" class="btn btn-default">Checkout</a>
                     </div>
                 </form>
             </div>

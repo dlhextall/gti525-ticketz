@@ -29,8 +29,8 @@
                         <div class="col-md-12">
                             <div class="right">
                                 <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
                             </div>
                              
                         </div>
@@ -56,8 +56,8 @@
                         <div class="col-md-12">
                             <div class="right">
                                 <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
                             </div>
                              
                         </div>
@@ -83,8 +83,8 @@
                         <div class="col-md-12">
                             <div class="right">
                                 <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
                             </div>
                              
                         </div>
@@ -110,8 +110,8 @@
                         <div class="col-md-12">
                             <div class="right">
                                 <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="detail.html" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="detail.html" role="button">Options</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
+                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
                             </div>
                              
                         </div>
