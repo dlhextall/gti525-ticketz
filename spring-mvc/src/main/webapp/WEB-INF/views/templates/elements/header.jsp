@@ -16,14 +16,14 @@
                     <span class="icon-b"></span>
                     <span class="icon-b"></span>
                 </button>
-                <a href="index.html" class="navbar-brand">Ticketz</a>
+                <a href="/ticketz/" class="navbar-brand">Ticketz</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="spectacle.html">Spectacles</a></li>
-                    <li><a href="panier.html">Panier</a></li>
+                    <li><a href="/ticketz/spectacle">Spectacles</a></li>
+                    <li><a href="/ticketz/panier">Panier</a></li>
                 </ul>
-                <form action="recherche.html" class="nav navbar-form navbar-right">
+                <form action="/ticketz/recherche" class="nav navbar-form navbar-right">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
