@@ -100,3 +100,7 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+
+spring-mvc/src/main/java/ca/etsmtl/ticketz/controller/PanierController.java
+
+spring-mvc/src/main/java/ca/etsmtl/ticketz/controller/PanierController.java
