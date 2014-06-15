@@ -10,6 +10,10 @@ public class Show implements Serializable {
 	
 	private int id;
 	private String name;
+	private String description;
+	public String salle;
+	public String imageUrl;
+	public List<Representation> representations;
 	private List<Artist> artists;
 	private DateTime dateStart;
 	private DateTime dateEnd;
@@ -17,24 +21,29 @@ public class Show implements Serializable {
 	
 	
 	public Show() {
-		this("", new ArrayList<Artist>(), DateTime.now(), DateTime.now());
+		this("", "", "", "", new ArrayList<Representation>(), new ArrayList<Artist>(), DateTime.now(), DateTime.now());
 	}
-	public Show(String _name, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd) {
+	public Show(String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd) {
 		name = _name;
+		description = _description;
+		salle = _salle;
+		imageUrl = _imageUrl;
+		representations = _representations;
 		artists = _artists;
 		dateStart = _dateStart;
 		dateEnd = _dateEnd;
 	}
-	public Show(String _name, Artist _artist, DateTime _dateStart, DateTime _dateEnd) {
-		this(_name, new ArrayList<Artist>(), _dateStart, _dateEnd);
+	public Show(String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd) {
+		this(_name, _description, _salle, _imageUrl, new ArrayList<Representation>(), new ArrayList<Artist>(), _dateStart, _dateEnd);
+		representations.add(_representation);
 		artists.add(_artist);
 	}
-	public Show(String _name, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
-		this(_name, _artists, _dateStart, _dateEnd);
+	public Show(String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
+		this(_name, _description, _salle, _imageUrl, _representations, _artists, _dateStart, _dateEnd);
 		featured = _featured;
 	}
-	public Show(String _name, Artist _artist, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
-		this(_name, _artist, _dateStart, _dateEnd);
+	public Show(String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
+		this(_name, _description, _salle, _imageUrl, _representation, _artist, _dateStart, _dateEnd);
 		featured = _featured;
 	}
 	
@@ -50,6 +59,33 @@ public class Show implements Serializable {
 	}
 	public void setName(String _name) {
 		name = _name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String _descr) {
+		description = _descr;
+	}
+	public String getSalle() {
+		return salle;
+	}
+	public void setSalle(String _salle) {
+		salle = _salle;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String _imageUrl) {
+		imageUrl = _imageUrl;
+	}
+	public List<Representation> getRepresentations() {
+		return representations;
+	}
+	public Representation getRepresentationAt(int _index) {
+		return representations.get(_index);
+	}
+	public void setRepresentations(List<Representation> _representations) {
+		representations = _representations;
 	}
 	public List<Artist> getArtists() {
 		return artists;

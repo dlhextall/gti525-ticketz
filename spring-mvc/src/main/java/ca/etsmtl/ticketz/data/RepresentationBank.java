@@ -9,24 +9,19 @@ public class RepresentationBank {
 	public double prix;
 	public Calendar calendar;
 	public ArrayList<BilletBank> billets;
+
 	
+	public RepresentationBank() {}
 
 	private RepresentationBank(int id, double prix, Calendar calendar, ArrayList<BilletBank> billets){
 		this.id =id;
 		this.prix = prix;
 		this.calendar = calendar;
 		this.billets = billets;
-		
-	}
-	
-	public RepresentationBank(){
-		
 	}
 	
 	
-	
-	
-	public ArrayList<RepresentationBank> Initialize(){
+	public ArrayList<RepresentationBank> initialize(){
 		ArrayList<RepresentationBank>lstRepresentation = new ArrayList<RepresentationBank>();
 		BilletBank billet = new BilletBank();
 		ArrayList<BilletBank> billets = billet.Initialize();

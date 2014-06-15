@@ -8,15 +8,13 @@ public class BilletBank {
 	public Etat etat;
 	public ArrayList<BilletBank> lstBillets;
 	
+	
+	public BilletBank() {}
+	
 	private BilletBank(int id, Etat etat){
 		this.id = id;
 		this.etat = etat;
 	}
-	public BilletBank(){
-		
-	}
-	
-	
 	
 	public ArrayList<BilletBank> Initialize(){
 		ArrayList<BilletBank>lstBillets = new ArrayList<BilletBank>();

@@ -1,4 +1,4 @@
-package ca.etsmtl.ticketz.stubs;
+package ca.etsmtl.ticketz.dao;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,33 +6,33 @@ import java.util.Iterator;
 import ca.etsmtl.ticketz.data.BilletBank;
 import ca.etsmtl.ticketz.data.BilletBank.Etat;
 import ca.etsmtl.ticketz.data.RepresentationBank;
-import ca.etsmtl.ticketz.data.SpectacleBank;
+import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Billet;
 //import ca.etsmtl.ticketz.model.Billet.Etat;
 import ca.etsmtl.ticketz.model.Representation;
-import ca.etsmtl.ticketz.model.Spectacle;
+import ca.etsmtl.ticketz.model.Show;
 
-public class DAOStub implements IStubs {
+public class ShowDaoStub implements ShowDao {
 
-	SpectacleBank spectacles;
+	ShowBank spectacles;
 	
-	public DAOStub(){
-		spectacles = new SpectacleBank();
+	public ShowDaoStub(){
+		spectacles = new ShowBank();
 	}
 	
 	@Override
-	public ArrayList<Spectacle> GetData() {
-		ArrayList<Spectacle> lstSpectacles = new ArrayList<Spectacle>();
+	public ArrayList<Show> getData() {
+		ArrayList<Show> lstSpectacles = new ArrayList<Show>();
 		ArrayList<Representation> lstRepresentation = new ArrayList<Representation>();
 		ArrayList<Billet> lstBillets = new ArrayList<Billet>();
 		
-		for(SpectacleBank spectacleBank:spectacles.Initialize()){
-			Spectacle spectacle = new Spectacle();
+		for(ShowBank spectacleBank:spectacles.initialize()){
+			Show spectacle = new Show();
 			spectacle.setId(spectacleBank.id);
 			spectacle.setDescription(spectacleBank.description);
-			spectacle.setTitle(spectacleBank.title);
+			spectacle.setName(spectacleBank.title);
 			spectacle.setSalle(spectacleBank.salle);
-			spectacle.setUrlImage(spectacleBank.urlImage);
+			spectacle.setImageUrl(spectacleBank.urlImage);
 			
 			for(RepresentationBank representationBank:spectacleBank.representations){
 				Representation representation = new Representation();
@@ -54,7 +54,7 @@ public class DAOStub implements IStubs {
 				representation.setBillets(lstBillets);
 				lstRepresentation.add(representation);
 			}
-			spectacle.setLstRepresentation(lstRepresentation);
+			spectacle.setRepresentations(lstRepresentation);
 			lstSpectacles.add(spectacle);
 		}
 		
