@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; UTF-8"
-    pageEncoding="UTF-8"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
+<!DOCTYPE html >    
 <html lang="en">
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <%@ include file="templates/baseHeaderComponents.jsp" %>
@@ -255,21 +254,8 @@
 </div>
        
 
-        <!-- Footer -->
-        <!--<div id="footer">
-            <div class="container">
-                <p class="text-muted">Tous droits réservés, Ticketz™.</p>
-            </div>
-        </div>-->
         <%@ include file="templates/elements/footer.jsp" %>
-
         <%@ include file="templates/baseFooterComponents.jsp" %>
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-        <!-- Custom javascript -->
         <script src="js/carousel.js"></script>
 </body>
 </html>

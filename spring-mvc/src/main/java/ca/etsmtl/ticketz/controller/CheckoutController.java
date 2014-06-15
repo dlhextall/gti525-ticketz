@@ -15,17 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class CheckoutController {
-	
+public class CheckoutController {	
 	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		
-		
+	public String checkout(Locale locale, Model model) {		
 		return "checkout";
 	}
 	
