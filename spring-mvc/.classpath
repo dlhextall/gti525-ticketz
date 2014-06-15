@@ -25,6 +25,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/EdgarsonRomeus/Downloads/joda-time-2.3 2/joda-time-2.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
