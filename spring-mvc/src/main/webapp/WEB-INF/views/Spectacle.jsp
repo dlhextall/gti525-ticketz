@@ -2,21 +2,23 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <%@ include file="templates/baseHeaderComponents.jsp" %>
-<title>Recherche</title>
+<title>Spectacles</title>
+
+
 </head>
 <body>
+
 <%@ include file="templates/elements/header.jsp" %>
 
- <div class="container">
-            <h2>Résultats de recherche pour <small>300</small></h2>
-            <hr/>
+<div class="container">
             <div class="thumbnail row">
                 <div class="row show-grid">
                     <div class="col-md-6">
                         <h3>
-                            The Black Keys
+                            The Blakc Keys
                         </h3>
                     </div>
                     <div class="col-md-6">
@@ -47,7 +49,7 @@
                 <div class="row show-grid">
                     <div class="col-md-6">
                         <h3>
-                            The Blakc Keys
+                            The Black Keys
                         </h3>
                     </div>
                     <div class="col-md-6">
@@ -105,9 +107,5 @@
 
 
         </div>
-        
-     <%@ include file="templates/elements/footer.jsp" %>
-        <%@ include file="templates/baseFooterComponents.jsp" %>
-
 </body>
 </html>
