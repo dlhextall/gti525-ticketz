@@ -20,7 +20,7 @@ public class DetailController {
 	 */
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(@RequestParam("id") String id,Locale locale, Model model) {
-		Show spectacle = TicketzProvider.getDataAt(Integer.parseInt(id));
+		Show spectacle = TicketzProvider.getShowAt(Integer.parseInt(id));
 		model.addAttribute("spectacle",spectacle);
 		return "Detail";
 	}

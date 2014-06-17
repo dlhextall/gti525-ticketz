@@ -8,13 +8,13 @@ public class TicketzProvider {
 	
 	public static ShowDaoStub stubs;
 	
-	public static ArrayList<Show> getData(){
+	public static ArrayList<Show> getShows(){
 		stubs = new ShowDaoStub();
-		return stubs.getData();
+		return stubs.getAllShows();
 	}
 	
-	public static Show getDataAt(int id){
+	public static Show getShowAt(int id){
 		stubs = new ShowDaoStub();
-		return stubs.getDataAt(id);
+		return stubs.getShowAt(id);
 	}
 }

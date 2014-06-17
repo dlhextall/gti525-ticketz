@@ -5,7 +5,13 @@ import java.util.ArrayList;
 public class ShowDaoImpl implements ShowDao{
 
 	@Override
-	public ArrayList getData() {
+	public ArrayList getAllShows() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object getShowAt(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
