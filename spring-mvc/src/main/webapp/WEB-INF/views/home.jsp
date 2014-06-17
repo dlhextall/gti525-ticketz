@@ -36,6 +36,7 @@
                               <span class="start"><joda:format value="${ spectacle.dateStart }" pattern="dd MMM" style="F-" dateTimeZone="America/Montreal"/></span>
                               <span class="end"><joda:format value="${ spectacle.dateEnd }" pattern="dd MMM yyyy" style="F-" dateTimeZone="America/Montreal"/></span>
                             </div>
+                            <span class="show-id">${ spectacle.id }</span>
                         </div>
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                 </div>
             </div>
             <div class="description"></div>
-            <p class="text-right"><a href="detail.html" class="btn btn-default">Détails</a></p>
+            <p class="text-right"><a href="detail?id=" class="btn btn-default show-id">Détails</a></p>
         </div>
 
         <%@ include file="templates/elements/footer.jsp" %>

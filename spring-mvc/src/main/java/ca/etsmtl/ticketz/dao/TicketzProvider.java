@@ -8,7 +8,7 @@ public class TicketzProvider {
 	
 	public static ShowDaoStub stubs;
 	
-	public static ArrayList<Show> getShows(){
+	public static ArrayList<Show> getAllShows(){
 		stubs = new ShowDaoStub();
 		return stubs.getAllShows();
 	}
@@ -16,5 +16,10 @@ public class TicketzProvider {
 	public static Show getShowAt(int id){
 		stubs = new ShowDaoStub();
 		return stubs.getShowAt(id);
+	}
+	
+	public static ArrayList<Show> getFeaturedShows() {
+		stubs = new ShowDaoStub();
+		return stubs.getFeaturedShows();
 	}
 }

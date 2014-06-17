@@ -19,7 +19,7 @@ public class SpectacleController {
 	 */
 	@RequestMapping(value = "/spectacle", method = RequestMethod.GET)
 	public String detail(Locale locale, Model model) {		
-		ArrayList<Show> spectacles = TicketzProvider.getShows();
+		ArrayList<Show> spectacles = TicketzProvider.getAllShows();
 		model.addAttribute("spectacles",spectacles);		
 		return "Spectacle";
 	}

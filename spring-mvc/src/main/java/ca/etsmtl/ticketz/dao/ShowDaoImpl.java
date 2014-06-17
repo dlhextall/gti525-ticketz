@@ -16,6 +16,12 @@ public class ShowDaoImpl implements ShowDao{
 		return null;
 	}
 
+	@Override
+	public ArrayList getFeaturedShows() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

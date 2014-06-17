@@ -23,7 +23,7 @@
                     <h4>Montréal, Qc</h4>
                 </div>
                 <div class="col-md-6">
-                    <img src="<c:out value="${ spectacle.imageUrl }" />">
+                    <img src="<c:out value="${ spectacle.imageUrl }" />" width="291px" height="350px">
                 </div>
             </div>
         </div>
