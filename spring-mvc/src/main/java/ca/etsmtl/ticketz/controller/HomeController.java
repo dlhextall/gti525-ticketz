@@ -32,7 +32,7 @@ public class HomeController extends AbstractController {
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest _req, HttpServletResponse _resp) throws Exception {
 		ModelAndView model = new ModelAndView("home");
-		model.addObject("spectacles", TicketzProvider.getAllShows());
+		model.addObject("spectacles", TicketzProvider.getFeaturedShows());
 		
 		return model;
 	}

@@ -20,6 +20,17 @@ public class ShowDaoStub implements ShowDao {
 	
 	@Override
 	public Show getShowAt(int id) {
-		return  shows.getShowsAt(id);
+		return shows.getShowsAt(id);
+	}
+
+	@Override
+	public ArrayList<Show> getFeaturedShows() {
+		ArrayList<Show> featuredShows = new ArrayList<Show>();
+		for (Show show : shows.getShows()) {
+			if (show.isFeatured()) {
+				featuredShows.add(show);
+			}
+		}
+		return featuredShows;
 	}
 }

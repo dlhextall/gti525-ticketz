@@ -17,4 +17,9 @@ public class TicketzProvider {
 		stubs = new ShowDaoStub();
 		return stubs.getShowAt(id);
 	}
+	
+	public static ArrayList<Show> getFeaturedShows() {
+		stubs = new ShowDaoStub();
+		return stubs.getFeaturedShows();
+	}
 }
