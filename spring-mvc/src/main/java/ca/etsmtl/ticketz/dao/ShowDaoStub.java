@@ -17,4 +17,8 @@ public class ShowDaoStub implements ShowDao {
 	public ArrayList<Show> getData() {
 		return new ArrayList<Show>(shows.getShows());
 	}
+	
+	public Show getDataAt(int id) {
+		return  shows.getShowsAt(id);
+	}
 }

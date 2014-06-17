@@ -12,4 +12,9 @@ public class TicketzProvider {
 		stubs = new ShowDaoStub();
 		return stubs.getData();
 	}
+	
+	public static Show getDataAt(int id){
+		stubs = new ShowDaoStub();
+		return stubs.getDataAt(id);
+	}
 }

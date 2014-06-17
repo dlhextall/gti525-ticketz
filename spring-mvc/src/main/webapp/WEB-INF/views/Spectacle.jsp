@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="col-md-2">
-                        <a class="btn btn-default" href="/ticketz/detail" role="button">Détail</a>
+                        <a class="btn btn-default" href="/ticketz/detail?id=<c:out value="${ spectacle.id }" />" role="button">Détail</a>
                     </div>
                 </div>
             </div>
