@@ -11,6 +11,7 @@ $(function() {
     function updateFeaturedInfo() {
         $("#featuredInfo h1").text($("#featuredShows .carousel-inner .active h1").text());
         $("#featuredInfo .description").html($("#featuredShows .carousel-inner .active div.description").html());
+        $("#featuredInfo .show-id").attr("href", "detail?id=" + $("#featuredShows .carousel-inner .active .show-id").html());
         $("#featuredInfo #date-start").html($("#featuredShows .carousel-inner .active .dates .start").html());
         $("#featuredInfo #date-end").html($("#featuredShows .carousel-inner .active .dates .end").html());
     }
