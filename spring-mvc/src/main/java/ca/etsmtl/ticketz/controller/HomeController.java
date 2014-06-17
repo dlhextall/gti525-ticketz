@@ -23,32 +23,16 @@ import ca.etsmtl.ticketz.model.Show;
 public class HomeController extends AbstractController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	TicketzProvider ticketz;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	/*public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}*/
 
 	@Override
-	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
-			HttpServletResponse arg1) throws Exception {
+	protected ModelAndView handleRequestInternal(HttpServletRequest _req, HttpServletResponse _resp) throws Exception {
 		ModelAndView model = new ModelAndView("home");
-		ArrayList<Show> spectacles = TicketzProvider.getData();
-		model.addObject(spectacles);
-		model.addObject("spectacles", spectacles);
+		model.addObject("spectacles", TicketzProvider.getData());
 		
 		return model;
 	}

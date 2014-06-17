@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.joda.org/joda/time/tags" prefix="joda" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page session="false" %>
 <!DOCTYPE html>
@@ -17,19 +18,23 @@
         <!-- Carousel -->
         <div id="featuredShows" class="carousel slide" data-interval="false">
             <ol class="carousel-indicators">
-                <li data-target="#featuredShows" data-slide-to="0" class="active"></li>
-                <li data-target="#featuredShows" data-slide-to="1"></li>
-                <li data-target="#featuredShows" data-slide-to="2"></li>
+              <c:forEach begin="0" end="${ spectacles.size() - 1 }" varStatus="loop">
+                <li data-target="#featuredShows" data-slide-to="${ loop.index }" class="${ loop.index == 0 ? "active" : ""}"></li>
+              </c:forEach>
             </ol>
             <div class="carousel-inner">
               <c:forEach items="${ spectacles }" var="spectacle" varStatus="loop">
-                <div class="${ loop.index == 1 ? "item active" : "item" }">
-                    <img src="<c:out value="${ spectacle.imageUrl }" />" alt="<c:out value="${ spectacle.name }" />">
+                <div class="${ loop.index == 0 ? "item active" : "item" }">
+                    <img src="<c:url value="${ spectacle.imageUrl }" />" alt="<c:out value="${ spectacle.name }" />">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1><c:out value="${ spectacle.name }" /></h1>
                             <div class="description">
                                 <p><c:out value="${ spectacle.description }" /></p>
+                            </div>
+                            <div class="dates">
+                              <span class="start"><joda:format value="${ spectacle.dateStart }" pattern="dd MMM" style="F-" dateTimeZone="America/Montreal"/></span>
+                              <span class="end"><joda:format value="${ spectacle.dateEnd }" pattern="dd MMM yyyy" style="F-" dateTimeZone="America/Montreal"/></span>
                             </div>
                         </div>
                     </div>
@@ -48,7 +53,7 @@
                 </div>
                 <div class="col-md-4">
                     <h3 class="text-right">
-                        <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
+                        <small>Du <strong id="date-start"> 24 Avril</strong> au <strong id="date-end">24 Juin</strong></small>
                     </h3>
                 </div>
             </div>
