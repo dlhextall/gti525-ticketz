@@ -46,8 +46,9 @@ public class HomeController extends AbstractController {
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView model = new ModelAndView("home");
-		ArrayList<Show> spectacle = TicketzProvider.getData();
-		model.addObject("Titre", spectacle.get(0).getName());
+		ArrayList<Show> spectacles = TicketzProvider.getData();
+		model.addObject(spectacles);
+		model.addObject("spectacles", spectacles);
 		
 		return model;
 	}

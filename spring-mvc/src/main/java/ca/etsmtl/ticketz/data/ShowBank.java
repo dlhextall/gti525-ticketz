@@ -1,36 +1,35 @@
 package ca.etsmtl.ticketz.data;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ShowBank{
+import org.joda.time.DateTime;
 
-	public int id;
-	public String title; 
-	public String description;
-	public String salle;
-	public String urlImage;
-	public ArrayList<RepresentationBank> representations;
-	//public ArrayList<SpectacleBank>lstSpectacle;
+import ca.etsmtl.ticketz.model.Representation;
+import ca.etsmtl.ticketz.model.Show;
+
+public class ShowBank {
+
+	private static ShowBank instance = null;
+	private List<Show> shows;
 
 	
-	public ShowBank() {}
-
-	private ShowBank(int id,String title,String description,String salle,ArrayList<RepresentationBank> representations){
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.salle = salle;
-		this.representations = representations;
-		
+	protected ShowBank() {
+		ArrayList<Representation> representations = new ArrayList<Representation>(RepresentationBank.getInstance().getRepresentations());
+		shows = new ArrayList<Show>();
+		shows.add(new Show(1, "Black Keys Tour", "Tickets On Sale Now!", "Centre Bell", "/ressources/images/carousel/img1.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
+		shows.add(new Show(2, "Snoop Dog Tour", "Tickets On Sale Now!", "Pepsi Center", "/ressources/images/carousel/img2.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
 	}
 
 
-	public ArrayList<ShowBank> initialize(){
-		ArrayList<ShowBank>lstSpectacle = new ArrayList<ShowBank>();
-		RepresentationBank representation = new RepresentationBank();
-		ArrayList<RepresentationBank> representations = representation.initialize();
-		lstSpectacle.add(new ShowBank(1,"Black Keys Tour","Tickets On Sale Now!","Centre Bell",representations));
-		lstSpectacle.add(new ShowBank(2,"Snoop Dog Tour","Tickets On Sale Now!","Pepsi Center",representations));
-		return lstSpectacle;
+	public static ShowBank getInstance(){
+		if (instance == null) {
+			instance = new ShowBank();
+		}
+		return instance;
+	}
+	
+	public List<Show> getShows() {
+		return shows;
 	}
 }

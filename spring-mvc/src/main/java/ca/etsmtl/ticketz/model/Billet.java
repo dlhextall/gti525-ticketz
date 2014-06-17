@@ -1,23 +1,30 @@
 package ca.etsmtl.ticketz.model;
 
-import java.util.ArrayList;
-
 public class Billet {
-	public int id;
-	public enum Etat {EnVente,Reserve};
-	public Etat etat;
+	private int id;
+	private boolean reserve; 
+	
+	
+	public Billet() {}
+	public Billet(int _id) {
+		this(_id, false);
+	}
+	public Billet(int _id, boolean _reserve) {
+		id = _id;
+		reserve = _reserve;
+	}
+	
 	
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int _id) {
+		id = _id;
 	}
-	public Etat getEtat() {
-		return etat;
+	public boolean isReserve() {
+		return reserve;
 	}
-	public void setEtat(Etat etat) {
-		this.etat = etat;
+	public void setReserve(boolean _reserve) {
+		reserve = _reserve;
 	}
-	
 }

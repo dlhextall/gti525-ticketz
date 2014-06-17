@@ -22,39 +22,19 @@
                 <li data-target="#featuredShows" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="item active">
-                    <img src="<c:url value="/resources/images/carousel/img1.jpg" />" alt="First image">
+              <c:forEach items="${ spectacles }" var="spectacle" varStatus="loop">
+                <div class="${ loop.index == 1 ? "item active" : "item" }">
+                    <img src="<c:out value="${ spectacle.imageUrl }" />" alt="<c:out value="${ spectacle.name }" />">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Premier spectacle ${Titre}</h1>
+                            <h1><c:out value="${ spectacle.name }" /></h1>
                             <div class="description">
-                                <p>Description du premier spectacle.</p>
+                                <p><c:out value="${ spectacle.description }" /></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <img src="<c:url value="/resources/images/carousel/img2.jpg" />" alt="Second image">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Second spectacle</h1>
-                            <div class="description">
-                                <p>Description du second spectacle.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="<c:url value="/resources/images/carousel/img3.jpg" />" alt="Third image">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Troisième spectacle</h1>
-                            <div class="description">
-                                <p>Description du troisième spectacle.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </c:forEach>
             </div>
             <a class="left carousel-control" href="#featuredShows" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
             <a class="right carousel-control" href="#featuredShows" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>

@@ -1,33 +1,39 @@
 package ca.etsmtl.ticketz.data;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import ca.etsmtl.ticketz.model.Billet;
 
 public class BilletBank {
-	public int id;
-	public enum Etat {EnVente,Reserve};
-	public Etat etat;
-	public ArrayList<BilletBank> lstBillets;
+	
+	private static BilletBank instance = null;
+	private List<Billet> billets;
 	
 	
-	public BilletBank() {}
-	
-	private BilletBank(int id, Etat etat){
-		this.id = id;
-		this.etat = etat;
+	protected BilletBank() {
+		billets = new ArrayList<Billet>();
+		billets.add(new Billet(1));
+		billets.add(new Billet(2));
+		billets.add(new Billet(3));
+		billets.add(new Billet(4));
+		billets.add(new Billet(5));
+		billets.add(new Billet(6));
+		billets.add(new Billet(7));
+		billets.add(new Billet(8));
+		billets.add(new Billet(9));
+		billets.add(new Billet(10));
 	}
 	
-	public ArrayList<BilletBank> Initialize(){
-		ArrayList<BilletBank>lstBillets = new ArrayList<BilletBank>();
-		lstBillets.add(new BilletBank(1,Etat.EnVente));
-		lstBillets.add(new BilletBank(2,Etat.EnVente));
-		lstBillets.add(new BilletBank(3,Etat.EnVente));
-		lstBillets.add(new BilletBank(4,Etat.EnVente));
-		lstBillets.add(new BilletBank(5,Etat.EnVente));
-		lstBillets.add(new BilletBank(6,Etat.EnVente));
-		lstBillets.add(new BilletBank(7,Etat.EnVente));
-		lstBillets.add(new BilletBank(8,Etat.EnVente));
-		lstBillets.add(new BilletBank(9,Etat.EnVente));
-		lstBillets.add(new BilletBank(10,Etat.EnVente));
-		return lstBillets;
+	
+	public static BilletBank getInstance() {
+		if (instance == null) {
+			instance = new BilletBank();
+		}
+		return instance;
+	}
+	
+	public List<Billet> getBillets() {
+		return billets;
 	}
 }

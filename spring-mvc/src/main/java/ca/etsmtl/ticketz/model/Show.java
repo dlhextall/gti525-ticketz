@@ -21,9 +21,11 @@ public class Show implements Serializable {
 	
 	
 	public Show() {
-		this("", "", "", "", new ArrayList<Representation>(), new ArrayList<Artist>(), DateTime.now(), DateTime.now());
+		representations = new ArrayList<Representation>();
+		artists = new ArrayList<Artist>();
 	}
-	public Show(String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd) {
+	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd) {
+		id = _id;
 		name = _name;
 		description = _description;
 		salle = _salle;
@@ -33,17 +35,17 @@ public class Show implements Serializable {
 		dateStart = _dateStart;
 		dateEnd = _dateEnd;
 	}
-	public Show(String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd) {
-		this(_name, _description, _salle, _imageUrl, new ArrayList<Representation>(), new ArrayList<Artist>(), _dateStart, _dateEnd);
+	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd) {
+		this(_id, _name, _description, _salle, _imageUrl, new ArrayList<Representation>(), new ArrayList<Artist>(), _dateStart, _dateEnd);
 		representations.add(_representation);
 		artists.add(_artist);
 	}
-	public Show(String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
-		this(_name, _description, _salle, _imageUrl, _representations, _artists, _dateStart, _dateEnd);
+	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
+		this(_id, _name, _description, _salle, _imageUrl, _representations, _artists, _dateStart, _dateEnd);
 		featured = _featured;
 	}
-	public Show(String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
-		this(_name, _description, _salle, _imageUrl, _representation, _artist, _dateStart, _dateEnd);
+	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
+		this(_id, _name, _description, _salle, _imageUrl, _representation, _artist, _dateStart, _dateEnd);
 		featured = _featured;
 	}
 	
