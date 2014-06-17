@@ -14,77 +14,18 @@
 <%@ include file="templates/elements/header.jsp" %>
 
 <div class="container">
+	<c:forEach items="${ spectacles }" var="spectacle" varStatus="loop">
             <div class="thumbnail row">
                 <div class="row show-grid">
                     <div class="col-md-6">
-                        <h3>
-                            The Blakc Keys
-                        </h3>
-                    </div>
-                    <div class="col-md-6">
-                        <h3 class="text-right">
-                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
-                        </h3>
-                    </div>
-                </div>
-
-                <hr/>
-                <div class="row show-grid">
-                    <div class="col-md-4">
-                        <img src="images/recherche/show.jpg" alt="300" class="img-rounded">
-                    </div>
-
-                    <div class="col-md-6">
-                        The Black Keys est un groupe de blues rock américain originaire d'Akron dans l'État de l'Ohio1,2. Le groupe est composé du chanteur et guitariste Dan Auerbach et du batteur Patrick Carney.
-                    </div>
-
-                    <div class="col-md-2">
-                        <a class="btn btn-default" href="/ticketz/detail" role="button">Détail</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="thumbnail row">
-
-                <div class="row show-grid">
-                    <div class="col-md-6">
-                        <h3>
-                            The Black Keys
-                        </h3>
-                    </div>
-                    <div class="col-md-6">
-                        <h3 class="text-right">
-                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
-                        </h3>
-                    </div>
-                </div>
-                
-                <hr/>
-                <div class="row show-grid">
-                    <div class="col-md-4">
-                        <img src="images/recherche/show.jpg" alt="300" class="img-rounded">
-                    </div>
                     
-                    <div class="col-md-6">
-                        The Black Keys est un groupe de blues rock américain originaire d'Akron dans l'État de l'Ohio1,2. Le groupe est composé du chanteur et guitariste Dan Auerbach et du batteur Patrick Carney.
-                    </div>
-
-                    <div class="col-md-2">
-                        <a class="btn btn-default" href="/ticketz/detail" role="button">Détail</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="thumbnail row">
-                <div class="row show-grid">
-                    <div class="col-md-6">
-                        <h3>
-                            The Blakc Keys
+                        <h3>                 
+                        	<c:out value="${ spectacle.name }" />                            	
                         </h3>
                     </div>
                     <div class="col-md-6">
                         <h3 class="text-right">
-                           <small> Du <strong> 24 Avril</strong> au <strong>24 Juin</strong> </small>
+                       		<small>Du <strong><c:out value="${ spectacle.dateStart }" /></strong> au <strong><c:out value="${ spectacle.dateEnd }" /></strong></small>
                         </h3>
                     </div>
                 </div>
@@ -92,11 +33,11 @@
                 <hr/>
                 <div class="row show-grid">
                     <div class="col-md-4">
-                        <img src="images/recherche/show.jpg" alt="300" class="img-rounded">
+                        <img class="img-rounded" src="<c:out value="${ spectacle.imageUrl }" />" alt="<c:out value="${ spectacle.name }" />">
                     </div>
-                    
+
                     <div class="col-md-6">
-                        The Black Keys est un groupe de blues rock américain originaire d'Akron dans l'État de l'Ohio1,2. Le groupe est composé du chanteur et guitariste Dan Auerbach et du batteur Patrick Carney. 
+                        <c:out value="${ spectacle.description }" />
                     </div>
 
                     <div class="col-md-2">
@@ -104,8 +45,8 @@
                     </div>
                 </div>
             </div>
-
-
-        </div>
+            
+            </c:forEach>
+	</div>
 </body>
 </html>
