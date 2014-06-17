@@ -21,6 +21,6 @@ public class SpectacleController {
 	public String detail(Locale locale, Model model) {		
 		ArrayList<Show> spectacles = TicketzProvider.getData();
 		model.addAttribute("spectacles",spectacles);		
-		return "spectacle";
+		return "Spectacle";
 	}
 }
