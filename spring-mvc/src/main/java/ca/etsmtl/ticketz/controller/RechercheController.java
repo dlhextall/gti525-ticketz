@@ -2,18 +2,39 @@ package ca.etsmtl.ticketz.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
+
+import ca.etsmtl.ticketz.dao.TicketzProvider;
 
 @Controller
-public class RechercheController {
+public class RechercheController extends AbstractController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/recherche", method = RequestMethod.GET)
-	public String panier(Locale locale, Model model) {		
-		return "Recherche";
+	
+	@Override
+	protected ModelAndView handleRequestInternal(HttpServletRequest _req, HttpServletResponse _resp) throws Exception {
+		ModelAndView model;
+		
+		String criteria = _req.getParameter("criteria");
+		if (criteria != null && !criteria.isEmpty()) {
+			model = new ModelAndView("Recherche");
+			model.addObject("results", TicketzProvider.getMatchingShows(criteria));
+			model.addObject("criteria", criteria);
+		} else {
+			model = new ModelAndView("redirect:/");
+			model.addObject("spectacles", TicketzProvider.getFeaturedShows());
+		}
+		
+		return model;
 	}
 }

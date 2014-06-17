@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page session="false" %>
 
@@ -23,9 +22,9 @@
                     <li><a href="/ticketz/spectacle">Spectacles</a></li>
                     <li><a href="/ticketz/panier">Panier</a></li>
                 </ul>
-                <form action="/ticketz/recherche" class="nav navbar-form navbar-right">
+                <form action="/ticketz/recherche" method="get" class="nav navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" name="criteria" class="form-control" placeholder="Search">
                     </div>
                     <button class="btn btn-default">Rechercher</button>
                 </form>

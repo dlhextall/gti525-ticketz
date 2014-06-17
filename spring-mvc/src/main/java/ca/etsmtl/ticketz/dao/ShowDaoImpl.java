@@ -22,6 +22,12 @@ public class ShowDaoImpl implements ShowDao{
 		return null;
 	}
 
+	@Override
+	public ArrayList getShowsMatching(String _criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

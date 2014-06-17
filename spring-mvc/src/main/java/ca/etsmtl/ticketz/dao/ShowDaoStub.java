@@ -1,6 +1,7 @@
 package ca.etsmtl.ticketz.dao;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Show;
@@ -32,5 +33,17 @@ public class ShowDaoStub implements ShowDao {
 			}
 		}
 		return featuredShows;
+	}
+
+	@Override
+	public ArrayList<Show> getShowsMatching(String _criteria) {
+		ArrayList<Show> matchingShows = new ArrayList<Show>();
+		for (Show show : shows.getShows()) {
+			if (show.getName().toLowerCase().contains(_criteria.toLowerCase()) || show.getDescription().toLowerCase().contains(_criteria.toLowerCase())) {
+				matchingShows.add(show);
+			}
+		}
+		
+		return matchingShows;
 	}
 }

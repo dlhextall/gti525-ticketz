@@ -22,4 +22,9 @@ public class TicketzProvider {
 		stubs = new ShowDaoStub();
 		return stubs.getFeaturedShows();
 	}
+	
+	public static ArrayList<Show> getMatchingShows(String _criteria) {
+		stubs = new ShowDaoStub();
+		return stubs.getShowsMatching(_criteria);
+	}
 }
