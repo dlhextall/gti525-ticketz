@@ -1,11 +1,16 @@
 package ca.etsmtl.ticketz.controller;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import ca.etsmtl.ticketz.dao.TicketzProvider;
+import ca.etsmtl.ticketz.model.Show;
 
 @Controller
 public class SpectacleController {
@@ -14,6 +19,8 @@ public class SpectacleController {
 	 */
 	@RequestMapping(value = "/spectacle", method = RequestMethod.GET)
 	public String detail(Locale locale, Model model) {		
-		return "Spectacle";
+		ArrayList<Show> spectacles = TicketzProvider.getData();
+		model.addAttribute("spectacles",spectacles);		
+		return "spectacle";
 	}
 }
