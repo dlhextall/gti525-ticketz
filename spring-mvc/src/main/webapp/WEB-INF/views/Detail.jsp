@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.joda.org/joda/time/tags" prefix="joda" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+<!DOCTYPE html >
 <html>
 <head>
 <%@ include file="templates/baseHeaderComponents.jsp" %>
@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="col-md-6">
                     <h2><c:out value="${ spectacle.name }" /></h2>
-                    <h4>From January 1st to January 1st</h4>
+                    <h4>Du <joda:format value="${ spectacle.dateStart }" pattern="dd MMM" style="F-" dateTimeZone="America/Montreal"/> au <joda:format value="${ spectacle.dateEnd }" pattern="dd MMM yyyy" style="F-" dateTimeZone="America/Montreal"/></h4>
                     <h3><c:out value="${ spectacle.salle }" /></h3>
                     <h4>Montréal, Qc</h4>
                 </div>

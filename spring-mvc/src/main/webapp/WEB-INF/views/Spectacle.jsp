@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-6">
                         <h3 class="text-right">
-                       		<small>Du <strong><joda:format value="${spectacle.dateStart}" style="M-" locale="fr_CA" /></strong> au <strong><joda:format value="${spectacle.dateEnd}" style="M-" locale="fr_CA" /></strong></small>
+                       		<small>Du <strong><joda:format value="${ spectacle.dateStart }" pattern="dd MMM" style="F-" dateTimeZone="America/Montreal"/></strong> au <strong><joda:format value="${ spectacle.dateEnd }" pattern="dd MMM yyyy" style="F-" dateTimeZone="America/Montreal"/></strong></small>
                         </h3>
                     </div>
                 </div>
