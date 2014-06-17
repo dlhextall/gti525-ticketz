@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
+<%@taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <head>
 <%@ include file="templates/baseHeaderComponents.jsp" %>
 <title>Spectacles</title>
@@ -13,8 +13,10 @@
 
 <%@ include file="templates/elements/header.jsp" %>
 
+
 <div class="container">
 	<c:forEach items="${ spectacles }" var="spectacle" varStatus="loop">
+	<fmt:parseDate value="${spectacle.dateStart.toDate()}" var="parsedEmpDate" pattern="EEE, dd MMM yyyy HH:mm:ss Z" />
             <div class="thumbnail row">
                 <div class="row show-grid">
                     <div class="col-md-6">
@@ -25,7 +27,7 @@
                     </div>
                     <div class="col-md-6">
                         <h3 class="text-right">
-                       		<small>Du <strong><c:out value="${ spectacle.dateStart }" /></strong> au <strong><c:out value="${ spectacle.dateEnd }" /></strong></small>
+                       		<small>Du <strong><joda:format value="${spectacle.dateStart}" style="M-" locale="fr_CA" /></strong> au <strong><joda:format value="${spectacle.dateEnd}" style="M-" locale="fr_CA" /></strong></small>
                         </h3>
                     </div>
                 </div>
