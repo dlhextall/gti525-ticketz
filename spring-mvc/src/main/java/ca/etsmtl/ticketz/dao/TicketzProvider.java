@@ -8,7 +8,7 @@ public class TicketzProvider {
 	
 	public static ShowDaoStub stubs;
 	
-	public static ArrayList<Show> getShows(){
+	public static ArrayList<Show> getAllShows(){
 		stubs = new ShowDaoStub();
 		return stubs.getAllShows();
 	}
