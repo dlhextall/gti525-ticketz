@@ -17,8 +17,8 @@ public class ShowBank {
 	protected ShowBank() {
 		ArrayList<Representation> representations = new ArrayList<Representation>(RepresentationBank.getInstance().getRepresentations());
 		shows = new ArrayList<Show>();
-		shows.add(new Show(1, "Black Keys Tour", "Tickets On Sale Now!", "Centre Bell", "/resources/images/carousel/img1.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
-		shows.add(new Show(2, "Snoop Dog Tour", "Tickets On Sale Now!", "Pepsi Center", "/resources/images/carousel/img2.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
+		shows.add(new Show(1, "Black Keys Tour", "Tickets On Sale Now!", "Centre Bell", "resources/images/carousel/img1.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
+		shows.add(new Show(2, "Snoop Dog Tour", "Tickets On Sale Now!", "Pepsi Center", "resources/images/carousel/img2.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
 	}
 
 
