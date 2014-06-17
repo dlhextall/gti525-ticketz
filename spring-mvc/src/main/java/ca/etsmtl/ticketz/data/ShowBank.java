@@ -20,6 +20,7 @@ public class ShowBank {
 		shows.add(new Show(0, "Black Keys Tour", "Tickets On Sale Now!", "Centre Bell", "/resources/images/carousel/img1.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
 		shows.add(new Show(1, "Snoop Dog Tour", "Tickets On Sale Now!", "Pepsi Center", "/resources/images/carousel/img2.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
 		shows.add(new Show(2, "Imagine Dragon", "Imagine Dragons est un groupe de rock alternatif américain formé en 2008 à Las Vegas, dans le Nevada", "Bell Centre", "/resources/images/carousel/img3.jpg", representations, null, DateTime.now().minusDays(2), DateTime.now()));
+
 	}
 
 
