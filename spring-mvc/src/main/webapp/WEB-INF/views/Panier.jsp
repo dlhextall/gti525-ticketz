@@ -1,231 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <!DOCTYPE html >    
 <html lang="en">
-
-<html>
-<head>
-<%@ include file="templates/baseHeaderComponents.jsp" %>
-<title>Panier</title>
-</head>
-<body>
-      <%@ include file="templates/elements/header.jsp" %>
-
-      <div class="container">
-        <div class="thumbnail row">
-            <div class="col-md-7" >
-                <div class="thumbnail row">
-                    <div class="row show-grid">
-                        <div class="col-md-6">                        
-                               <H4>The Black Keys</H4>   
-                        </div>
-                        <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
-
+	<head>
+		<%@ include file="templates/baseHeaderComponents.jsp" %>
+		<title>Panier</title>
+	</head>
+	<body>
+	  <%@ include file="templates/elements/header.jsp" %>
+	
+	  <div class="container">
+      <div class="row">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Total</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-sm-8 col-md-6">
+                <div class="media">
+                  <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                  <div class="media-body">
+                   <h4 class="media-heading"><a href="#">Product name</a></h4>
+                   <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
+                   <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
                   </div>
-                    <div class"col-md-6">
-                         <div class="row show-grid">
-                        <div class="col-md-6">
-                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="right">
-                                <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
-                            </div>
-                             
-                        </div>
-                    </div>
-                    </div>
-                   
                 </div>
-
-               <div class="thumbnail row">
-                    <div class="row show-grid">
-
-                    <div class="col-md-6">
-                        
-                           <H4>The Black Keys</H4>   
-                    </div>
-                    <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
-                </div>
-                    <div class"col-md-6">
-                         <div class="row show-grid">
-                        <div class="col-md-6">
-                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="right">
-                                <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
-                            </div>
-                             
-                        </div>
-                    </div>
-                    </div>
-                   
-                </div>
-
-                <div class="thumbnail row">
-                    <div class="row show-grid">
-
-                    <div class="col-md-6">
-                        
-                           <H4>The Black Keys</H4>   
-                    </div>
-                    <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
-                </div>
-                    <div class"col-md-6">
-                         <div class="row show-grid">
-                        <div class="col-md-6">
-                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="right">
-                                <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
-                            </div>
-                             
-                        </div>
-                    </div>
-                    </div>
-                   
-                </div>
-
-                  <div class="thumbnail row">
-                    <div class="row show-grid">
-
-                    <div class="col-md-6">
-                        
-                           <H4>The Black Keys</H4>   
-                    </div>
-                    <button type="button" class="close pull-left" aria-hidden="true">&times;</button>
-                </div>
-                    <div class"col-md-6">
-                         <div class="row show-grid">
-                        <div class="col-md-6">
-                            <small>Du <strong> 24 Avril</strong> au <strong>24 Juin</strong></small>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="right">
-                                <span class="prix">0.00$</span>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Plus d'info</a>
-                            <a class="btn btn-default" href="/ticketz/detail" role="button">Options</a>
-                            </div>
-                             
-                        </div>
-                    </div>
-                    </div>
-                   
-                </div>
-                
-
-            </div>
-            <div class="col-md-5" style= "border-left: 1px solid">
-                <div class="rightColumnRows">
-                    <div class ="row show-grid">
-                        <div class="col-md-7">
-                            <H4>The Black Keys</H4>
-                        </div>
-                    </div>
-                
-                    <div class="row show-grid">
-                        <div class="col-md-5">
-                            <small><strong> Quantité: </strong>2</small>
-                        </div>
-                        <div class="col-md-5">
-                             <small><strong> Total: </strong>10.00$</small>
-                        </div>
-                    </div>
-                    <hr/>
-                </div>
-               
-                <div class="rightColumnRows">
-                    <div class ="row show-grid">
-                        <div class="col-md-7">
-                            <H4>The Black Keys</H4>
-                        </div>
-                    </div>
-
-                    <div class="row show-grid">
-                        <div class="col-md-5">
-                            <small><strong> Quantité: </strong>2</small>
-                        </div>
-                        <div class="col-md-5">
-                             <small><strong> Total: </strong>10.00$</small>
-                        </div>
-                    </div>
-                    <hr/>
-                </div>
-
-                <div class="rightColumnRows">
-                    <div class ="row show-grid">
-                        <div class="col-md-7">
-                            <H4>The Black Keys</H4>
-                        </div>
-                    </div>
-                    <div class="row show-grid">
-                        <div class="col-md-5">
-                            <small><strong> Quantité: </strong>2</small>
-                        </div>
-                        <div class="col-md-5">
-                             <small><strong> Total: </strong>10.00$</small>
-                        </div>
-                    </div>
-                    <hr/>
-                </div>
-
-                <div class="rightColumnRows">
-                    <div class ="row show-grid">
-                        <div class="col-md-7">
-                            <H4>The Black Keys</H4>
-                        </div>
-                    </div>
-                    <div class="row show-grid">
-                        <div class="col-md-5">
-                            <small><strong> Quantité: </strong>2</small>
-                        </div>
-                        <div class="col-md-5">
-                             <small><strong> Total: </strong>10.00$</small>
-                        </div>
-                    </div>
-                    <hr/>
-                </div>
-
-
-                <div class="rightColumnRows">
-                    <div class ="row show-grid">
-                        <div class="col-md-9">
-                            <big><strong> Sous-Total: </strong>100.00$</big>
-                        </div>
-                    </div>
-                    <div class="row show-grid">
-                        <div class="col-md-6">
-                            <big><strong> TVQ: </strong>10.00$</big>
-                        </div>
-                    </div>
-                    <div class="row show-grid">
-                        <div class="col-md-6">
-                            <big><strong> TPS: </strong>10.00$</big>
-                        </div>                    
-                        <div class="row show-grid">
-                            <div class="col-md-6">
-                                <big><strong> Total: </strong>1000.00$</big>
-                            </div>  
-                        </div>
-                    </div>
-                    <a href="checkout" class="btn btn-default">Checkout</a>
-                </div>        
-        </div>
-
-        
-</div>
-</div>
-       
-
-        <%@ include file="templates/elements/footer.jsp" %>
-        <%@ include file="templates/baseFooterComponents.jsp" %>
-        
-</body>
+              </td>
+              <td class="col-sm-1 col-md-1" style="text-align: center">
+                <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+              </td>
+              <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
+              <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+              <td class="col-sm-1 col-md-1">
+              <button type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove"></span> Remove
+              </button></td>
+            </tr>
+            <tr>
+             <td>   </td>
+             <td>   </td>
+             <td>   </td>
+             <td><h5>Subtotal</h5></td>
+             <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+            </tr>
+            <tr>
+             <td>   </td>
+             <td>   </td>
+             <td>   </td>
+             <td><h5>Estimated shipping</h5></td>
+             <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+            </tr>
+            <tr>
+             <td>   </td>
+             <td>   </td>
+             <td>   </td>
+             <td><h3>Total</h3></td>
+             <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+            </tr>
+            <tr>
+             <td>   </td>
+             <td>   </td>
+             <td>   </td>
+             <td>
+              <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping</button>
+             </td>
+             <td>
+              <button type="button" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button>
+             </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+	  </div>
+	       
+	
+		<%@ include file="templates/elements/footer.jsp" %>
+		<%@ include file="templates/baseFooterComponents.jsp" %>
+	        
+	</body>
 </html>
