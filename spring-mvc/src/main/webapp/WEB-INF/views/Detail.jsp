@@ -40,9 +40,9 @@
 
         <!-- Ticket option -->
         <div class="row show-buying">
-            <div class="container">
+            <div class="container form-horizontal">
                 <h2>Achat</h2>
-                <form action="" class="form-horizontal" role="form">
+                
                     <div class="form-group">
                         <label for="nbTickets" class="col-sm-4 control-label">Nombre de billets</label>
                         <div class="col-sm-6">
@@ -84,15 +84,15 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-10 text-right">
-                        <button class="btn btn-default">Ajouter au panier</button>
-                        <a href="/ticketz/checkout" class="btn btn-default">Checkout</a>
+                        <button id='form_btn' class="btn btn-default">Ajouter au panier</button>                       
                     </div>
-                </form>
+                
             </div>
         </div>
 
 
 		<%@ include file="templates/elements/footer.jsp" %>
         <%@ include file="templates/baseFooterComponents.jsp" %>
+        <script src="<c:url value="/resources/js/detail.js" />"></script>
 </body>
 </html>

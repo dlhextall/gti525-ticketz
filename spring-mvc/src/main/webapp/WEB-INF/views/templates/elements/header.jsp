@@ -21,7 +21,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/ticketz/spectacle">Spectacles</a></li>
-                    <li><a href="/ticketz/panier">Panier</a></li>
+                    <li><a href="/ticketz/panier" id="panier">Panier</a></li>
                 </ul>
                 <form action="/ticketz/recherche" method="get" class="nav navbar-form navbar-right">
                     <div class="form-group">
