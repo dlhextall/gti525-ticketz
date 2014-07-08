@@ -2,8 +2,9 @@
 <%@ page session="false" %>
 
 <!-- Header image -->
+<a href="/ticketz/" >
 <div class="header-image"></div>
-
+</a>
 <!-- Navbar -->
 <div class="navbar navbar-default" role="navigation">
     <div class="container">
