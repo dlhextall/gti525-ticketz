@@ -2,8 +2,9 @@
 <%@ page session="false" %>
 
 <!-- Header image -->
+<a href="/ticketz/" >
 <div class="header-image"></div>
-
+</a>
 <!-- Navbar -->
 <div class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -20,7 +21,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/ticketz/spectacle">Spectacles</a></li>
-                    <li><a href="/ticketz/panier">Panier</a></li>
+                    <li><a href="/ticketz/panier" id="panier">Panier</a></li>
                 </ul>
                 <form action="/ticketz/recherche" method="get" class="nav navbar-form navbar-right">
                     <div class="form-group">
