@@ -18,10 +18,7 @@ public class RepresentationBank {
 	protected RepresentationBank() {
 		ArrayList<Billet> billets = new ArrayList<Billet>(BilletBank.getInstance().getBillets());
 		representations = new ArrayList<Representation>();
-		representations.add(new Representation(1, 50.00, DateTime.now(), billets));
-		representations.add(new Representation(2, 150.00, DateTime.now(), billets));
-		representations.add(new Representation(3, 150.00, DateTime.now(), billets));
-		representations.add(new Representation(4, 150.00, DateTime.now(), billets));
+		representations.add(new Representation(1, 50.00, DateTime.now(), billets));		
 	}
 	
 	
