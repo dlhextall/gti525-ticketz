@@ -1,13 +1,14 @@
 $(document).ready(function() {
 
 
-$('#form_btn').click(function() {
+/*$('#form_btn').click(function() {
 	
-	ajaxForm();
+	
 	
 	var body = $("html, body");
 	body.animate({scrollTop:0}, '500', 'swing', function() { 
 		$('#panier').html('Panier (+1)');
+		alert("waddup");
 		ajaxForm();
 	});
 });
@@ -15,7 +16,7 @@ $('#form_btn').click(function() {
 
 
 function ajaxForm(){
-	$.post("/add",
+	$.post("/panier/add",
 			  {
 			    name:"Donald Duck",
 			    city:"Duckburg"
@@ -25,6 +26,6 @@ function ajaxForm(){
 			  });
 }
 
-
+*/
 
 });

@@ -42,50 +42,51 @@
         <div class="row show-buying">
             <div class="container form-horizontal">
                 <h2>Achat</h2>
-                
-                    <div class="form-group">
-                        <label for="nbTickets" class="col-sm-4 control-label">Nombre de billets</label>
-                        <div class="col-sm-6">
-                            <select name="nbTickets" id="nbTickets" class="form-control">
-                                <option value="one">1</option>
-                                <option value="two">2</option>
-                                <option value="three">3</option>
-                                <option value="four">4</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="showDate" class="col-sm-4 control-label">Date du spectacle</label>
-                        <div class="col-sm-6">
-                            <select name="showDate" id="showDate" class="form-control">
-                                <option value="1">January 1st</option>
-                                <option value="2">January 2nd</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="ticketSection" class="col-sm-4 control-label">Section</label>
-                        <div class="col-sm-6">
-                            <select name="ticketSection" id="ticketSection" class="form-control">
-                                <option value="0">Floor</option>    
-                                <option value="1">100</option>
-                                <option value="2">200</option>
-                                <option value="3">300</option>
-                                <option value="4">400</option>
-                                <option value="5">500</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="totalPrice" class="col-sm-4 control-label">Total</label>
-                        <div class="col-sm-6">
-                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="0.00$" readonly>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-10 text-right">
-                        <button id='form_btn' class="btn btn-default">Ajouter au panier</button>                       
-                    </div>
+                	<form action="/ticketz/panier/add" class="form-horizontal" role="form">
+	                    <div class="form-group">
+	                        <label for="nbTickets" class="col-sm-4 control-label">Nombre de billets</label>
+	                        <div class="col-sm-6">
+	                            <select name="nbTickets" id="nbTickets" class="form-control">
+	                                <option value="1">1</option>
+	                                <option value="2">2</option>
+	                                <option value="3">3</option>
+	                                <option value="4">4</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="showDate" class="col-sm-4 control-label">Date du spectacle</label>
+	                        <div class="col-sm-6">
+	                            <select name="showDate" id="showDate" class="form-control">
+	                                <option value="1">January 1st</option>
+	                                <option value="2">January 2nd</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="ticketSection" class="col-sm-4 control-label">Section</label>
+	                        <div class="col-sm-6">
+	                            <select name="ticketSection" id="ticketSection" class="form-control">
+	                                <option value="0">Floor</option>    
+	                                <option value="1">100</option>
+	                                <option value="2">200</option>
+	                                <option value="3">300</option>
+	                                <option value="4">400</option>
+	                                <option value="5">500</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="totalPrice" class="col-sm-4 control-label">Total</label>
+	                        <div class="col-sm-6">
+	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="0.00$" readonly>
+	                        </div>
+	                    </div>
+	                    <div class="clearfix"></div>
+	                    <div class="col-md-10 text-right">
+	                        <button type="submit" id='form_btn' class="btn btn-default">Ajouter au panier</button>                       
+	                    </div>
+                    </form>
                 
             </div>
         </div>
