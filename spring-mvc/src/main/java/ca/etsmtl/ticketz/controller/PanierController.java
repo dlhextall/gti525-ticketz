@@ -59,7 +59,7 @@ public class PanierController {
 		service.add(billetPanier);
 		
 		model.addAttribute("panier", service.getPanier());			
-		
+		session.setAttribute("panier", service.getPanier());
 		return "Panier";
 		
 	}
