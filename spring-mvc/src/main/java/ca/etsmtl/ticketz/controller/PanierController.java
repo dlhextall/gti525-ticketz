@@ -30,12 +30,12 @@ public class PanierController {
 	
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)
 	public String panier(HttpServletRequest request,Locale locale, Model model) {		
-		//HttpSession session = null;
 		Panier panier = service.getPanier();
 		HttpSession session = request.getSession();
 		panier = (Panier)session.getAttribute("panier");
 		
 		model.addAttribute("panier",panier);
+		
 		return "Panier";
 		
 	}
