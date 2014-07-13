@@ -41,13 +41,13 @@ public class PanierController {
 	}
 
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/panier/add", method = RequestMethod.POST)
 	public String add(HttpServletRequest request,Locale locale, Model model) {
 		
 		HttpSession session = request.getSession();
-		Panier test = (Panier)session.getAttribute("panier");
-		test.setSousTotal(100);
-		model.addAttribute("panier", test);
+		Panier panier = (Panier)session.getAttribute("panier");
+	
+		model.addAttribute("panier", panier);
 		
 		//model.addAttribute("panier", service.getInstance().getPanier());
 		
@@ -57,4 +57,10 @@ public class PanierController {
 		
 	}
 	
+	@RequestMapping(value = "/panier/delete", method = RequestMethod.POST)
+	public String delete(HttpServletRequest request, Model model){
+		
+		
+		return "Panier";
+	}
 }
