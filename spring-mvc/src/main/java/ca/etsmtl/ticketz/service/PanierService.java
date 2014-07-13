@@ -52,6 +52,18 @@ public class PanierService implements IService{
 	}
 	
 	public void delete(int index){
+		int cpt =0;
+		panier.getLstBilletPanier().remove(index);
+		
+		List<Billet>lstBillet = spectacle.representations.get(index).getBillets();
+		while(lstBillet.size()!=0 ){
+			if(lstBillet.get(cpt).getEtat().equals(Etat.Reserve)){
+				lstBillet.get(cpt).setEtat(Etat.EnVente);
+				break;
+			}
+			cpt++;
+		}
+		
 		
 	}
 	
