@@ -41,6 +41,11 @@ public class PanierService implements IService{
 			cpt++;
 		}
 		
+	
+	}
+	
+	public void delete(int index){
+		
 	}
 	
 }

@@ -55,9 +55,10 @@ public class PanierController {
 				
 		HttpSession session = request.getSession();
 		Panier panier = (Panier)session.getAttribute("panier");
+		service.setPanier(panier);
 		service.add(billetPanier);
 		
-		model.addAttribute("panier", panier);			
+		model.addAttribute("panier", service.getPanier());			
 		
 		return "Panier";
 		
