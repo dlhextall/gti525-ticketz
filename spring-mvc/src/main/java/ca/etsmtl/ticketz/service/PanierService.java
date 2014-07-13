@@ -14,21 +14,28 @@ import ca.etsmtl.ticketz.model.Show;
 public class PanierService implements IService{
 	private Panier panier;
 	private Show spectacle;
+	private List <Panier>lstPanier;
 	
 	public PanierService(){
 		panier = new Panier();
 	}
+	
 	public Panier getPanier() {
 		return panier;
 	}
 	public void setPanier(Panier panier) {
 		this.panier = panier;
 	}
+	
+	public List<BilletPanier> getAllBilletPanier(){
+		return panier.getLstBilletPanier();
+	}
+	
 	@Override
 	public void add(BilletPanier billetPanier) {
 		int cpt =0;
 		int cptReserve=0;
-		panier.getLstBillet().add(billetPanier); 
+		panier.getLstBilletPanier().add(billetPanier); 
 		List<Billet>lstBillet = spectacle.representations.get(billetPanier.getIdRepresentation()).getBillets();
 		
 		while(lstBillet.size()!=0 && billetPanier.getNbBillets()!=cptReserve){

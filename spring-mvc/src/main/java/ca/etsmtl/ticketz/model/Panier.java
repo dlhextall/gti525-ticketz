@@ -7,11 +7,11 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 
 public class Panier{
-	private List<BilletPanier> lstBillet;
+	private List<BilletPanier> lstBilletPanier;
 	private double sousTotal,tvq,tps,prixTotal;
 	
 	public Panier(){
-		lstBillet = new ArrayList<BilletPanier>();
+		lstBilletPanier = new ArrayList<BilletPanier>();
 		sousTotal=0;
 		tvq=0;
 		tps=0;
@@ -20,14 +20,14 @@ public class Panier{
 	
 	
 
-	public List<BilletPanier> getLstBillet() {
-		return lstBillet;
+	public List<BilletPanier> getLstBilletPanier() {
+		return lstBilletPanier;
 	}
 
 
 
-	public void setLstBillet(List<BilletPanier> lstBillet) {
-		this.lstBillet = lstBillet;
+	public void setLstBilletPanier(List<BilletPanier> lstBillet) {
+		this.lstBilletPanier = lstBillet;
 	}
 
 
