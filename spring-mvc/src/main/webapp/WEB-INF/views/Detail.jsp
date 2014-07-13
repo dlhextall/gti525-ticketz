@@ -79,7 +79,7 @@
 	                    <div class="form-group">
 	                        <label for="totalPrice" class="col-sm-4 control-label">Total</label>
 	                        <div class="col-sm-6">
-	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="0.00$" readonly>
+	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="150" readonly>
 	                        </div>
 	                    </div>
 	                    <div class="clearfix"></div>

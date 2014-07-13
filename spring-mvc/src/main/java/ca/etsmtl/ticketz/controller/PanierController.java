@@ -28,7 +28,7 @@ public class PanierController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	private PanierService service = new PanierService();
-	private BilletPanier billetPanier = new BilletPanier();
+	
 	
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)
 	public String panier(HttpServletRequest request,Locale locale, Model model) {		
@@ -43,23 +43,27 @@ public class PanierController {
 	}
 
 
-	@RequestMapping(value = "/panier/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/panier/add", method = RequestMethod.GET)
 	public String add(HttpServletRequest request,Locale locale, Model model) {
-		billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
+		
+		BilletPanier billetPanier = new BilletPanier();
+		if(request.getParameter("nbTickets") != null){
+			billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
+			billetPanier.setMontantTotal(Integer.parseInt(request.getParameter("totalPrice")));
+			billetPanier.setIdRepresentation(0);
+		}
+				
 		HttpSession session = request.getSession();
 		Panier panier = (Panier)session.getAttribute("panier");
-	
-		model.addAttribute("panier", panier);
+		service.add(billetPanier);
 		
-		//model.addAttribute("panier", service.getInstance().getPanier());
-		
-		
+		model.addAttribute("panier", panier);			
 		
 		return "Panier";
 		
 	}
 	
-	@RequestMapping(value = "/panier/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/panier/delete", method = RequestMethod.GET)
 	public String delete(HttpServletRequest request, Model model){
 		
 		
