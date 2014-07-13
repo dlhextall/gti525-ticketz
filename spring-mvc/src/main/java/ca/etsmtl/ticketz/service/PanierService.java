@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import ca.etsmtl.ticketz.data.BilletBank;
+import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Billet;
 import ca.etsmtl.ticketz.model.Billet.Etat;
 import ca.etsmtl.ticketz.model.BilletPanier;
@@ -13,11 +14,12 @@ import ca.etsmtl.ticketz.model.Show;
 @Service("service")
 public class PanierService implements IService{
 	private Panier panier;
-	private Show spectacle;
+	private List<Show> spectacle;
 	private List <Panier>lstPanier;
 	
 	public PanierService(){
 		panier = new Panier();
+		spectacle = ShowBank.getInstance().getShows();
 	}
 	
 	public Panier getPanier() {
