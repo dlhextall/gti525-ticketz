@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
+import ca.etsmtl.ticketz.model.BilletPanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.service.IService;
 import ca.etsmtl.ticketz.service.PanierService;
@@ -27,6 +28,7 @@ public class PanierController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	private PanierService service = new PanierService();
+	private BilletPanier billetPanier = new BilletPanier();
 	
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)
 	public String panier(HttpServletRequest request,Locale locale, Model model) {		
@@ -43,7 +45,7 @@ public class PanierController {
 
 	@RequestMapping(value = "/panier/add", method = RequestMethod.POST)
 	public String add(HttpServletRequest request,Locale locale, Model model) {
-		
+		billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
 		HttpSession session = request.getSession();
 		Panier panier = (Panier)session.getAttribute("panier");
 	
