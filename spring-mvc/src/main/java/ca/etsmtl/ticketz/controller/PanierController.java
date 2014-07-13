@@ -2,10 +2,12 @@ package ca.etsmtl.ticketz.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.mina.filter.reqres.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,21 +21,38 @@ import ca.etsmtl.ticketz.service.IService;
 import ca.etsmtl.ticketz.service.PanierService;
 
 @Controller
+@SessionAttributes("panier")
 public class PanierController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	private PanierService service;
+	private PanierService service = new PanierService();
 	
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)
-	public String panier(HttpSession session,Locale locale, Model model) {		
+	public String panier(HttpServletRequest request,Locale locale, Model model) {		
 		//HttpSession session = null;
-		//session.setAttribute("panier", "test");
-		//model.addAttribute("panier", service.getInstance().getPanier());
-		//session.invalidate();
+		Panier panier = service.getPanier();
+		HttpSession session = request.getSession();
+		panier = (Panier)session.getAttribute("panier");
 		
+		model.addAttribute("panier",panier);
 		return "Panier";
 		
 	}
 
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String add(HttpServletRequest request,Locale locale, Model model) {		
+		HttpSession session = request.getSession();
+		Panier test = (Panier)session.getAttribute("panier");
+		test.setSousTotal(100);
+		model.addAttribute("panier", test);
+		
+		//model.addAttribute("panier", service.getInstance().getPanier());
+		
+		
+		
+		return "Panier";
+		
+	}
+	
 }

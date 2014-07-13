@@ -1,12 +1,12 @@
 package ca.etsmtl.ticketz.model;
 
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 
-public class Panier implements Serializable{
+public class Panier{
 	private List<Show> lstSpectacle;
 	private double sousTotal,tvq,tps,prixTotal;
 	
@@ -27,7 +27,7 @@ public class Panier implements Serializable{
 	}
 
 	public double getSousTotal() {
-		sousTotal =1;
+		
 		return sousTotal;
 	}
 

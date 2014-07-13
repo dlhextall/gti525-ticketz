@@ -36,7 +36,7 @@
 	              <td class="col-sm-1 col-md-1" style="text-align: center">
 	                <input type="number" class="form-control" id="exampleInputEmail1" value="3">
 	              </td>
-	              <td class="col-sm-1 col-md-1 text-center"><strong>${panier.sousTotal}</strong></td>
+	              <td class="col-sm-1 col-md-1 text-center"><strong> <c:out value="${panier.sousTotal}"></c:out></strong></td>
 	              <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
 	              <td class="col-sm-1 col-md-1">
 	              <button type="button" class="btn btn-danger">
@@ -73,6 +73,7 @@
 	             </td>
 	             <td>
 	              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button>
+	             <a href="/ticketz/add" id="panier">add</a>
 	             </td>
 	            </tr>
 	          </tbody>

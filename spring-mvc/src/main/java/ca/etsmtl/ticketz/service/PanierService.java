@@ -7,16 +7,18 @@ import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
 @Service("service")
 public class PanierService implements IService{
-	private Panier panier = new Panier();
-	private static PanierService instance = null;
+	private Panier panier;
+	/*private static PanierService instance = null;
 	
 	public static PanierService getInstance() {
 		if (instance == null) {
 			instance = new PanierService();
 		}
 		return instance;
+	}*/
+	public PanierService(){
+		panier = new Panier();
 	}
-	
 	public Panier getPanier() {
 		return panier;
 	}
