@@ -5,7 +5,16 @@ public class BilletPanier {
 	private int idRepresentation;
 	private int nbBillets;
 	private int montantTotal;
+	private String nomSpectacle;
 	
+	public String getNomSpectacle() {
+		return nomSpectacle;
+	}
+
+	public void setNomSpectacle(String nomSpectacle) {
+		this.nomSpectacle = nomSpectacle;
+	}
+
 	public BilletPanier() {}
 	
 	public int getIdRepresentation() {
