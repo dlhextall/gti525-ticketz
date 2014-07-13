@@ -7,24 +7,30 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 
 public class Panier{
-	private List<Show> lstSpectacle;
+	private List<BilletPanier> lstBillet;
 	private double sousTotal,tvq,tps,prixTotal;
 	
 	public Panier(){
-		lstSpectacle = new ArrayList<Show>();
+		lstBillet = new ArrayList<BilletPanier>();
 		sousTotal=0;
 		tvq=0;
 		tps=0;
 		prixTotal=0;
 	}
 	
-	public List<Show> getLstSpectacle() {
-		return lstSpectacle;
+	
+
+	public List<BilletPanier> getLstBillet() {
+		return lstBillet;
 	}
 
-	public void setLstSpectacle(List<Show> lstSpectacle) {
-		this.lstSpectacle = lstSpectacle;
+
+
+	public void setLstBillet(List<BilletPanier> lstBillet) {
+		this.lstBillet = lstBillet;
 	}
+
+
 
 	public double getSousTotal() {
 		

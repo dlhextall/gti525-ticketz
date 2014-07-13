@@ -2,7 +2,7 @@ package ca.etsmtl.ticketz.model;
 
 public class Billet {
 	private int id;
-	private enum Etat {EnVente,Reserve};
+	public enum Etat {EnVente,Reserve};
 	private Etat etat;
 	
 	

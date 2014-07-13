@@ -13,10 +13,7 @@ $('#form_btn').click(function() {
 
 
 
-function ajaxForm(){
-	
-	
-}
+
 
 
 

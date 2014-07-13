@@ -1,21 +1,20 @@
 package ca.etsmtl.ticketz.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import ca.etsmtl.ticketz.data.BilletBank;
+import ca.etsmtl.ticketz.model.Billet;
+import ca.etsmtl.ticketz.model.Billet.Etat;
+import ca.etsmtl.ticketz.model.BilletPanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
 @Service("service")
 public class PanierService implements IService{
 	private Panier panier;
-	/*private static PanierService instance = null;
+	private Show spectacle;
 	
-	public static PanierService getInstance() {
-		if (instance == null) {
-			instance = new PanierService();
-		}
-		return instance;
-	}*/
 	public PanierService(){
 		panier = new Panier();
 	}
@@ -26,9 +25,22 @@ public class PanierService implements IService{
 		this.panier = panier;
 	}
 	@Override
-	public void add(Show show) {
+	public void add(BilletPanier billetPanier) {
+		int cpt =0;
+		int cptReserve=0;
+		panier.getLstBillet().add(billetPanier); 
+		List<Billet>lstBillet = spectacle.representations.get(billetPanier.getIdRepresentation()).getBillets();
 		
+		while(lstBillet.size()!=0 && billetPanier.getNbBillets()!=cptReserve){
+			
+			if(lstBillet.get(cpt).getEtat().equals(Etat.EnVente)){
+				
+				lstBillet.get(cpt).setEtat(Etat.Reserve);
+				cptReserve++;
+			}
+			cpt++;
+		}
 		
 	}
-
+	
 }
