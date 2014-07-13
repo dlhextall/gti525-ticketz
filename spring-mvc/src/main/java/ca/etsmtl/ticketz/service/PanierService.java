@@ -14,23 +14,16 @@ import ca.etsmtl.ticketz.model.Show;
 public class PanierService implements IService{
 	private Panier panier;
 	private Show spectacle;
-	private List <Panier>lstPanier;
 	
 	public PanierService(){
 		panier = new Panier();
 	}
-	
 	public Panier getPanier() {
 		return panier;
 	}
 	public void setPanier(Panier panier) {
 		this.panier = panier;
 	}
-	
-	public List<BilletPanier> getAllBilletPanier(){
-		return panier.getLstBilletPanier();
-	}
-	
 	@Override
 	public void add(BilletPanier billetPanier) {
 		int cpt =0;
@@ -52,18 +45,6 @@ public class PanierService implements IService{
 	}
 	
 	public void delete(int index){
-		int cpt =0;
-		panier.getLstBilletPanier().remove(index);
-		
-		List<Billet>lstBillet = spectacle.representations.get(index).getBillets();
-		while(lstBillet.size()!=0 ){
-			if(lstBillet.get(cpt).getEtat().equals(Etat.Reserve)){
-				lstBillet.get(cpt).setEtat(Etat.EnVente);
-				break;
-			}
-			cpt++;
-		}
-		
 		
 	}
 	
