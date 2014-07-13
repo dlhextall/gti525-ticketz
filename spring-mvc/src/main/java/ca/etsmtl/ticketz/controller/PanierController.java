@@ -40,7 +40,7 @@ public class PanierController {
 		
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/show/add", method = RequestMethod.GET)
 	public String add(HttpServletRequest request,Locale locale, Model model) {		
 		HttpSession session = request.getSession();
 		Panier test = (Panier)session.getAttribute("panier");

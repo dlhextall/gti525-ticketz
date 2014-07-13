@@ -2,16 +2,17 @@ package ca.etsmtl.ticketz.model;
 
 public class Billet {
 	private int id;
-	private boolean reserve; 
+	private enum Etat {EnVente,Reserve};
+	private Etat etat;
 	
 	
 	public Billet() {}
 	public Billet(int _id) {
-		this(_id, false);
+		this(_id,Etat.EnVente);
 	}
-	public Billet(int _id, boolean _reserve) {
+	public Billet(int _id, Etat etat) {
 		id = _id;
-		reserve = _reserve;
+		this.etat = etat;
 	}
 	
 	
@@ -21,10 +22,11 @@ public class Billet {
 	public void setId(int _id) {
 		id = _id;
 	}
-	public boolean isReserve() {
-		return reserve;
+	public Etat getEtat() {
+		return etat;
 	}
-	public void setReserve(boolean _reserve) {
-		reserve = _reserve;
+	public void setEtat(Etat etat) {
+		this.etat = etat;
 	}
+	
 }

@@ -1,6 +1,9 @@
 package ca.etsmtl.ticketz.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +26,7 @@ import ca.etsmtl.ticketz.model.Show;
 public class HomeController extends AbstractController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	Timer timer;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -36,5 +40,10 @@ public class HomeController extends AbstractController {
 		
 		return model;
 	}
+	
+
+	
+	      
+	
 	
 }
