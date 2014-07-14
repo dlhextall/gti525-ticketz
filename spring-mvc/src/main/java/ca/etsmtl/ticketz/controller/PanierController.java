@@ -1,5 +1,7 @@
 package ca.etsmtl.ticketz.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import ca.etsmtl.ticketz.model.BilletPanier;
 import ca.etsmtl.ticketz.model.Panier;
+import ca.etsmtl.ticketz.model.Show;
 import ca.etsmtl.ticketz.service.IService;
 import ca.etsmtl.ticketz.service.PanierService;
 
@@ -51,7 +54,7 @@ public class PanierController {
 			billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
 			billetPanier.setMontantTotal(Integer.parseInt(request.getParameter("totalPrice")));
 			billetPanier.setIdRepresentation(0);
-			billetPanier.setNomSpectacle("TROLOLOLO");
+			billetPanier.setNomSpectacle("Whaddup bitches");
 			billetPanier.setIdSpectacle(Integer.parseInt(request.getParameter("idSpectacle")));
 		}
 				
@@ -60,6 +63,9 @@ public class PanierController {
 		service.setPanier(panier);
 		service.add(billetPanier);
 		
+		List<BilletPanier> billets =  service.getAllBilletPanier();
+					
+		model.addAttribute("billets", billets);
 		model.addAttribute("panier", service.getPanier());			
 		session.setAttribute("panier", service.getPanier());
 		return "Panier";
