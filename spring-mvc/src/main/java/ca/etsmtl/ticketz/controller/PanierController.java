@@ -37,8 +37,10 @@ public class PanierController {
 	public String panier(HttpServletRequest request,Locale locale, Model model) {		
 		Panier panier = service.getPanier();
 		HttpSession session = request.getSession();
-		panier = (Panier)session.getAttribute("panier");
-		
+		panier = (Panier)session.getAttribute("panier");		
+		service.setPanier(panier);
+		List<BilletPanier> billets =  service.getAllBilletPanier();					
+		model.addAttribute("billets", billets);
 		model.addAttribute("panier",panier);
 		
 		return "Panier";
@@ -63,8 +65,7 @@ public class PanierController {
 		service.setPanier(panier);
 		service.add(billetPanier);
 		
-		List<BilletPanier> billets =  service.getAllBilletPanier();
-					
+		List<BilletPanier> billets =  service.getAllBilletPanier();					
 		model.addAttribute("billets", billets);
 		model.addAttribute("panier", service.getPanier());	
 		
