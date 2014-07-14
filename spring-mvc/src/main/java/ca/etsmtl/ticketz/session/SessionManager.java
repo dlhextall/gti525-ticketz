@@ -26,7 +26,7 @@ public class SessionManager implements HttpSessionListener {
 		//session.setMaxInactiveInterval(1200);
 		service = new PanierService();
 		sessionEvent.getSession().setAttribute("panier",service.getPanier());
-		sessionEvent.getSession().setMaxInactiveInterval(180);
+		sessionEvent.getSession().setMaxInactiveInterval(60);
 		System.out.println("session created");
 		
 	}
@@ -46,7 +46,7 @@ public class SessionManager implements HttpSessionListener {
 			for(int i=0;i<billetPanier.size();i++){
 				List<Billet>lstBillet = spectacle.get(billetPanier.get(i).getIdSpectacle()).representations.get(billetPanier.get(i).getIdRepresentation()).getBillets();
 				
-				for(int j=0;i<lstBillet.size();j++){
+				for(int j=0;j<lstBillet.size();j++){
 					if(lstBillet.get(j).getEtat().equals(Etat.Reserve)){
 						lstBillet.get(j).setEtat(Etat.EnVente);
 						//cptRestored++;
