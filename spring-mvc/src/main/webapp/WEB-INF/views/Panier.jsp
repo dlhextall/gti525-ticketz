@@ -38,11 +38,11 @@
 			                <input type="number" class="form-control" id="exampleInputEmail1" value="3" readonly>
 			              </td>
 			              <td class="col-sm-1 col-md-1 text-center"><strong> <c:out value="${billets.getMontantTotal()}"></c:out></strong></td>
-			              <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+			              <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="${billets.getMontantTotal()}"></c:out></strong></td>
 			              <td class="col-sm-1 col-md-1">
-			              <button type="button" class="btn btn-danger">
+			              <a href="/ticketz/panier/delete?id=${loop.index}&idR=${billets.getIdRepresentation()}&idS=${billets.getIdSpectacle()}" type="button" class="btn btn-danger">
 			                <span class="glyphicon glyphicon-remove"></span> Remove
-			              </button></td>
+			              </a></td>
 			            </tr>
 			           </c:forEach>
 				            <tr>
@@ -90,8 +90,7 @@
       	 </form>
 	        
       </div>
-	  </div>
-	       
+	  </div>	       
 	
 		<%@ include file="templates/elements/footer.jsp" %>
 		<%@ include file="templates/baseFooterComponents.jsp" %>

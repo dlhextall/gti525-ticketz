@@ -69,6 +69,7 @@
 	                        <div class="col-sm-6">
 	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="150" readonly>
 	                            <input type="hidden" name="idSpectacle" value="${ spectacle.id }">
+	                            <input type="hidden" name="nomSpectacle" value="${ spectacle.name }">
 	                        </div>
 	                    </div>
 	                    <div class="clearfix"></div>

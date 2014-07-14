@@ -56,7 +56,7 @@ public class PanierController {
 			billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
 			billetPanier.setMontantTotal(Integer.parseInt(request.getParameter("totalPrice")));
 			billetPanier.setIdRepresentation(0);
-			billetPanier.setNomSpectacle("Whaddup bitches");
+			billetPanier.setNomSpectacle(request.getParameter("nomSpectacle"));
 			billetPanier.setIdSpectacle(Integer.parseInt(request.getParameter("idSpectacle")));
 		}
 				
@@ -76,7 +76,14 @@ public class PanierController {
 	
 	@RequestMapping(value = "/panier/delete", method = RequestMethod.GET)
 	public String delete(HttpServletRequest request, Model model){
-		
+		if(request.getParameter("id") != null){
+			Panier panier = service.getPanier();
+			HttpSession session = request.getSession();
+			panier = (Panier)session.getAttribute("panier");		
+			service.setPanier(panier);
+			//service.delete(request.getParameter("idS"),request.getParameter("idR"),request.getParameter("id"));
+			
+		}
 		
 		return "Panier";
 	}
