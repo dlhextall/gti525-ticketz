@@ -50,6 +50,7 @@ public class SessionManager implements HttpSessionListener {
 						lstBillet.get(j).setEtat(Etat.EnVente);
 						//cptRestored++;
 					}
+					spectacle.get(billetPanier.get(i).getIdSpectacle()).representations.get(billetPanier.get(i).getIdRepresentation()).setBilletReserve(0);
 					//if(cptRestored==billetPanier)
 					
 				}

@@ -69,12 +69,28 @@ public class PanierService implements IService{
 		cptAdded=0;
 		
 			for(int i=0;i<lstBillet.size();i++){
-				
+				int panierCheck=nbItemsPanier+billetPanier.getNbBillets();
 				if(lstBillet.get(i).getEtat().equals(Etat.EnVente)){
 					
-					lstBillet.get(i).setEtat(Etat.Reserve);
-					cptAdded++;
-					spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
+					if(represBilletReserve>billetPanier.getNbBillets()){
+						if(nbItemsPanier<=represBilletReserve&&panierCheck<=lstBillet.size()){
+							lstBillet.get(i).setEtat(Etat.Reserve);
+							cptAdded++;
+							spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
+						}
+						else{
+							break;
+						}
+					}
+					else{
+						if(nbItemsPanier<=represBilletReserve){
+							lstBillet.get(i).setEtat(Etat.Reserve);
+							cptAdded++;
+							spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
+						}
+					}
+					
+					
 				}
 				
 				/*if(nbItemsPanier==0){
