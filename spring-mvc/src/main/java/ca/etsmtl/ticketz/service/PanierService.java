@@ -21,6 +21,7 @@ public class PanierService implements IService{
 	private int cptReserve=0;
 	private int represBilletReserve =0;
 	private int nbItemsPanier;
+	final int LIMITE_TICKET = 6;
 	public PanierService(){
 		panier = new Panier();
 		spectacle = ShowBank.getInstance().getShows();
@@ -49,7 +50,7 @@ public class PanierService implements IService{
 				if(lstBillet.get(i).getEtat().equals(Etat.EnVente)){
 					
 					if(represBilletReserve>billetPanier.getNbBillets()){
-						if(nbItemsPanier<=represBilletReserve&&panierCheck<=lstBillet.size()){
+						if(nbItemsPanier<=represBilletReserve&&panierCheck<=LIMITE_TICKET){
 							lstBillet.get(i).setEtat(Etat.Reserve);
 							cptAdded++;
 							spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
