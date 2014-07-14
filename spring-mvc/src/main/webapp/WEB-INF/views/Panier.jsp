@@ -35,7 +35,7 @@
 			                </div>
 			              </td>
 			              <td class="col-sm-1 col-md-1" style="text-align: center">
-			                <input type="number" class="form-control" id="exampleInputEmail1" value="3" readonly>
+			                <input type="number" class="form-control" id="exampleInputEmail1" value="${billets.getNbBillets()}" readonly>
 			              </td>
 			              <td class="col-sm-1 col-md-1 text-center"><strong> <c:out value="${billets.getMontantTotal()}"></c:out></strong></td>
 			              <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="${billets.getMontantTotal()}"></c:out></strong></td>

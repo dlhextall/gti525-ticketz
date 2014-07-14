@@ -5,7 +5,7 @@ public class BilletPanier {
 	private int idRepresentation;
 	private int idSpectacle;
 	private int nbBillets;
-	private int montantTotal;
+	private Double montantTotal;
 	private String nomSpectacle;
 	
 	public BilletPanier() {}
@@ -34,10 +34,10 @@ public class BilletPanier {
 	public void setNbBillets(int nbBillets) {
 		this.nbBillets = nbBillets;
 	}
-	public int getMontantTotal() {
+	public Double getMontantTotal() {
 		return montantTotal;
 	}
-	public void setMontantTotal(int montantTotal) {
+	public void setMontantTotal(Double montantTotal) {
 		this.montantTotal = montantTotal;
 	}
 	
