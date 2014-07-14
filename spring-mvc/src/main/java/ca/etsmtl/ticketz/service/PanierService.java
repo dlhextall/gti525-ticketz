@@ -67,6 +67,7 @@ public class PanierService implements IService{
 		}*/
 			
 			for(int i=0;i<lstBillet.size();i++){
+				cptAdded=0;
 				if(lstBillet.get(i).getEtat().equals(Etat.EnVente)){
 					
 					lstBillet.get(i).setEtat(Etat.Reserve);
