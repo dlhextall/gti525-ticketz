@@ -72,8 +72,8 @@
 	              <button  type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping</button>
 	             </td>
 	             <td>
-	              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button>
-	             <a href="/ticketz/show/add" id="panier">add</a>
+	              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button><br>
+	             <button type="button" class= "btn btn-default"><a href="/ticketz/show/" id="panier">add a other ticket</a></button>
 	             </td>
 	            </tr>
 	          </tbody>
