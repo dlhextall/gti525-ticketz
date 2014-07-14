@@ -52,6 +52,7 @@ public class PanierController {
 			billetPanier.setMontantTotal(Integer.parseInt(request.getParameter("totalPrice")));
 			billetPanier.setIdRepresentation(0);
 			billetPanier.setNomSpectacle("TROLOLOLO");
+			billetPanier.setIdSpectacle(Integer.parseInt(request.getParameter("idSpectacle")));
 		}
 				
 		HttpSession session = request.getSession();
