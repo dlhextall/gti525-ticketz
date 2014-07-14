@@ -1,5 +1,7 @@
 package ca.etsmtl.ticketz.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import ca.etsmtl.ticketz.model.BilletPanier;
 import ca.etsmtl.ticketz.model.Panier;
+import ca.etsmtl.ticketz.model.Show;
 import ca.etsmtl.ticketz.service.IService;
 import ca.etsmtl.ticketz.service.PanierService;
 
@@ -34,8 +37,10 @@ public class PanierController {
 	public String panier(HttpServletRequest request,Locale locale, Model model) {		
 		Panier panier = service.getPanier();
 		HttpSession session = request.getSession();
-		panier = (Panier)session.getAttribute("panier");
-		
+		panier = (Panier)session.getAttribute("panier");		
+		service.setPanier(panier);
+		List<BilletPanier> billets =  service.getAllBilletPanier();					
+		model.addAttribute("billets", billets);
 		model.addAttribute("panier",panier);
 		
 		return "Panier";
@@ -49,9 +54,10 @@ public class PanierController {
 		BilletPanier billetPanier = new BilletPanier();
 		if(request.getParameter("nbTickets") != null){
 			billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
-			billetPanier.setMontantTotal(Integer.parseInt(request.getParameter("totalPrice")));
+			billetPanier.setMontantTotal(Double.parseDouble(request.getParameter("totalPrice")));
 			billetPanier.setIdRepresentation(0);
-			billetPanier.setNomSpectacle("TROLOLOLO");
+			billetPanier.setNomSpectacle(request.getParameter("nomSpectacle"));
+			billetPanier.setIdSpectacle(Integer.parseInt(request.getParameter("idSpectacle")));
 		}
 				
 		HttpSession session = request.getSession();
@@ -59,7 +65,10 @@ public class PanierController {
 		service.setPanier(panier);
 		service.add(billetPanier);
 		
-		model.addAttribute("panier", service.getPanier());			
+		List<BilletPanier> billets =  service.getAllBilletPanier();					
+		model.addAttribute("billets", billets);
+		model.addAttribute("panier", service.getPanier());	
+		
 		session.setAttribute("panier", service.getPanier());
 		return "Panier";
 		
@@ -67,7 +76,18 @@ public class PanierController {
 	
 	@RequestMapping(value = "/panier/delete", method = RequestMethod.GET)
 	public String delete(HttpServletRequest request, Model model){
+		Panier panier = service.getPanier();
+		if(request.getParameter("id") != null){			
+			HttpSession session = request.getSession();
+			panier = (Panier)session.getAttribute("panier");		
+			service.setPanier(panier);
+			service.delete(Integer.parseInt(request.getParameter("idS")),Integer.parseInt(request.getParameter("idR")),Integer.parseInt(request.getParameter("id")));
+			
+		}
 		
+		List<BilletPanier> billets =  service.getAllBilletPanier();					
+		model.addAttribute("billets", billets);
+		model.addAttribute("panier",panier);
 		
 		return "Panier";
 	}

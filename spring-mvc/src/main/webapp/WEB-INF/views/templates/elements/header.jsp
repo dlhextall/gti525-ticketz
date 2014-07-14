@@ -28,9 +28,6 @@
                         <input type="text" name="criteria" class="form-control" placeholder="Search">
                     </div>
                     <button class="btn btn-default">Rechercher</button>
-
-                    <p align="right" id="shoppingCart"> Total :</p>
-                    
                 </form>
             </div>
         </div>

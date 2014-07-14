@@ -54,7 +54,7 @@
 	                            </select>
 	                        </div>
 	                    </div>
-	                    <div class="form-group">
+	                    <!-- <div class="form-group">
 	                        <label for="showDate" class="col-sm-4 control-label">Date du spectacle</label>
 	                        <div class="col-sm-6">
 	                            <select name="showDate" id="showDate" class="form-control">
@@ -62,24 +62,14 @@
 	                                <option value="2">January 2nd</option>
 	                            </select>
 	                        </div>
-	                    </div>
-	                    <div class="form-group">
-	                        <label for="ticketSection" class="col-sm-4 control-label">Section</label>
-	                        <div class="col-sm-6">
-	                            <select name="ticketSection" id="ticketSection" class="form-control">
-	                                <option value="0">Floor</option>    
-	                                <option value="1">100</option>
-	                                <option value="2">200</option>
-	                                <option value="3">300</option>
-	                                <option value="4">400</option>
-	                                <option value="5">500</option>
-	                            </select>
-	                        </div>
-	                    </div>
+	                    </div> -->
+	                   
 	                    <div class="form-group">
 	                        <label for="totalPrice" class="col-sm-4 control-label">Total</label>
 	                        <div class="col-sm-6">
-	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="150" readonly>
+	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="${ spectacle.getRepresentationAt(0).prix}" readonly>
+	                            <input type="hidden" name="idSpectacle" value="${ spectacle.id }">
+	                            <input type="hidden" name="nomSpectacle" value="${ spectacle.name }">
 	                        </div>
 	                    </div>
 	                    <div class="clearfix"></div>
