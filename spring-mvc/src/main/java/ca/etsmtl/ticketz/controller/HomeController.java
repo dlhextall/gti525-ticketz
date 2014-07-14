@@ -3,6 +3,7 @@ package ca.etsmtl.ticketz.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Timer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,6 +44,11 @@ public class HomeController extends AbstractController {
 	}
 	
 
+	   @Scheduled(cron="*/5 * * * * ?")
+    public void demoServiceMethod()
+    {
+        System.out.println("Method executed at every 5 seconds. Current time is :: "+ new Date());
+    }
 	
 	      
 	

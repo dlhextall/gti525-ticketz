@@ -66,7 +66,8 @@ public class PanierController {
 		List<BilletPanier> billets =  service.getAllBilletPanier();
 					
 		model.addAttribute("billets", billets);
-		model.addAttribute("panier", service.getPanier());			
+		model.addAttribute("panier", service.getPanier());	
+		
 		session.setAttribute("panier", service.getPanier());
 		return "Panier";
 		
