@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Billet;
 import ca.etsmtl.ticketz.model.Billet.Etat;
 import ca.etsmtl.ticketz.model.BilletPanier;
@@ -16,7 +17,7 @@ import ca.etsmtl.ticketz.service.PanierService;
 public class SessionManager implements HttpSessionListener {
 
 	private PanierService service;
-	private List<Show> spectacle;
+	private List<Show> spectacle = ShowBank.getInstance().getShows();
 
 	@Override
 	public void sessionCreated(HttpSessionEvent sessionEvent) {
