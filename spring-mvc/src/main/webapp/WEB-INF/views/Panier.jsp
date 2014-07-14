@@ -38,7 +38,7 @@
 			                <input type="number" class="form-control" id="exampleInputEmail1" value="${billets.getNbBillets()}" readonly>
 			              </td>
 			              <td class="col-sm-1 col-md-1 text-center"><strong> <c:out value="${billets.getMontantTotal()}"></c:out></strong></td>
-			              <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="${billets.getMontantTotal()}"></c:out></strong></td>
+			              <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="0"></c:out></strong></td>
 			              <td class="col-sm-1 col-md-1">
 			              <a href="/ticketz/panier/delete?id=${loop.index}&idR=${billets.getIdRepresentation()}&idS=${billets.getIdSpectacle()}" type="button" class="btn btn-danger">
 			                <span class="glyphicon glyphicon-remove"></span> Remove
