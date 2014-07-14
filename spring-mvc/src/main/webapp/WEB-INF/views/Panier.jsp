@@ -73,7 +73,7 @@
 	             </td>
 	             <td>
 	              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button><br>
-	             <button type="button" class= "btn btn-default"><a href="/ticketz/show/" id="panier">add a other ticket</a></button>
+	             <button type="button" class= "btn btn-default"><a href="ticketz/show" id="panier">buy a other ticket</a></button>
 	             </td>
 	            </tr>
 	          </tbody>
