@@ -38,8 +38,7 @@ public class PanierService implements IService{
 	
 	@Override
 	public void add(BilletPanier billetPanier) {
-		int cpt =0;
-		
+					
 		
 		List<Billet>lstBillet = spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).getBillets();
 		spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);
