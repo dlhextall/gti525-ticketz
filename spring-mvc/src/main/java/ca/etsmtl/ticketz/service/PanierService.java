@@ -18,7 +18,8 @@ public class PanierService implements IService{
 	private List <Panier>lstPanier;
 	private int cptAdded=0;
 	private int cptReserve=0;
-	private int cptVente;
+	private int represBilletReserve =0;
+	private int nbItemsPanier;
 	public PanierService(){
 		panier = new Panier();
 		spectacle = ShowBank.getInstance().getShows();
@@ -41,9 +42,9 @@ public class PanierService implements IService{
 		
 		
 		List<Billet>lstBillet = spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).getBillets();
+		spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);
+		represBilletReserve = spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).getBilletReserve();
 		
-
-		cptAdded=0;
 		/*while(cpt<lstBillet.size()&&cptAdded<billetPanier.getNbBillets()){
 			
 			if(lstBillet.get(cpt).getEtat().equals(Etat.EnVente)){
@@ -52,9 +53,9 @@ public class PanierService implements IService{
 				cptAdded++;
 			}
 			
-			/*if(lstBillet.get(cpt).getEtat().equals(Etat.Reserve)){
+			if(lstBillet.get(cpt).getEtat().equals(Etat.Reserve)){
 				cptReserve++;
-			}*/
+			}
 			cpt++;
 			
 			if(cptAdded==billetPanier.getNbBillets()){
@@ -65,17 +66,31 @@ public class PanierService implements IService{
 				break;
 			}
 		}*/
-			
+		cptAdded=0;
+		
 			for(int i=0;i<lstBillet.size();i++){
-				cptAdded=0;
+				
 				if(lstBillet.get(i).getEtat().equals(Etat.EnVente)){
 					
 					lstBillet.get(i).setEtat(Etat.Reserve);
 					cptAdded++;
+					spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
 				}
-			
-				if(cptAdded==billetPanier.getNbBillets()){
+				
+				/*if(nbItemsPanier==0){
+					if(cptAdded==billetPanier.getNbBillets()){
+						//cptReserve+=cptAdded;
+						panier.getLstBilletPanier().add(billetPanier); 
+						nbItemsPanier+=billetPanier.getNbBillets();
+					}
+				}*/
+				
+				if(cptAdded==billetPanier.getNbBillets()&&nbItemsPanier<=represBilletReserve){
 					panier.getLstBilletPanier().add(billetPanier); 
+					nbItemsPanier+=billetPanier.getNbBillets();
+				}
+				if(cptAdded==billetPanier.getNbBillets()){
+					break;
 				}
 			}
 		
