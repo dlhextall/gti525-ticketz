@@ -18,6 +18,7 @@ public class PanierService implements IService{
 	private List <Panier>lstPanier;
 	private int cptAdded=0;
 	private int cptReserve=0;
+	private int cptVente;
 	public PanierService(){
 		panier = new Panier();
 		spectacle = ShowBank.getInstance().getShows();
@@ -43,7 +44,7 @@ public class PanierService implements IService{
 		
 
 		cptAdded=0;
-		while(cpt<lstBillet.size()&&cptAdded<billetPanier.getNbBillets()){
+		/*while(cpt<lstBillet.size()&&cptAdded<billetPanier.getNbBillets()){
 			
 			if(lstBillet.get(cpt).getEtat().equals(Etat.EnVente)){
 				
@@ -62,8 +63,20 @@ public class PanierService implements IService{
 			/*else if(cptReserve>=lstBillet.size()){
 				System.out.println("full");
 				break;
-			}*/
-		}
+			}
+		}*/
+			
+			for(int i=0;i<lstBillet.size();i++){
+				if(lstBillet.get(i).getEtat().equals(Etat.EnVente)){
+					
+					lstBillet.get(i).setEtat(Etat.Reserve);
+					cptAdded++;
+				}
+			
+				if(cptAdded==billetPanier.getNbBillets()){
+					panier.getLstBilletPanier().add(billetPanier); 
+				}
+			}
 		
 	
 	}
