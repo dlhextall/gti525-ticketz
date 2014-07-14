@@ -5,5 +5,5 @@ import ca.etsmtl.ticketz.model.Show;
 
 public interface IService {
 	void add(BilletPanier billet);
-	void delete(BilletPanier panier,int index);
+	void delete(int idSpectacle,int idRepresentation, int indexPanier);
 }
