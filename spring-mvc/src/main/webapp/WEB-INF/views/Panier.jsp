@@ -69,11 +69,13 @@
 	             <td>   </td>
 	             <td>   </td>
 	             <td>
-	              <button  type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping</button>
+	              <button  type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span><a href="/ticketz/spectacle"> Continue Shopping</a></button>
 	             </td>
 	             <td>
-	              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button><br>
-	             <button type="button" class= "btn btn-default"><a href="ticketz/show" id="panier">buy a other ticket</a></button>
+	              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button>
+	              </td>
+	              <td>
+	             <button type="button" class= "btn btn-default">Add a other ticket</button>
 	             </td>
 	            </tr>
 	          </tbody>
