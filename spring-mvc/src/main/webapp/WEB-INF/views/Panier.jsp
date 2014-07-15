@@ -94,6 +94,7 @@
 	
 		<%@ include file="templates/elements/footer.jsp" %>
 		<%@ include file="templates/baseFooterComponents.jsp" %>
+		<script src="<c:url value="/resources/js/panier.js" />"></script>
 	        
 	</body>
 </html>
