@@ -172,7 +172,7 @@ public class PanierService implements IService{
 
 	@Override
 	public void deleteCart() {
-		if(panier.getLstBilletPanier().size()>0){
+		if(panier!=null){
 			panier=null;
 		}
 		
