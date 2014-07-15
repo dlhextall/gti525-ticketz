@@ -53,18 +53,17 @@ public class PanierController {
 	public String add(HttpServletRequest request,Locale locale, Model model) {
 		HttpSession session = request.getSession();
 		Panier panier = (Panier)session.getAttribute("panier");
+		service.setPanier(panier);
 		
 		LignePanier billetPanier = new LignePanier();
 		if(request.getParameter("nbTickets") != null){
 			billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
-			billetPanier.setMontantUnitaire(new BigDecimal(request.getParameter("totalPrice")));
+			billetPanier.setMontantUnitaire(new BigDecimal(request.getParameter("unityPrice")));
 			billetPanier.setIdRepresentation(0);
 			billetPanier.setNomSpectacle(request.getParameter("nomSpectacle"));
 			billetPanier.setIdSpectacle(Integer.parseInt(request.getParameter("idSpectacle")));
-		}
-				
+		}		
 		
-		service.setPanier(panier);
 		service.add(billetPanier);
 		
 		List<LignePanier> billets =  service.getAllBilletPanier();					

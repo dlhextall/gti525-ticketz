@@ -42,7 +42,7 @@
         <div class="row show-buying">
             <div class="container form-horizontal">
                 <h2>Achat</h2>
-                	<form action="/ticketz/panier/add" class="form-horizontal" role="form">
+                	<!-- <form action="/ticketz/panier/add" class="form-horizontal" role="form"> -->
 	                    <div class="form-group">
 	                        <label for="nbTickets" class="col-sm-4 control-label">Nombre de billets</label>
 	                        <div class="col-sm-6">
@@ -68,16 +68,16 @@
 	                        <label for="totalPrice" class="col-sm-4 control-label">Total</label>
 	                        <div class="col-sm-6">
 	                            <input name="totalPrice" id='totalPrice' type="text" class="form-control" value="${ spectacle.getRepresentationAt(0).prix}" readonly>
-	                            <input type="hidden" name="idSpectacle" value="${ spectacle.id }">
-	                            <input type="hidden" name="totalPrice" value="${ spectacle.getRepresentationAt(0).prix}">
-	                            <input type="hidden" name="nomSpectacle" value="${ spectacle.name }">
+	                            <input type="hidden" id='idSpectacle' name="idSpectacle" value="${ spectacle.id }">
+	                            <input type="hidden" id='unityPrice' name="unityPrice" value="${ spectacle.getRepresentationAt(0).prix}">
+	                            <input type="hidden" id='nomSpectacle' name="nomSpectacle" value="${ spectacle.name }">
 	                        </div>
 	                    </div>
 	                    <div class="clearfix"></div>
 	                    <div class="col-md-10 text-right">
 	                        <button type="submit" id='form_btn' class="btn btn-default">Ajouter au panier</button>                       
 	                    </div>
-                    </form>
+                   <!-- </form> -->
                 
             </div>
         </div>

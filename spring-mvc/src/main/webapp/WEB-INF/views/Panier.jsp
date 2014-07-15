@@ -65,7 +65,7 @@
 				             <td>   </td>
 				             <td>   </td>
 				             <td>
-				              <button  type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span><a href="/ticketz/spectacle"> Continue Shopping</a></button>
+				              <a href="/ticketz/spectacle"><button  type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping</button></a>
 				             </td>
 				             <td>
 				              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button>
