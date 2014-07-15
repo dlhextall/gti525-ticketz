@@ -28,8 +28,8 @@
                         <input type="text" name="criteria" class="form-control" placeholder="Search">
                     </div>
                     <button class="btn btn-default">Rechercher</button>
-                    Montant :${panier.prixTotal}
-                  
+                    Montant :${panier.prixTotal} $
+                  	
                 </form>
             </div>
         </div>
