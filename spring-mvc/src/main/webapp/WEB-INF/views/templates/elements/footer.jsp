@@ -1,6 +1,6 @@
 
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 
 <!-- Footer -->
 <div id="footer">

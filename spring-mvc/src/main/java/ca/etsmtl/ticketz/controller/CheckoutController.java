@@ -19,7 +19,6 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +38,7 @@ import ca.etsmtl.ticketz.service.PanierService;
 @Controller
 public class CheckoutController {	
 	Logger log = Logger.getLogger( CheckoutController.class.getName());
-	PanierService pService = new PanierService();
+	PanierService pService = PanierService.getInstance();
 	
 	
 	/**
