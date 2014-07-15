@@ -45,14 +45,14 @@ public class SessionManager implements HttpSessionListener {
 			
 			
 			for(int i=0;i<billetPanier.size();i++){
-				List<Billet>lstBillet = spectacle.get(billetPanier.get(i).getIdSpectacle()).representations.get(billetPanier.get(i).getIdRepresentation()).getBillets();
+				List<Billet>lstBillet = spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).getBillets();
 				
 				for(int j=0;j<lstBillet.size();j++){
 					if(lstBillet.get(j).getEtat().equals(Etat.Reserve)){
 						lstBillet.get(j).setEtat(Etat.EnVente);
 						//cptRestored++;
 					}
-					spectacle.get(billetPanier.get(i).getIdSpectacle()).representations.get(billetPanier.get(i).getIdRepresentation()).setBilletReserve(0);
+					spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).setBilletReserve(0);
 					//if(cptRestored==billetPanier)
 					
 				}

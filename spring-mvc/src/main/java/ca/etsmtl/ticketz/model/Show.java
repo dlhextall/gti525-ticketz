@@ -12,9 +12,9 @@ public class Show implements Serializable {
 	private int id;
 	private String name;
 	private String description;
-	public String salle;
-	public String imageUrl;
-	public List<Representation> representations;
+	private String salle;
+	private String imageUrl;
+	private List<Representation> representations;
 	private List<Artist> artists;
 	private DateTime dateStart;
 	private DateTime dateEnd;
