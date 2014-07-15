@@ -65,7 +65,7 @@ public class HomeController extends AbstractController {
 			  
 			  
 			  timer.scheduleAtFixedRate(task, 0, 1200000);*/
-			  
+			  session.invalidate();
 		return model;
 	}
 	

@@ -25,9 +25,10 @@ public class SessionManager implements HttpSessionListener {
 		//HttpSession session = sessionEvent.getSession();
 		//session.setAttribute("panier", "allo");
 		//session.setMaxInactiveInterval(1200);
-		service = new PanierService();
+		service = service.getInstance();
+		service.setPanier(new Panier());
 		sessionEvent.getSession().setAttribute("panier",service.getPanier());
-		sessionEvent.getSession().setMaxInactiveInterval(600);
+		sessionEvent.getSession().setMaxInactiveInterval(60);
 		System.out.println("session created");
 		
 	}
@@ -59,6 +60,10 @@ public class SessionManager implements HttpSessionListener {
 			}
 			
 		}
+		service.deleteCart();
+		service.setCptAdded(0);
+		service.setCptReserve(0);
+		service.setNbItemsPanier(0);
 		System.out.println("Session Timer Current time is :: "+ new Date());
 		
 	}

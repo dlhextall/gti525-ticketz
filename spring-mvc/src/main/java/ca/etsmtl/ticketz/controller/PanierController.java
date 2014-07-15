@@ -31,7 +31,7 @@ public class PanierController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	private PanierService service = new PanierService();
+	private PanierService service = PanierService.getInstance();
 	
 	
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)
