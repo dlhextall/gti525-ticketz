@@ -28,6 +28,7 @@
                         <input type="text" name="criteria" class="form-control" placeholder="Search">
                     </div>
                     <button class="btn btn-default">Rechercher</button>
+                    Montant :
                 </form>
             </div>
         </div>
