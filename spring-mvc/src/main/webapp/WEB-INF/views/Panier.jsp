@@ -35,10 +35,10 @@
 			                </div>
 			              </td>
 			              <td class="col-sm-1 col-md-1" style="text-align: center">
-			                <input type="number" class="form-control" id="exampleInputEmail1" value="${billets.getNbBillets()}" readonly>
+			                <label  class="form-control" id="exampleInputEmail1" value="${billets.getNbBillets()}">${billets.getNbBillets()}</label>
 			              </td>
-			              <td class="col-sm-1 col-md-1 text-center"><strong> <c:out value="${billets.getMontantTotal()}"></c:out></strong></td>
-			              <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="0"></c:out></strong></td>
+			              <td class="col-sm-1 col-md-1 text-center"><strong> <c:out value="${billets.getMontantUnitaire()}"></c:out></strong></td>
+			              <td class="col-sm-1 col-md-1 text-center"><strong><c:out value="${billets.getMontantTotal()}"></c:out></strong></td>
 			              <td class="col-sm-1 col-md-1">
 			              <a href="/ticketz/panier/delete?id=${loop.index}&idR=${billets.getIdRepresentation()}&idS=${billets.getIdSpectacle()}" type="button" class="btn btn-danger">
 			                <span class="glyphicon glyphicon-remove"></span> Remove
@@ -50,21 +50,15 @@
 				             <td>   </td>
 				             <td>   </td>
 				             <td><h5>Subtotal</h5></td>
-				             <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+				             <td class="text-right"><h5><strong>${panier.sousTotal}</strong></h5></td>
 				            </tr>
-				            <tr>
-				             <td>   </td>
-				             <td>   </td>
-				             <td>   </td>
-				             <td><h5>Estimated shipping</h5></td>
-				             <td class="text-right"><h5><strong>$6.94</strong></h5></td>
-				            </tr>
+				            
 				            <tr>
 				             <td>   </td>
 				             <td>   </td>
 				             <td>   </td>
 				             <td><h3>Total</h3></td>
-				             <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+				             <td class="text-right"><h3><strong>${panier.prixTotal}</strong></h3></td>
 				            </tr>
 				            <tr>
 				             <td>   </td>

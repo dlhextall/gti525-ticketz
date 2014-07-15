@@ -1,6 +1,15 @@
 $(document).ready(function() {
 
-
+$montant = $("#totalPrice").val();	
+	
+$( "#nbTickets" ).change(function() {
+	
+	$traitement = parseInt($("#nbTickets").val(), 10)*$montant;
+		
+		$("#totalPrice").val($traitement);
+	});
+	
+	
 /*$('#form_btn').click(function() {
 	
 	
