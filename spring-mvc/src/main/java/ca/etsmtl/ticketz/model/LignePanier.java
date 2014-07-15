@@ -1,14 +1,16 @@
 package ca.etsmtl.ticketz.model;
 
-public class BilletPanier {
+import java.math.BigDecimal;
+
+public class LignePanier {
 	
 	private int idRepresentation;
 	private int idSpectacle;
 	private int nbBillets;
-	private Double montantTotal;
+	private BigDecimal montantTotal;
 	private String nomSpectacle;
 	
-	public BilletPanier() {}
+	public LignePanier() { }
 	
 	public int getIdSpectacle() {
 		return idSpectacle;
@@ -34,14 +36,11 @@ public class BilletPanier {
 	public void setNbBillets(int nbBillets) {
 		this.nbBillets = nbBillets;
 	}
-	public Double getMontantTotal() {
+	public BigDecimal getMontantTotal() {
 		return montantTotal;
 	}
-	public void setMontantTotal(Double montantTotal) {
+	public void setMontantTotal(BigDecimal montantTotal) {
 		this.montantTotal = montantTotal;
 	}
 	
-	
-	
-
 }

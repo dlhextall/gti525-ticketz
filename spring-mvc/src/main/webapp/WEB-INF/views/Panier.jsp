@@ -29,7 +29,7 @@
 			                <div class="media">
 			                  <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
 			                  <div class="media-body">
-			                   <h4 class="media-heading"><a href="#">${billets.getNomSpectacle()}</a></h4>
+			                   <h4 class="media-heading"><a href="/ticketz/detail?id=<c:out value="${ spectacle.id }" />">${billets.getNomSpectacle()}</a></h4>
 			                   <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
 			                  </div>
 			                </div>
@@ -71,7 +71,7 @@
 				             <td>   </td>
 				             <td>   </td>
 				             <td>
-				              <button  type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping</button>
+				              <button  type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span><a href="/ticketz/spectacle"> Continue Shopping</a></button>
 				             </td>
 				             <td>
 				              <button type="submit" class="btn btn-success">Checkout <span class="glyphicon glyphicon-play"></span></button>
@@ -94,6 +94,7 @@
 	
 		<%@ include file="templates/elements/footer.jsp" %>
 		<%@ include file="templates/baseFooterComponents.jsp" %>
+		<script src="<c:url value="/resources/js/panier.js" />"></script>
 	        
 	</body>
 </html>

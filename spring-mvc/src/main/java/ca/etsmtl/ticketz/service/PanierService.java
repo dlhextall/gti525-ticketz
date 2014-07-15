@@ -8,7 +8,7 @@ import ca.etsmtl.ticketz.data.BilletBank;
 import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Billet;
 import ca.etsmtl.ticketz.model.Billet.Etat;
-import ca.etsmtl.ticketz.model.BilletPanier;
+import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
 @Service("service")
@@ -34,12 +34,12 @@ public class PanierService implements IService{
 		this.panier = panier;
 	}
 	
-	public List<BilletPanier> getAllBilletPanier(){
+	public List<LignePanier> getAllBilletPanier(){
 		return panier.getLstBilletPanier();
 	}
 	
 	@Override
-	public void add(BilletPanier billetPanier) {
+	public void add(LignePanier billetPanier) {
 		List<Billet>lstBillet = spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).getBillets();
 		spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);
 		represBilletReserve = spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).getBilletReserve();

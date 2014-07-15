@@ -1,10 +1,10 @@
 package ca.etsmtl.ticketz.service;
 
-import ca.etsmtl.ticketz.model.BilletPanier;
+import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Show;
 
 public interface IService {
-	void add(BilletPanier billet);
+	void add(LignePanier billet);
 	void delete(int idSpectacle,int idRepresentation, int indexPanier);
 	void deleteFinal(int idSpectacle,int idRepresentation, int indexPanier);
 }

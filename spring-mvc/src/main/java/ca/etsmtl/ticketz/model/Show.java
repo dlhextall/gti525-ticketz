@@ -1,6 +1,7 @@
 package ca.etsmtl.ticketz.model;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +85,8 @@ public class Show implements Serializable {
 		return representations;
 	}
 	public Representation getRepresentationAt(int _index) {
-		return representations.get(_index);
+		 
+	return representations.get(_index);
 	}
 	public void setRepresentations(List<Representation> _representations) {
 		representations = _representations;

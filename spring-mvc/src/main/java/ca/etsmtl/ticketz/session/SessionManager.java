@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSessionListener;
 import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Billet;
 import ca.etsmtl.ticketz.model.Billet.Etat;
-import ca.etsmtl.ticketz.model.BilletPanier;
+import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
 import ca.etsmtl.ticketz.service.PanierService;
@@ -38,7 +38,7 @@ public class SessionManager implements HttpSessionListener {
 		if(sessionEvent.getSession().getAttribute("panier")!=null){
 			int cptRestored=0;
 			Panier panier = (Panier)sessionEvent.getSession().getAttribute("panier");
-			List<BilletPanier> billetPanier = panier.getLstBilletPanier();
+			List<LignePanier> billetPanier = panier.getLstBilletPanier();
 			
 			
 			
