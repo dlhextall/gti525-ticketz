@@ -49,7 +49,7 @@ public class HomeController extends AbstractController {
 	}
 	
 
-	@Scheduled(fixedDelay = 5000)
+	/*@Scheduled(fixedDelay = 5000)
     public void demoServiceMethod()
     {
        //System.out.println("Method executed at every 5 seconds. Current time is :: "+ new Date());
@@ -57,7 +57,7 @@ public class HomeController extends AbstractController {
 		panier= new Panier();
 		request.getSession().setAttribute("panier", panier);
 		System.out.println("Global Timer Current time is :: "+ new Date());
-    }
+    }*/
 	
 	      
 	
