@@ -85,9 +85,8 @@ public class Show implements Serializable {
 		return representations;
 	}
 	public Representation getRepresentationAt(int _index) {
-		DecimalFormat format = new DecimalFormat("0.00"); 
-		format.format(_index);
-		return representations.get(_index);
+		 
+	return representations.get(_index);
 	}
 	public void setRepresentations(List<Representation> _representations) {
 		representations = _representations;
