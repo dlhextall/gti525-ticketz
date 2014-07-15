@@ -6,11 +6,11 @@
 		<title>Panier</title>
 	</head>
 	<body>
-	  <%@ include file="templates/elements/header.jsp" %>
-	
+	  <%@ include file="templates/elements/header.jsp" %>	
+	  
 	  <div class="container">
-      <div class="row">
-      	 <form action="/ticketz/checkout/" class="form-horizontal" role="form">      	 	
+      <div class="row"><form action="/ticketz/checkout/" class="form-horizontal" role="form">   
+      
 	          	<c:if test="${billets.size() >=1}" >
 	          		<table class="table table-hover">
 			          <thead>
