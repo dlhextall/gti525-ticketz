@@ -118,5 +118,13 @@ public class CheckoutForm {
 	public void setCcCVC(String ccCVC) {
 		this.ccCVC = ccCVC;
 	}
+	
+	
+	public String toString() {
+		return getClass().getName() + " : Order by " + getLastName() + ", " + getFirstName() +
+				"(" + getTelephone() + " - " + getAddress() + " " + getCity() + ", " + getProvince() + " " + getPostalCode() +
+				") ; Credit card : " + getCcLastName() + ", " + getCcFirstName() + " " + getCcNumber() + " " + getCcMonth() + "/" + getCcYear() +
+				" #" + getCcCVC();
+	}
 
 }
