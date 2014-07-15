@@ -50,24 +50,21 @@ public class CheckoutController {
 	public ModelAndView checkoutPOST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm, BindingResult _res, HttpServletRequest _req) {
 		ModelAndView model;
 		
+//		Errors in checkout form
 		if (_res.hasErrors()) {
 			model = new ModelAndView("redirect:/checkout");
 			model.addObject("error", 1);
-			for (ObjectError error : _res.getAllErrors()) {
-				System.out.println("Error : " + error.getCode() + " - " + error.getObjectName() + " : " + error.getDefaultMessage());
-			}
 			return model;
 		}
 		
 		HttpSession session = _req.getSession();
 		Panier panier = (Panier) session.getAttribute("panier");
-		System.out.println("Total : " + panier.getPrixTotal());
 		model = new ModelAndView("redirect:/");
 		
 		IPaiementStub paiement = new IPaiementStub();
 		
 		InformationsPaiementTO paiementInfo = new InformationsPaiementTO();
-//		paiementInfo.setAmount(amount);
+		paiementInfo.setAmount(panier.getPrixTotal());
 //		paiementInfo.setApi_key(api_key);
 		paiementInfo.setCard_number(Long.parseLong(_checkoutForm.getCcNumber()));
 		paiementInfo.setLast_name(_checkoutForm.getCcLastName());
@@ -77,6 +74,7 @@ public class CheckoutController {
 		paiementInfo.setSecurity_code(Integer.parseInt(_checkoutForm.getCcCVC()));
 //		paiementInfo.setOrder_id(order_id);
 //		paiementInfo.setStore_id(store_id);
+		
 		ReponseSystemePaiementTO reponsePreauthorisation = paiement.effectuerPreauthorisation(paiementInfo);
 		if (reponsePreauthorisation.getCode() / 100 == 2) {
 			RequeteAuthorisationTO requete = new RequeteAuthorisationTO();
@@ -84,9 +82,12 @@ public class CheckoutController {
 			requete.setStore_id(paiementInfo.getStore_id());
 //			requete.setTransaction_id();
 			ReponseSystemePaiementTO reponseApprouver = paiement.approuverTransaction(requete);
+//			Succès
 			if (reponseApprouver.getCode() / 100 == 2) {
 				pService.deleteAll();
 				session.invalidate();
+			} else {
+				model.setViewName("redirect:/checkout");
 			}
 			
 		} else {
