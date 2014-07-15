@@ -74,6 +74,7 @@
 			               
 			          </tbody>
 			       	 </table>
+			       	 <p align=center> Nombre limite de billets : 6</p>
 	          		</c:if>
 	          	
 		          	<c:if test="${billets.size() <1}" >
