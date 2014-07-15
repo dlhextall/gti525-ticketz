@@ -14,6 +14,7 @@ import ca.etsmtl.ticketz.model.Representation;
 import ca.etsmtl.ticketz.model.Show;
 @Service("service")
 public class PanierService implements IService{
+	private static PanierService instance = null;
 	private Panier panier =new Panier();
 	private List<Show> lstShows;
 	private int cptAdded = 0;
@@ -28,6 +29,13 @@ public class PanierService implements IService{
 		lstShows = ShowBank.getInstance().getShows();
 	}
 	
+	public static PanierService getInstance(){
+		if (instance == null) {
+			instance = new PanierService();
+		}
+		return instance;
+	}
+	
 	public Panier getPanier() {
 		return panier;
 	}
@@ -35,8 +43,40 @@ public class PanierService implements IService{
 		this.panier = panier;
 	}
 	
+	public int getCptAdded() {
+		return cptAdded;
+	}
+
+	public void setCptAdded(int cptAdded) {
+		this.cptAdded = cptAdded;
+	}
+
+	public int getCptRemoved() {
+		return cptRemoved;
+	}
+
+	public void setCptRemoved(int cptRemoved) {
+		this.cptRemoved = cptRemoved;
+	}
+
+	public int getNbItemsPanier() {
+		return nbItemsPanier;
+	}
+
+	public void setNbItemsPanier(int nbItemsPanier) {
+		this.nbItemsPanier = nbItemsPanier;
+	}
+
 	public List<LignePanier> getAllBilletPanier(){
 		return panier.getLstBilletPanier();
+	}
+	
+	public int getCptReserve() {
+		return cptReserve;
+	}
+
+	public void setCptReserve(int cptReserve) {
+		this.cptReserve = cptReserve;
 	}
 	
 	@Override
@@ -81,6 +121,8 @@ public class PanierService implements IService{
 		
 	
 	}
+	
+
 	@Override
 	public void delete(int idSpectacle,int idRepresentation, int indexPanier){
 		int cpt =0;
@@ -126,6 +168,15 @@ public class PanierService implements IService{
 				}
 			}
 		}
+	}
+
+	@Override
+	public void deleteCart() {
+		if(panier!=null){
+			panier=null;
+		}
+		
+		
 	}
 	
 }

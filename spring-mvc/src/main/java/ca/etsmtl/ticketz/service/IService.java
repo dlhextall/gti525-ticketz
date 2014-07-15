@@ -7,4 +7,5 @@ public interface IService {
 	void add(LignePanier billet);
 	void delete(int idSpectacle,int idRepresentation, int indexPanier);
 	void deleteFinal(int idSpectacle,int idRepresentation, int indexPanier);
+	void deleteCart();
 }
