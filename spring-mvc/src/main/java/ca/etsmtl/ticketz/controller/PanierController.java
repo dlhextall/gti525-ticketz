@@ -1,5 +1,6 @@
 package ca.etsmtl.ticketz.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
-import ca.etsmtl.ticketz.model.BilletPanier;
+import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
 import ca.etsmtl.ticketz.service.IService;
@@ -39,7 +40,7 @@ public class PanierController {
 		HttpSession session = request.getSession();
 		panier = (Panier)session.getAttribute("panier");		
 		service.setPanier(panier);
-		List<BilletPanier> billets =  service.getAllBilletPanier();					
+		List<LignePanier> billets =  service.getAllBilletPanier();					
 		model.addAttribute("billets", billets);
 		model.addAttribute("panier",panier);
 		
@@ -51,10 +52,10 @@ public class PanierController {
 	@RequestMapping(value = "/panier/add", method = RequestMethod.GET)
 	public String add(HttpServletRequest request,Locale locale, Model model) {
 		
-		BilletPanier billetPanier = new BilletPanier();
+		LignePanier billetPanier = new LignePanier();
 		if(request.getParameter("nbTickets") != null){
 			billetPanier.setNbBillets(Integer.parseInt(request.getParameter("nbTickets")));
-			billetPanier.setMontantTotal(Double.parseDouble(request.getParameter("totalPrice")));
+			billetPanier.setMontantTotal(new BigDecimal(request.getParameter("totalPrice")));
 			billetPanier.setIdRepresentation(0);
 			billetPanier.setNomSpectacle(request.getParameter("nomSpectacle"));
 			billetPanier.setIdSpectacle(Integer.parseInt(request.getParameter("idSpectacle")));
@@ -65,7 +66,7 @@ public class PanierController {
 		service.setPanier(panier);
 		service.add(billetPanier);
 		
-		List<BilletPanier> billets =  service.getAllBilletPanier();					
+		List<LignePanier> billets =  service.getAllBilletPanier();					
 		model.addAttribute("billets", billets);
 		model.addAttribute("panier", service.getPanier());	
 		
@@ -85,7 +86,7 @@ public class PanierController {
 			
 		}
 		
-		List<BilletPanier> billets =  service.getAllBilletPanier();					
+		List<LignePanier> billets =  service.getAllBilletPanier();					
 		model.addAttribute("billets", billets);
 		model.addAttribute("panier",panier);
 		
