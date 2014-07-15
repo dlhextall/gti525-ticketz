@@ -26,10 +26,10 @@ public class Panier{
 	}
 
 	public BigDecimal getSousTotal() {
-		BigDecimal sousTotal = new BigDecimal(0);
-		for (LignePanier lignePanier : lstLignePanier) {
-			sousTotal.add(lignePanier.getMontantTotal());
-		}
+		BigDecimal sousTotal = new BigDecimal(0);		
+		for (LignePanier lignePanier : lstLignePanier) {			
+			sousTotal = sousTotal.add(lignePanier.getMontantTotal());			
+		}		
 		return sousTotal;
 	}
 	public BigDecimal getTps() {
@@ -39,7 +39,7 @@ public class Panier{
 		return getSousTotal().add(getTps()).multiply(BigDecimal.valueOf(TAUX_TVQ));
 	}
 	public BigDecimal getPrixTotal() {
-		return getSousTotal().add(getTps()).add(getTvq());
+		return getSousTotal().add(getTps()).add(getTvq()).setScale(2, BigDecimal.ROUND_DOWN);
 	}
 
 }

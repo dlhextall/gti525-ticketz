@@ -8,10 +8,17 @@ public class LignePanier {
 	private int idSpectacle;
 	private int nbBillets;
 	private BigDecimal montantTotal;
+	private BigDecimal montantUnitaire;	
 	private String nomSpectacle;
 	
 	public LignePanier() { }
 	
+	public BigDecimal getMontantUnitaire() {
+		return montantUnitaire;
+	}
+	public void setMontantUnitaire(BigDecimal montantUnitaire) {
+		this.montantUnitaire = montantUnitaire;
+	}	
 	public int getIdSpectacle() {
 		return idSpectacle;
 	}
@@ -37,10 +44,8 @@ public class LignePanier {
 		this.nbBillets = nbBillets;
 	}
 	public BigDecimal getMontantTotal() {
-		return montantTotal;
+		return getMontantUnitaire().multiply(BigDecimal.valueOf(getNbBillets()));
 	}
-	public void setMontantTotal(BigDecimal montantTotal) {
-		this.montantTotal = montantTotal;
-	}
+	
 	
 }
