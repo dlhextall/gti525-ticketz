@@ -67,7 +67,7 @@
 	                    <div class="form-group">
 	                        <label for="totalPrice" class="col-sm-4 control-label">Total</label>
 	                        <div class="col-sm-6">
-	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="${ spectacle.getRepresentationAt(0).prix}$" readonly>
+	                            <input name="totalPrice" id="totalPrice" type="text" class="form-control" value="${ spectacle.getRepresentationAt(0).prix}" readonly>
 	                            <input type="hidden" name="idSpectacle" value="${ spectacle.id }">
 	                            <input type="hidden" name="nomSpectacle" value="${ spectacle.name }">
 	                        </div>
