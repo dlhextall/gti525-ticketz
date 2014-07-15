@@ -31,7 +31,7 @@ public class CheckoutForm {
 	private String ccNumber;
 	@Pattern(regexp = "\\d{2}")
 	private String ccMonth;
-	@Pattern(regexp = "\\d{2}")
+	@Pattern(regexp = "\\d{4}")
 	private String ccYear;
 	@Pattern(regexp = "\\d{3,4}")
 	private String ccCVC;
@@ -85,13 +85,13 @@ public class CheckoutForm {
 	public String getCcLastName() {
 		return ccLastName;
 	}
-	public void setLastCcName(String ccLastName) {
+	public void setCcLastName(String ccLastName) {
 		this.ccLastName = ccLastName;
 	}
 	public String getCcFirstName() {
 		return ccFirstName;
 	}
-	public void setFirstCcName(String ccFirstName) {
+	public void setCcFirstName(String ccFirstName) {
 		this.ccFirstName = ccFirstName;
 	}
 	public String getCcNumber() {
