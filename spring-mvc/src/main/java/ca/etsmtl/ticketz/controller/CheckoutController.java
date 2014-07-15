@@ -13,8 +13,9 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,13 +31,16 @@ import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.service.IPaiementStub;
 import ca.etsmtl.ticketz.service.PanierService;
 
+
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class CheckoutController {	
-	
+	Logger log = Logger.getLogger( CheckoutController.class.getName());
 	PanierService pService = new PanierService();
+	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -84,6 +88,8 @@ public class CheckoutController {
 			ReponseSystemePaiementTO reponseApprouver = paiement.approuverTransaction(requete);
 //			Succès
 			if (reponseApprouver.getCode() / 100 == 2) {
+				
+			    log.info(_checkoutForm.toString());
 				pService.deleteAll();
 				session.invalidate();
 			} else {
