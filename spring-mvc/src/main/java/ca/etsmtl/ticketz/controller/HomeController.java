@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 import ca.etsmtl.ticketz.dao.TicketzProvider;
+import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
 
 /**
@@ -28,8 +30,10 @@ import ca.etsmtl.ticketz.model.Show;
 public class HomeController extends AbstractController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	Timer timer;
+	HttpServletRequest request;
+	Timer timer = new Timer();
 	
+	private final int MINUTES=20;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -39,16 +43,21 @@ public class HomeController extends AbstractController {
 	protected ModelAndView handleRequestInternal(HttpServletRequest _req, HttpServletResponse _resp) throws Exception {
 		ModelAndView model = new ModelAndView("home");
 		model.addObject("spectacles", TicketzProvider.getFeaturedShows());
-		
+		request = _req;
+		//timer.scheduleAtFixedRate()
 		return model;
 	}
 	
 
-	// @Scheduled(cron="*/5 * * * * ?")
-    //public void demoServiceMethod()
-    //{
-      //  System.out.println("Method executed at every 5 seconds. Current time is :: "+ new Date());
-    //}
+	@Scheduled(fixedDelay = 5000)
+    public void demoServiceMethod()
+    {
+       //System.out.println("Method executed at every 5 seconds. Current time is :: "+ new Date());
+		Panier panier = (Panier)request.getSession().getAttribute("panier");
+		panier= new Panier();
+		request.getSession().setAttribute("panier", panier);
+		System.out.println("Global Timer Current time is :: "+ new Date());
+    }
 	
 	      
 	

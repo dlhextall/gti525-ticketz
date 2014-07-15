@@ -102,7 +102,17 @@ public class PanierService implements IService{
 			
 		}
 		
-		
+	}
+	
+	@Override
+	public void deleteFinal(int idSpectacle,int idRepresentation, int indexPanier){
+		List<Billet>lstBillet = spectacle.get(idSpectacle).representations.get(idRepresentation).getBillets();
+		for(int i=0;i<lstBillet.size();i++){
+			if(lstBillet.get(i).getEtat().equals(Etat.Reserve)){
+				lstBillet.remove(i);
+				
+			}
+		}
 	}
 	
 }

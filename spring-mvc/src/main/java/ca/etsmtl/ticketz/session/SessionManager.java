@@ -1,5 +1,6 @@
 package ca.etsmtl.ticketz.session;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -58,7 +59,7 @@ public class SessionManager implements HttpSessionListener {
 			}
 			
 		}
-		
+		System.out.println("Session Timer Current time is :: "+ new Date());
 		
 	}
 
