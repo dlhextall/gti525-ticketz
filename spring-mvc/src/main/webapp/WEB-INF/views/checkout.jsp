@@ -38,19 +38,19 @@
                             <h1 class="text-center"> ÉTAPE 1</h1>
                             <div class="form-group">
                                 <label for="nom">Nom</label>
-                                <form:input path="lastName" type="text" class="form-control" id="lastName" placeholder="Votre nom" />
+                                <form:input path="lastName" type="text" class="form-control" id="lastName" placeholder="Votre nom" required="true" />
                             </div>
                             <div class="form-group">
                                 <label for="nom">Prénom</label>
-                                <form:input path="firstName" type="text" class="form-control" id="firstName" placeholder="Votre prénom" />
+                                <form:input path="firstName" type="text" class="form-control" id="firstName" placeholder="Votre prénom" required="true" />
                             </div>
                             <div class="form-group">
                                 <label for="adresse">Adresse</label>
-                                <form:input path="address" type="text" class="form-control" id="address" placeholder="# adresse" />
+                                <form:input path="address" type="text" class="form-control" id="address" placeholder="# adresse" required="true" />
                             </div>
                             <div class="form-group">
                                 <label for="ville">Ville</label>
-                                <form:input path="city" type="text" class="form-control" id="city" placeholder="Nom de la ville" />
+                                <form:input path="city" type="text" class="form-control" id="city" placeholder="Nom de la ville" required="true" />
                             </div>
 
                             <div class="form-group">
@@ -74,11 +74,11 @@
 
                             <div class="form-group">
                                 <label for="codePostal">Code-Postal</label>
-                                <form:input path="postalCode" type="text" class="form-control" id="postalCode" placeholder="ex: a1a-1a1" />
+                                <form:input path="postalCode" type="text" class="form-control" id="postalCode" placeholder="A1A1A1" required="true" />
                             </div>
                             <div class="form-group">
                                 <label for="noTel">No. Téléphone</label>
-                                <form:input path="telephone" type="text" class="form-control" id="telephone" placeholder="514-xxx-xxx" />
+                                <form:input path="telephone" type="text" class="form-control" id="telephone" placeholder="5141234567" required="true" />
                             </div>
                             <button id="activate-step-2" class="btn btn-primary btn-lg">Étape Suivante</button>
                         </div>
@@ -91,27 +91,27 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label>Nom indiqué sur la carte</label>
-                                    <form:input path="ccLastName" type="text" class="form-control" placeholder="Nom" id="cc-lastName" />
+                                    <form:input path="ccLastName" type="text" class="form-control" placeholder="Nom" id="cc-lastName" required="true" />
                                 </div>
                                 <div class="form-group">
                                     <label>Prénom indiqué sur la carte</label>
-                                    <form:input path="ccFirstName" type="text" class="form-control" placeholder="Prénom" id="cc-firstName" />
+                                    <form:input path="ccFirstName" type="text" class="form-control" placeholder="Prénom" id="cc-firstName" required="true" />
                                 </div>
                                 <div class="form-group">
                                     <label>Numéro de carte</label>
-                                    <form:input path="ccNumber" type="text" class="form-control" placeholder="123456789101121" id="cc-number" />
+                                    <form:input path="ccNumber" type="text" class="form-control" placeholder="123456789101121" id="cc-number" required="true" />
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Exp Month</label>
-                                            <form:input path="ccMonth" type="text" class="form-control" placeholder="MM" id="cc-month" />
+                                            <form:input path="ccMonth" type="text" class="form-control" placeholder="MM" id="cc-month" required="true" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Exp Year</label>
-                                            <form:input path="ccYear" type="text" class="form-control" placeholder="YYYY" id="cc-year" />
+                                            <form:input path="ccYear" type="text" class="form-control" placeholder="YYYY" id="cc-year" required="true" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
