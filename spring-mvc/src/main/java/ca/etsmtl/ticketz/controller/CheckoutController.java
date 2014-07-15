@@ -51,7 +51,7 @@ public class CheckoutController {
 		ModelAndView model;
 		
 //		Errors in checkout form
-		if (_res.hasErrors()) {
+		if (_res.hasErrors()) {			 
 			model = new ModelAndView("redirect:/checkout");
 			model.addObject("error", 1);
 			return model;

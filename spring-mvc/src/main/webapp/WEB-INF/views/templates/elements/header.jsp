@@ -28,12 +28,12 @@
                         <input type="text" name="criteria" class="form-control" placeholder="Search">
                     </div>
                     <button class="btn btn-default">Rechercher</button>
-                   <c:if test="${billets.size() >=1}" >
+                  <!--   <c:if test="${billets.size() >=1}" >
                     Montant :${panier.prixTotal} $
                   	</c:if>
                   	 <c:if test="${billets.size() <1}" >
                   	Montant :${panier.prixTotal} $
-                  	</c:if>
+                  	</c:if>-->
                   	
                 </form>
             </div>
