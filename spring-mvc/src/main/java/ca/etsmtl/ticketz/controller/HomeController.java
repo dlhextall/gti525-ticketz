@@ -9,6 +9,7 @@ import java.util.TimerTask;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +31,15 @@ import ca.etsmtl.ticketz.model.Show;
 public class HomeController extends AbstractController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	HttpServletRequest request;
+	HttpSession session;
+	public HttpSession getSession() {
+		return session;
+	}
+	public void setSession(HttpSession session) {
+		this.session = session;
+	}
 	Timer timer = new Timer();
+	
 	
 	private final int MINUTES=20;
 	/**
@@ -42,9 +50,22 @@ public class HomeController extends AbstractController {
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest _req, HttpServletResponse _resp) throws Exception {
 		ModelAndView model = new ModelAndView("home");
+		setSession(_req.getSession());
+		//Panier panier = (Panier)session.getAttribute("panier");
+		 //panier= new Panier();
+		//session.setAttribute("panier", panier); 
 		model.addObject("spectacles", TicketzProvider.getFeaturedShows());
-		request = _req;
-		//timer.scheduleAtFixedRate()
+		
+		/*TimerTask task = new TimerTask() {
+			
+			  public void run() {
+				  session.invalidate();
+				 System.out.println("Global Timer Current time is :: "+ new Date());
+			  }};
+			  
+			  
+			  timer.scheduleAtFixedRate(task, 0, 1200000);*/
+			  
 		return model;
 	}
 	

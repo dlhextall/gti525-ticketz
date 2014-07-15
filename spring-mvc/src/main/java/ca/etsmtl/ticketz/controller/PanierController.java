@@ -43,7 +43,7 @@ public class PanierController {
 		List<LignePanier> billets =  service.getAllBilletPanier();					
 		model.addAttribute("billets", billets);
 		model.addAttribute("panier",panier);
-		
+	
 		return "Panier";
 		
 	}

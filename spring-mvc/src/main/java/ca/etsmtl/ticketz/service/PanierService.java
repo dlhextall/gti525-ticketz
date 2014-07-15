@@ -14,7 +14,7 @@ import ca.etsmtl.ticketz.model.Representation;
 import ca.etsmtl.ticketz.model.Show;
 @Service("service")
 public class PanierService implements IService{
-	private Panier panier;
+	private Panier panier =new Panier();
 	private List<Show> lstShows;
 	private int cptAdded = 0;
 	private int cptRemoved = 0;
@@ -24,7 +24,7 @@ public class PanierService implements IService{
 	private final int LIMITE_TICKET = 6;
 	
 	public PanierService(){
-		panier = new Panier();
+		//panier = new Panier();
 		lstShows = ShowBank.getInstance().getShows();
 	}
 	
