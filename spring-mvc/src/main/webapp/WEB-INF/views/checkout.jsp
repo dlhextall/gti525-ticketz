@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +13,7 @@
         <div class="container">
             <h2>Veuillez remplir les informations ci-dessous</h2>
             <hr/> 
-            <form role="form">
+            <form:form role="form" modelAttribute="checkoutForm" method="POST">
                 <div class="row form-group">
                     <div class="col-xs-12">
                         <ul class="nav nav-pills nav-justified thumbnail setup-panel">
@@ -36,45 +37,49 @@
                         <div class="col-md-12 well">
                             <h1 class="text-center"> ÉTAPE 1</h1>
                             <div class="form-group">
-                                <label for="nom">Nom Complet</label>
-                                <input type="text" class="form-control" id="nom" placeholder="Votre nom">
-                                </div>
-                                <div class="form-group">
-                                    <label for="adresse">Adresse</label>
-                                    <input type="text" class="form-control" id="adresse" placeholder="# adresse">
-                                </div>
-                                <div class="form-group">
-                                    <label for="ville">Ville</label>
-                                    <input type="text" class="form-control" id="ville" placeholder="Nom de la ville">
-                                </div>
+                                <label for="nom">Nom</label>
+                                <form:input path="lastName" type="text" class="form-control" id="lastName" placeholder="Votre nom" />
+                            </div>
+                            <div class="form-group">
+                                <label for="nom">Prénom</label>
+                                <form:input path="firstName" type="text" class="form-control" id="firstName" placeholder="Votre prénom" />
+                            </div>
+                            <div class="form-group">
+                                <label for="adresse">Adresse</label>
+                                <form:input path="address" type="text" class="form-control" id="address" placeholder="# adresse" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ville">Ville</label>
+                                <form:input path="city" type="text" class="form-control" id="city" placeholder="Nom de la ville" />
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="Province">Province</label>
-                                    <select class="form-control">
-                                        <option>Alberta</option>
-                                        <option>British Columbia</option>
-                                        <option>Manitoba</option>
-                                        <option>New Brunswick</option>
-                                        <option>Newfoundland and Labrador</option>
-                                        <option>Nova Scotia</option>
-                                        <option>Ontario</option>
-                                        <option>Prince Edward Island</option>
-                                        <option>Quebec</option>
-                                        <option>Saskatchewan</option>
-                                        <option>Northwest Territories</option>
-                                        <option>Nunavut</option>
-                                        <option>Yukon</option>
-                                    </select> 
-                                </div>
+                            <div class="form-group">
+                                <label for="Province">Province</label>
+                                <form:select path="province" class="form-control">
+                                    <form:option value="AB" label="Alberta" />
+                                    <form:option value="BC" label="British Columbia" />
+									<form:option value="MB" label="Manitoba" />
+									<form:option value="NB" label="New Brunswick" />
+									<form:option value="NL" label="Newfoundland and Labrador" />
+									<form:option value="NS" label="Nova Scotia" />
+									<form:option value="ON" label="Ontario" />
+									<form:option value="PE" label="Prince Edward Island" />
+									<form:option value="QC" label="Quebec" />
+									<form:option value="SK" label="Saskatchewan" />
+									<form:option value="NT" label="Northwest Territories" />
+									<form:option value="NU" label="Nunavut" />
+									<form:option value="YT" label="Yukon" />
+                                </form:select> 
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="codePostale">Code-Postal</label>
-                                    <input type="text" class="form-control" id="codePostale" placeholder="ex: a1a-1a1">
-                                </div>
-                                <div class="form-group">
-                                    <label for="noTel">No. Téléphone</label>
-                                    <input type="text" class="form-control" id="noTel" placeholder="514-xxx-xxx">
-                                </div>
+                            <div class="form-group">
+                                <label for="codePostal">Code-Postal</label>
+                                <form:input path="postalCode" type="text" class="form-control" id="postalCode" placeholder="ex: a1a-1a1" />
+                            </div>
+                            <div class="form-group">
+                                <label for="noTel">No. Téléphone</label>
+                                <form:input path="telephone" type="text" class="form-control" id="telephone" placeholder="514-xxx-xxx" />
+                            </div>
                             <button id="activate-step-2" class="btn btn-primary btn-lg">Étape Suivante</button>
                         </div>
                     </div>
@@ -85,30 +90,34 @@
                             <h1 class="text-center"> ÉTAPE 2</h1>
                             <div class="row">
                                 <div class="form-group">
-                                    <label>Nom indiquer sur la carte</label>
-                                    <input type="text" class="form-control">
+                                    <label>Nom indiqué sur la carte</label>
+                                    <form:input path="ccLastName" type="text" class="form-control" placeholder="Nom" id="cc-lastName" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Prénom indiqué sur la carte</label>
+                                    <form:input path="ccFirstName" type="text" class="form-control" placeholder="Prénom" id="cc-firstName" />
                                 </div>
                                 <div class="form-group">
                                     <label>Numéro de carte</label>
-                                    <input type="text" class="form-control">
+                                    <form:input path="ccNumber" type="text" class="form-control" placeholder="123456789101121" id="cc-number" />
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Exp Month</label>
-                                            <input type="text" class="form-control" placeholder="MM">
+                                            <form:input path="ccMonth" type="text" class="form-control" placeholder="MM" id="cc-month" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Exp Year</label>
-                                            <input type="text" class="form-control" placeholder="YYYY">
+                                            <form:input path="ccYear" type="text" class="form-control" placeholder="YYYY" id="cc-year" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>CVC</label>
-                                            <input type="text" class="form-control" placeholder="Ex. 331">
+                                            <form:input path="ccCVC" type="text" class="form-control" placeholder="123" id="cc-cvc" />
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +133,7 @@
                         </div>
                     </div>
                 </div>-->                                                     
-            </form>
+            </form:form>
         </div>
 
         <%@ include file="templates/elements/footer.jsp" %>
