@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Billet;
 import ca.etsmtl.ticketz.model.Billet.Etat;
 import ca.etsmtl.ticketz.model.BilletPanier;
@@ -16,7 +17,7 @@ import ca.etsmtl.ticketz.service.PanierService;
 public class SessionManager implements HttpSessionListener {
 
 	private PanierService service;
-	private List<Show> spectacle;
+	private List<Show> spectacle = ShowBank.getInstance().getShows();
 
 	@Override
 	public void sessionCreated(HttpSessionEvent sessionEvent) {
@@ -25,7 +26,7 @@ public class SessionManager implements HttpSessionListener {
 		//session.setMaxInactiveInterval(1200);
 		service = new PanierService();
 		sessionEvent.getSession().setAttribute("panier",service.getPanier());
-		sessionEvent.getSession().setMaxInactiveInterval(120);
+		sessionEvent.getSession().setMaxInactiveInterval(60);
 		System.out.println("session created");
 		
 	}
@@ -45,7 +46,7 @@ public class SessionManager implements HttpSessionListener {
 			for(int i=0;i<billetPanier.size();i++){
 				List<Billet>lstBillet = spectacle.get(billetPanier.get(i).getIdSpectacle()).representations.get(billetPanier.get(i).getIdRepresentation()).getBillets();
 				
-				for(int j=0;i<lstBillet.size();j++){
+				for(int j=0;j<lstBillet.size();j++){
 					if(lstBillet.get(j).getEtat().equals(Etat.Reserve)){
 						lstBillet.get(j).setEtat(Etat.EnVente);
 						//cptRestored++;

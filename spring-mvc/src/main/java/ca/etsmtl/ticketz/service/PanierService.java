@@ -17,9 +17,11 @@ public class PanierService implements IService{
 	private List<Show> spectacle;
 	private List <Panier>lstPanier;
 	private int cptAdded=0;
+	private int cptRemoved=0;
 	private int cptReserve=0;
 	private int represBilletReserve =0;
 	private int nbItemsPanier;
+	final int LIMITE_TICKET = 6;
 	public PanierService(){
 		panier = new Panier();
 		spectacle = ShowBank.getInstance().getShows();
@@ -38,33 +40,9 @@ public class PanierService implements IService{
 	
 	@Override
 	public void add(BilletPanier billetPanier) {
-					
-		
 		List<Billet>lstBillet = spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).getBillets();
 		spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);
 		represBilletReserve = spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).getBilletReserve();
-		
-		/*while(cpt<lstBillet.size()&&cptAdded<billetPanier.getNbBillets()){
-			
-			if(lstBillet.get(cpt).getEtat().equals(Etat.EnVente)){
-				
-				lstBillet.get(cpt).setEtat(Etat.Reserve);
-				cptAdded++;
-			}
-			
-			if(lstBillet.get(cpt).getEtat().equals(Etat.Reserve)){
-				cptReserve++;
-			}
-			cpt++;
-			
-			if(cptAdded==billetPanier.getNbBillets()){
-				panier.getLstBilletPanier().add(billetPanier); 
-			}
-			/*else if(cptReserve>=lstBillet.size()){
-				System.out.println("full");
-				break;
-			}
-		}*/
 		cptAdded=0;
 		
 			for(int i=0;i<lstBillet.size();i++){
@@ -72,7 +50,7 @@ public class PanierService implements IService{
 				if(lstBillet.get(i).getEtat().equals(Etat.EnVente)){
 					
 					if(represBilletReserve>billetPanier.getNbBillets()){
-						if(nbItemsPanier<=represBilletReserve&&panierCheck<=lstBillet.size()){
+						if(nbItemsPanier<=represBilletReserve&&panierCheck<=LIMITE_TICKET){
 							lstBillet.get(i).setEtat(Etat.Reserve);
 							cptAdded++;
 							spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
@@ -88,18 +66,9 @@ public class PanierService implements IService{
 							spectacle.get(billetPanier.getIdSpectacle()).representations.get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
 						}
 					}
-					
-					
+	
 				}
-				
-				/*if(nbItemsPanier==0){
-					if(cptAdded==billetPanier.getNbBillets()){
-						//cptReserve+=cptAdded;
-						panier.getLstBilletPanier().add(billetPanier); 
-						nbItemsPanier+=billetPanier.getNbBillets();
-					}
-				}*/
-				
+
 				if(cptAdded==billetPanier.getNbBillets()&&nbItemsPanier<=represBilletReserve){
 					panier.getLstBilletPanier().add(billetPanier); 
 					nbItemsPanier+=billetPanier.getNbBillets();
@@ -114,15 +83,23 @@ public class PanierService implements IService{
 	@Override
 	public void delete(int idSpectacle,int idRepresentation, int indexPanier){
 		int cpt =0;
-		panier.getLstBilletPanier().remove(indexPanier);
-		
+		//cptReserve= cptReserve-panier.getLstBilletPanier().get(indexPanier).getNbBillets();
+		cptRemoved=0;
 		List<Billet>lstBillet = spectacle.get(idSpectacle).representations.get(idRepresentation).getBillets();
-		while(lstBillet.size()!=0 ){
-			if(lstBillet.get(cpt).getEtat().equals(Etat.Reserve)){
-				lstBillet.get(cpt).setEtat(Etat.EnVente);
-				break;
+		for(int i=0;i<lstBillet.size();i++){
+			if(lstBillet.get(i).getEtat().equals(Etat.Reserve)){
+				lstBillet.get(i).setEtat(Etat.EnVente);
+				spectacle.get(idSpectacle).representations.get(idRepresentation).setBilletReserve(cptReserve--);
+				cptRemoved++;
+				
+				if(cptRemoved==panier.getLstBilletPanier().get(indexPanier).getNbBillets()){
+					nbItemsPanier-=panier.getLstBilletPanier().get(indexPanier).getNbBillets();
+					panier.getLstBilletPanier().remove(indexPanier);
+					break;
+				}
+			
 			}
-			cpt++;
+			
 		}
 		
 		
