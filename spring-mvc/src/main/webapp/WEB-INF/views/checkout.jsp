@@ -13,7 +13,7 @@
         <div class="container">
             <h2>Veuillez remplir les informations ci-dessous</h2>
             <hr/> 
-            <form:form role="form" modelAttribute="checkoutForm" method="POST">
+            <form:form role="form" id="frmCheckout" modelAttribute="checkoutForm" method="POST">
                 <div class="row form-group">
                     <div class="col-xs-12">
                         <ul class="nav nav-pills nav-justified thumbnail setup-panel">
@@ -126,13 +126,6 @@
                         </div>
                     </div>
                 </div>
-                <!--<div class="row setup-content" id="step-3">
-                    <div class="col-xs-12">
-                        <div class="col-md-12 well">
-                            <h1 class="text-center"> STEP 3</h1>
-                        </div>
-                    </div>
-                </div>-->                                                     
             </form:form>
         </div>
 
