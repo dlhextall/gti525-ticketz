@@ -6,11 +6,11 @@
 		<title>Panier</title>
 	</head>
 	<body>
-	  <%@ include file="templates/elements/header.jsp" %>
-	
+	  <%@ include file="templates/elements/header.jsp" %>	
+	  
 	  <div class="container">
-      <div class="row">
-      	 <form action="/ticketz/checkout/" class="form-horizontal" role="form">      	 	
+      <div class="row"><form action="/ticketz/checkout/" class="form-horizontal" role="form">   
+      
 	          	<c:if test="${billets.size() >=1}" >
 	          		<table class="table table-hover">
 			          <thead>
@@ -29,7 +29,7 @@
 			                <div class="media">
 			                  <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
 			                  <div class="media-body">
-			                   <h4 class="media-heading"><a href="/ticketz/detail?id=<c:out value="${ spectacle.id }" />">${billets.getNomSpectacle()}</a></h4>
+			                   <h4 class="media-heading"><a href="/ticketz/detail?id=<c:out value="${ billets.getIdSpectacle() }" />">${billets.getNomSpectacle()}</a></h4>
 			                   <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
 			                  </div>
 			                </div>
