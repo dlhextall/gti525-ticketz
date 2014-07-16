@@ -42,6 +42,9 @@ public class PanierController {
 	public String panier(HttpServletRequest request,Locale locale, Model model) {
 		HttpSession session = request.getSession();
 		Panier panier = (Panier) session.getAttribute("panier");
+		if (panier == null) {
+			panier = new Panier();
+		}
 		service.setPanier(panier);				
 		session.setAttribute("billets", service.getAllBilletPanier());
 		session.setAttribute("panier", panier);
@@ -55,6 +58,9 @@ public class PanierController {
 	public String add(HttpServletRequest request,Locale locale, Model model) {
 		HttpSession session = request.getSession();
 		Panier panier = (Panier) session.getAttribute("panier");
+		if (panier == null) {
+			panier = new Panier();
+		}
 		service.setPanier(panier);
 		
 		if(request.getParameter("nbTickets") != null){
@@ -78,7 +84,10 @@ public class PanierController {
 	public String delete(HttpServletRequest request, Model model) {
 		if (request.getParameter("id") != null) {
 			HttpSession session = request.getSession();
-			Panier panier = (Panier) session.getAttribute("panier");		
+			Panier panier = (Panier) session.getAttribute("panier");	
+			if (panier == null) {
+				panier = new Panier();
+			}
 			service.setPanier(panier);
 			service.delete(Integer.parseInt(request.getParameter("idS")),Integer.parseInt(request.getParameter("idR")),Integer.parseInt(request.getParameter("id")));
 
