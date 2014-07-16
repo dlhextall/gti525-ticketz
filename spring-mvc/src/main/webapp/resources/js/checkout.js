@@ -22,12 +22,10 @@ $(document).ready(function() {
     $('ul.setup-panel li.active a').trigger('click');
     
     $('#activate-step-2').click(function(e) {
-    	if ($("#step-1 #lastName").checkValidity() && $("#step-1 #firstName").checkValidity() && $("#step-1 #address").checkValidity()
-    			&& $("#step-1 #city").checkValidity() && $("#step-1 #postalCode").checkValidity() && $("#step-1 #telephone").checkValidity()) {
-    		$('ul.setup-panel li:eq(1)').removeClass('disabled');
-            $('ul.setup-panel li a[href="#step-2"]').trigger('click');
-            $(this).remove();
-    	}
+//    	Check step-1 validity
+		$('ul.setup-panel li:eq(1)').removeClass('disabled');
+        $('ul.setup-panel li a[href="#step-2"]').trigger('click');
+        $(this).remove();
     })
     
     
