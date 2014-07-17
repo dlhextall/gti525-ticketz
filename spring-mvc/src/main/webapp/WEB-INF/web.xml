@@ -8,7 +8,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
-  <listener-class>ca.etsmtl.ticketz.session.SessionManager</listener-class>
+  	<listener-class>ca.etsmtl.ticketz.session.SessionManager</listener-class>
   </listener>
   <servlet>
     <servlet-name>appServlet</servlet-name>
@@ -33,4 +33,8 @@
     <servlet-name>CheckoutServlet</servlet-name>
     <url-pattern>/CheckoutServlet</url-pattern>
   </servlet-mapping>
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/views/404.jsp</location>
+  </error-page>
 </web-app>
