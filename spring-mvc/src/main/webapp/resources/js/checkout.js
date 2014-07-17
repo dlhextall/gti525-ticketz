@@ -22,11 +22,19 @@ $(document).ready(function() {
     $('ul.setup-panel li.active a').trigger('click');
     
     $('#activate-step-2').click(function(e) {
-//    	Check step-1 validity
 		$('ul.setup-panel li:eq(1)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-2"]').trigger('click');
-        $(this).remove();
     })
+    
+    $("#frmCheckout input, #frmCheckout select").focusout(function(input) {
+    	if ($(this)[0].checkValidity()) {
+    		$(this).parent().removeClass("has-error");
+    		$(this).parent().addClass("has-success");
+    	} else {
+    		$(this).parent().removeClass("has-success");
+    		$(this).parent().addClass("has-error");
+    	}
+    });
     
     
     $("#frmCheckout").submit(function() {
