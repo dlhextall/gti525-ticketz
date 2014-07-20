@@ -37,8 +37,9 @@ import ca.etsmtl.ticketz.service.PanierService;
  * Handles requests for the application home page.
  */
 @Controller
-public class CheckoutController {	
-	Logger log = Logger.getLogger( CheckoutController.class.getName());
+public class CheckoutController {
+	Logger log = Logger.getLogger( CheckoutController.class.getName());	
+	
 	PanierService pService = new PanierService();
 	
 	
