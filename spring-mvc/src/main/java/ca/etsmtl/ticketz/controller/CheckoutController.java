@@ -8,6 +8,7 @@ import gti525.paiement.RequeteAuthorisationTO;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,11 @@ import javax.servlet.http.HttpSession;
 
 
 
+
+
+
 import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,13 +47,18 @@ public class CheckoutController {
 	
 	PanierService pService = new PanierService();
 	
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
-	public void checkout(Model _model) {
-		_model.addAttribute("checkoutForm", new CheckoutForm());
+	public ModelAndView checkout(HttpServletRequest _req) {
+		ModelAndView model = new ModelAndView("checkout");
+		model.addObject("checkoutForm", new CheckoutForm());
+//		List<ObjectError> errors = (List<ObjectError>) _req.getAttribute("errors");
+//		if (errors != null && errors.size() > 0) {
+//			log.log(Priority.ERROR, "Errors in checkout form");
+//		}
+		return model;
 	}
 	
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
@@ -58,7 +68,8 @@ public class CheckoutController {
 //		Errors in checkout form
 		if (_res.hasErrors()) {			 
 			model = new ModelAndView("redirect:/checkout");
-			model.addObject("error", 1);
+			model.addObject("errors", _res.getAllErrors());
+//			_req.setAttribute("errors", _res.getAllErrors());
 			return model;
 		}
 		

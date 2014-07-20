@@ -24,7 +24,7 @@ public class PanierService implements IService{
 	private int nbItemsPanier;
 	private final int LIMITE_TICKET = 6;
 	
-	public PanierService(){
+	protected PanierService(){
 		//panier = new Panier();
 		lstShows = ShowBank.getInstance().getShows();
 	}

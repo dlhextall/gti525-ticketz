@@ -17,7 +17,7 @@ import ca.etsmtl.ticketz.service.PanierService;
 
 public class SessionManager implements HttpSessionListener {
 
-	private PanierService service;
+	private PanierService service = PanierService.getInstance();
 	private List<Show> spectacle = ShowBank.getInstance().getShows();
 
 	@Override
@@ -25,9 +25,9 @@ public class SessionManager implements HttpSessionListener {
 		//HttpSession session = sessionEvent.getSession();
 		//session.setAttribute("panier", "allo");
 		//session.setMaxInactiveInterval(1200);
-		service = service.getInstance();
 		service.setPanier(new Panier());
 		sessionEvent.getSession().setAttribute("panier",service.getPanier());
+		sessionEvent.getSession().setAttribute("billets", service.getAllBilletPanier());
 		sessionEvent.getSession().setMaxInactiveInterval(60);
 		System.out.println("session created");
 		

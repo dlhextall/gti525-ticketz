@@ -9,9 +9,10 @@
 	  <%@ include file="templates/elements/header.jsp" %>	
 	  
 	  <div class="container">
-      <div class="row"><form action="/ticketz/checkout/" class="form-horizontal" role="form">   
-      
-	          	<c:if test="${billets.size() >=1}" >
+      <div class="row">
+      	<form action="/ticketz/checkout/" class="form-horizontal" role="form">
+      		<c:choose>
+	          	<c:when test="${ sessionScope.billets.size() >=1 }" >
 	          		<table class="table table-hover">
 			          <thead>
 			            <tr>
@@ -23,7 +24,7 @@
 			            </tr>
 			          </thead>
 			          <tbody>
-		          		<c:forEach items="${ billets }" var="billets" varStatus="loop">
+		          		<c:forEach items="${ sessionScope.billets }" var="billets" varStatus="loop">
 			            <tr>
 			              <td class="col-sm-8 col-md-6">
 			                <div class="media">
@@ -50,7 +51,7 @@
 				             <td>   </td>
 				             <td>   </td>
 				             <td><h5>Subtotal</h5></td>
-				             <td class="text-right"><h5><strong>${panier.sousTotal}</strong></h5></td>
+				             <td class="text-right"><h5><strong>${ sessionScope.panier.sousTotal }</strong></h5></td>
 				            </tr>
 				            
 				            <tr>
@@ -58,7 +59,7 @@
 				             <td>   </td>
 				             <td>   </td>
 				             <td><h3>Total</h3></td>
-				             <td class="text-right"><h3><strong>${panier.prixTotal}</strong></h3></td>
+				             <td class="text-right"><h3><strong>${ sessionScope.panier.prixTotal }</strong></h3></td>
 				            </tr>
 				            <tr>
 				             <td>   </td>
@@ -75,12 +76,12 @@
 			          </tbody>
 			       	 </table>
 			       	 <p align=center> Nombre limite de billets : 6</p>
-	          		</c:if>
+	          	</c:when>
 	          	
-		          	<c:if test="${billets.size() <1}" >
-		          		<h2>Votre Panier est vide</h2>
-		          	</c:if>
-	        
+	          	<c:otherwise >
+	          		<h2>Votre Panier est vide</h2>
+	          	</c:otherwise>
+	        </c:choose>
       	 </form>
 	        
       </div>

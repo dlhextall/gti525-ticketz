@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<jsp:useBean id="date" class="java.util.Date" />
+<fmt:formatDate value="${date}" pattern="yyyy" var="currentYear" />
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,6 +19,7 @@
             <h2>Veuillez remplir les informations ci-dessous</h2>
             <hr/> 
             <form:form role="form" id="frmCheckout" modelAttribute="checkoutForm" method="POST">
+            	<form:errors path="*" />
                 <div class="row form-group">
                     <div class="col-xs-12">
                         <ul class="nav nav-pills nav-justified thumbnail setup-panel">
@@ -25,10 +31,6 @@
                                 <h4 class="list-group-item-heading">ÉTAPE 2</h4>
                                 <p class="list-group-item-text">Carte de crédit</p>
                             </a></li>
-                            <!--<li class="disabled"><a href="#step-3">
-                                <h4 class="list-group-item-heading">Step 3</h4>
-                                <p class="list-group-item-text">Third step description</p>
-                            </a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -37,24 +39,28 @@
                         <div class="col-md-12 well">
                             <h1 class="text-center"> ÉTAPE 1</h1>
                             <div class="form-group">
-                                <label for="nom">Nom</label>
-                                <form:input path="lastName" type="text" class="form-control" id="lastName" placeholder="Votre nom" />
+                                <label class="control-label" for="nom">Nom</label>
+                                <form:input path="lastName" type="text" class="form-control" id="lastName" placeholder="Votre nom" required="true" />
+                                <form:errors path="lastName" />
                             </div>
                             <div class="form-group">
-                                <label for="nom">Prénom</label>
-                                <form:input path="firstName" type="text" class="form-control" id="firstName" placeholder="Votre prénom" />
+                                <label class="control-label" for="nom">Prénom</label>
+                                <form:input path="firstName" type="text" class="form-control" id="firstName" placeholder="Votre prénom" required="true" />
+                                <form:errors path="firstName" />
                             </div>
                             <div class="form-group">
-                                <label for="adresse">Adresse</label>
-                                <form:input path="address" type="text" class="form-control" id="address" placeholder="# adresse" />
+                                <label class="control-label" for="adresse">Adresse</label>
+                                <form:input path="address" type="text" class="form-control" id="address" placeholder="# adresse" required="true" />
+                                <form:errors path="address" />
                             </div>
                             <div class="form-group">
-                                <label for="ville">Ville</label>
-                                <form:input path="city" type="text" class="form-control" id="city" placeholder="Nom de la ville" />
+                                <label class="control-label" for="ville">Ville</label>
+                                <form:input path="city" type="text" class="form-control" id="city" placeholder="Nom de la ville" required="true" />
+                                <form:errors path="city" />
                             </div>
 
                             <div class="form-group">
-                                <label for="Province">Province</label>
+                                <label class="control-label" for="Province">Province</label>
                                 <form:select path="province" class="form-control">
                                     <form:option value="AB" label="Alberta" />
                                     <form:option value="BC" label="British Columbia" />
@@ -70,15 +76,18 @@
 									<form:option value="NU" label="Nunavut" />
 									<form:option value="YT" label="Yukon" />
                                 </form:select> 
+                                <form:errors path="province" />
                             </div>
 
                             <div class="form-group">
-                                <label for="codePostal">Code-Postal</label>
-                                <form:input path="postalCode" type="text" class="form-control" id="postalCode" placeholder="ex: a1a-1a1" />
+                                <label class="control-label" for="codePostal">Code-Postal</label>
+                                <form:input path="postalCode" type="text" class="form-control" id="postalCode" placeholder="A1A1A1" required="true" />
+                                <form:errors path="postalCode" />
                             </div>
                             <div class="form-group">
-                                <label for="noTel">No. Téléphone</label>
-                                <form:input path="telephone" type="text" class="form-control" id="telephone" placeholder="514-xxx-xxx" />
+                                <label class="control-label" for="noTel">No. Téléphone</label>
+                                <form:input path="telephone" type="tel" class="form-control" id="telephone" placeholder="5141234567" required="true" />
+                                <form:errors path="telephone" />
                             </div>
                             <button id="activate-step-2" class="btn btn-primary btn-lg">Étape Suivante</button>
                         </div>
@@ -90,34 +99,40 @@
                             <h1 class="text-center"> ÉTAPE 2</h1>
                             <div class="row">
                                 <div class="form-group">
-                                    <label>Nom indiqué sur la carte</label>
-                                    <form:input path="ccLastName" type="text" class="form-control" placeholder="Nom" id="cc-lastName" />
+                                    <label class="control-label" for="cc-lastName">Nom indiqué sur la carte</label>
+                                    <form:input path="ccLastName" type="text" class="form-control" placeholder="Nom" id="cc-lastName" required="true" />
+                                    <form:errors path="ccLastName" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Prénom indiqué sur la carte</label>
-                                    <form:input path="ccFirstName" type="text" class="form-control" placeholder="Prénom" id="cc-firstName" />
+                                    <label class="control-label" for="cc-firstName">Prénom indiqué sur la carte</label>
+                                    <form:input path="ccFirstName" type="text" class="form-control" placeholder="Prénom" id="cc-firstName" required="true" />
+                                    <form:errors path="ccFirstName" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Numéro de carte</label>
-                                    <form:input path="ccNumber" type="text" class="form-control" placeholder="123456789101121" id="cc-number" />
+                                    <label class="control-label" for="cc-number">Numéro de carte</label>
+                                    <form:input path="ccNumber" type="number" class="form-control" placeholder="123456789101121" id="cc-number" required="true" />
+                                    <form:errors path="ccNumber" />
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Exp Month</label>
-                                            <form:input path="ccMonth" type="text" class="form-control" placeholder="MM" id="cc-month" />
+                                            <label class="control-label" for="cc-month">Exp Month</label>
+                                            <form:input path="ccMonth" type="number" min="1" max="12" class="form-control" placeholder="1" id="cc-month" required="true" />
+                                            <form:errors path="ccMonth" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Exp Year</label>
-                                            <form:input path="ccYear" type="text" class="form-control" placeholder="YYYY" id="cc-year" />
+                                            <label class="control-label" for="cc-year">Exp Year</label>
+                                            <form:input path="ccYear" type="number" min="${ currentYear }" max="${ currentYear + 10 }" class="form-control" placeholder="${ currentYear }" id="cc-year" required="true" />
+                                            <form:errors path="ccYear" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>CVC</label>
-                                            <form:input path="ccCVC" type="text" class="form-control" placeholder="123" id="cc-cvc" />
+                                            <label class="control-label" for="cc-cvc">CVC</label>
+                                            <form:input path="ccCVC" type="number" min="0" max="999" class="form-control" placeholder="123" id="cc-cvc" required="true" />
+                                            <form:errors path="ccCVC" />
                                         </div>
                                     </div>
                                 </div>
