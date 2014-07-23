@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 
 
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ca.etsmtl.ticketz.model.CheckoutForm;
+import ca.etsmtl.ticketz.form.CheckoutForm;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.service.IPaiementStub;
 import ca.etsmtl.ticketz.service.PanierService;

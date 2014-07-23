@@ -1,4 +1,4 @@
-package ca.etsmtl.ticketz.model;
+package ca.etsmtl.ticketz.form;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
