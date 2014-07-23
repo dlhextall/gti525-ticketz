@@ -2,10 +2,19 @@ package ca.etsmtl.ticketz.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class Artist implements Serializable {
 
+	@Id
+	@Column(name="id")
+	@GeneratedValue
 	private int id;
+	@Column(name="name")
 	private String name;
+	@Column(name="biography")
 	private String biography;
 	
 	
@@ -20,9 +29,6 @@ public class Artist implements Serializable {
 	
 	public int getId() {
 		return id;
-	}
-	public void setId(int _id) {
-		id = _id;
 	}
 	public String getName() {
 		return name;
