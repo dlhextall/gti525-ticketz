@@ -8,11 +8,15 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 
+@Entity
+@Table(name="Show")
 public class Show implements Serializable {
 	
 	@Id
