@@ -88,52 +88,50 @@ public class PanierService implements IService{
 		//represBilletReserve = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBilletReserve();
 		cptAdded=0;
 		
+		for(Ticket ticket:lstBillet){
+			if(ticket.getState().equals(State.Reserve)){
+				cptReserve++;
+			}
+		}
 		
 		for (int i = 0; i < lstBillet.size(); i++) {
 			int panierCheck=nbItemsPanier+billetPanier.getNbBillets();
 			
-			if(lstBillet.get(i).getState().equals(State.Reserve)){
-				cptReserve++;
-			}
-			
-			if (lstBillet.get(i).getState().equals(State.EnVente)) {
-				
-				
+					if(lstBillet.get(i).getState().equals(State.EnVente)){
+					
 					if(nbItemsPanier<=cptReserve&&panierCheck<=LIMITE_TICKET){
 
 						lstBillet.get(i).setState(State.Reserve);
-						//cptAdded++;
-						cptReserve++;
-
-						panier.getLstBilletPanier().add(billetPanier); 
-						nbItemsPanier+=billetPanier.getNbBillets();
+						cptAdded++;
+						//cptReserve++;
+						nbItemsPanier +=cptAdded;
+						//panier.getLstBilletPanier().add(billetPanier); 
+						//nbItemsPanier+=billetPanier.getNbBillets();
 						//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
+						}
 					}
-					
 				
-				else{
+				/*else{
 					if(nbItemsPanier<=cptReserve){
 						lstBillet.get(i).setState(State.Reserve);
 						cptAdded++;
 						cptReserve++;
 						//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
-					}
-				}
+					}*/
+				
 
-			}
-			
 			if(cptAdded==billetPanier.getNbBillets()&&nbItemsPanier<=LIMITE_TICKET){
 				panier.getLstBilletPanier().add(billetPanier); 
-				nbItemsPanier+=billetPanier.getNbBillets();
+				//nbItemsPanier+=billetPanier.getNbBillets();
 				break;
+				}
 			}
-			if(cptAdded==billetPanier.getNbBillets()){
-				
-			}
+			
+			
 		}
 		
 	
-	}
+	
 	
 
 	@Override
