@@ -25,7 +25,7 @@
             <div class="carousel-inner">
               <c:forEach items="${ spectacles }" var="spectacle" varStatus="loop">
                 <div class="${ loop.index == 0 ? "item active" : "item" }">
-                    <img src="<c:url value="${ spectacle.imageUrl }" />" alt="<c:out value="${ spectacle.name }" />">
+                    <img src="<c:url value="${ spectacle.imageFeaturedUrl }" />" alt="<c:out value="${ spectacle.name }" />">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1><c:out value="${ spectacle.name }" /></h1>
