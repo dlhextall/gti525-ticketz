@@ -97,20 +97,18 @@ public class PanierService implements IService{
 			
 			if (lstBillet.get(i).getEtat().equals(Etat.EnVente)) {
 				
-				if(cptReserve > billetPanier.getNbBillets()){
+				
 					if(nbItemsPanier<=cptReserve&&panierCheck<=LIMITE_TICKET){
 						lstBillet.get(i).setEtat(Etat.Reserve);
-						//cptAdded++;
-						cptReserve++;
+						cptAdded++;
+						//cptReserve++;
 						
 						panier.getLstBilletPanier().add(billetPanier); 
 						nbItemsPanier+=billetPanier.getNbBillets();
 						//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
 					}
-					else{
-						break;
-					}
-				}
+					
+				
 				else{
 					if(nbItemsPanier<=cptReserve){
 						lstBillet.get(i).setEtat(Etat.Reserve);
