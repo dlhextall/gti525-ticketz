@@ -1,13 +1,28 @@
 package ca.etsmtl.ticketz.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.joda.time.DateTime;
 
+@Entity
+@Table(name="Representation")
 public class Representation {
+	
+	@Id
+	@Column(name="id")
+	@GeneratedValue
 	private int id;
-	private double prix;
+	@Column(name="price")
+	private BigDecimal price;
+	@Column(name="date")
 	private DateTime date;
 	private List<Ticket> billets;
 	
@@ -15,9 +30,9 @@ public class Representation {
 	public Representation() {
 		billets = new ArrayList<Ticket>();
 	}
-	public Representation(int _id, double _prix, DateTime _date, List<Ticket> _billets) {
+	public Representation(int _id, BigDecimal _prix, DateTime _date, List<Ticket> _billets) {
 		id = _id;
-		prix = _prix;
+		price = _prix;
 		date = _date;
 		billets = _billets;
 	}
@@ -26,16 +41,12 @@ public class Representation {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public BigDecimal getPrice() {
+		return price;
 	}
-	public double getPrix() {
-		return prix;
+	public void setPrice(BigDecimal _price) {
+		this.price = _price;
 	}
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-	
 	public DateTime getDate() {
 		return date;
 	}

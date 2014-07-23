@@ -1,5 +1,6 @@
 package ca.etsmtl.ticketz.data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class RepresentationBank {
 	protected RepresentationBank() {
 		ArrayList<Ticket> billets = new ArrayList<Ticket>(BilletBank.getInstance().getBillets());
 		representations = new ArrayList<Representation>();
-		representations.add(new Representation(1, 50.00, DateTime.now(), billets));		
+		representations.add(new Representation(1, new BigDecimal(50.00), DateTime.now(), billets));		
 	}
 	
 	
