@@ -9,13 +9,13 @@ public class Representation {
 	private int id;
 	private double prix;
 	private DateTime date;
-	private List<Billet> billets;
+	private List<Ticket> billets;
 	
 	
 	public Representation() {
-		billets = new ArrayList<Billet>();
+		billets = new ArrayList<Ticket>();
 	}
-	public Representation(int _id, double _prix, DateTime _date, List<Billet> _billets) {
+	public Representation(int _id, double _prix, DateTime _date, List<Ticket> _billets) {
 		id = _id;
 		prix = _prix;
 		date = _date;
@@ -42,10 +42,10 @@ public class Representation {
 	public void setDate(DateTime _date) {
 		date = _date;
 	}
-	public List<Billet> getBillets() {
+	public List<Ticket> getBillets() {
 		return billets;
 	}
-	public void setBillets(List<Billet> billets) {
+	public void setBillets(List<Ticket> billets) {
 		this.billets = billets;
 	}
 }

@@ -3,26 +3,26 @@ package ca.etsmtl.ticketz.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.etsmtl.ticketz.model.Billet;
+import ca.etsmtl.ticketz.model.Ticket;
 
 public class BilletBank {
 	
 	private static BilletBank instance = null;
-	private List<Billet> billets;
+	private List<Ticket> billets;
 	
 	
 	protected BilletBank() {
-		billets = new ArrayList<Billet>();
-		billets.add(new Billet(1));
-		billets.add(new Billet(2));
-		billets.add(new Billet(3));
-		billets.add(new Billet(4));
-		billets.add(new Billet(5));
-		billets.add(new Billet(6));
-		billets.add(new Billet(7));
-		billets.add(new Billet(8));
-		billets.add(new Billet(9));
-		billets.add(new Billet(10));
+		billets = new ArrayList<Ticket>();
+		billets.add(new Ticket(1));
+		billets.add(new Ticket(2));
+		billets.add(new Ticket(3));
+		billets.add(new Ticket(4));
+		billets.add(new Ticket(5));
+		billets.add(new Ticket(6));
+		billets.add(new Ticket(7));
+		billets.add(new Ticket(8));
+		billets.add(new Ticket(9));
+		billets.add(new Ticket(10));
 	}
 	
 	
@@ -33,7 +33,7 @@ public class BilletBank {
 		return instance;
 	}
 	
-	public List<Billet> getBillets() {
+	public List<Ticket> getBillets() {
 		return billets;
 	}
 }
