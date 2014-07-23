@@ -45,7 +45,7 @@ import ca.etsmtl.ticketz.service.PanierService;
 public class CheckoutController {
 	Logger log = Logger.getLogger( CheckoutController.class.getName());	
 	
-	PanierService pService = new PanierService();
+	PanierService pService = PanierService.getInstance();
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

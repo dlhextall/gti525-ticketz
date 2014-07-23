@@ -10,7 +10,6 @@ public class Representation {
 	private double prix;
 	private DateTime date;
 	private List<Billet> billets;
-	private int billetReserve;
 	
 	
 	public Representation() {
@@ -37,12 +36,6 @@ public class Representation {
 		this.prix = prix;
 	}
 	
-	public int getBilletReserve() {
-		return billetReserve;
-	}
-	public void setBilletReserve(int billetReserve) {
-		this.billetReserve = billetReserve;
-	}
 	public DateTime getDate() {
 		return date;
 	}
