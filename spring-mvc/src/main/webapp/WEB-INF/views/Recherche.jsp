@@ -32,7 +32,7 @@
           <hr/>
           <div class="row show-grid">
               <div class="col-md-4">
-                  <img src="<c:url value="${ result.imageUrl }" />" alt="<c:out value="${ result.name }" />" class="img-rounded" width="200px" height="133px" />
+                  <img src="<c:url value="${ result.imageThumbUrl }" />" alt="<c:out value="${ result.name }" />" class="img-rounded" width="200px" height="133px" />
               </div>
   
               <div class="col-md-6">
