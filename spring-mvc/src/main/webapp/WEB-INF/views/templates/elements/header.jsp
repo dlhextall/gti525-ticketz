@@ -25,7 +25,7 @@
                 </ul>
                 <form action="/ticketz/recherche" method="get" class="nav navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" id="searching" name="criteria" class="form-control" placeholder="Search">
+                        <input type="text" id="searching" name="criteria" class="form-control" placeholder="Search" data-provide="typeahead" autocomplete="off">
                     </div>
                     <button class="btn btn-default">Rechercher</button>
                 </form>
