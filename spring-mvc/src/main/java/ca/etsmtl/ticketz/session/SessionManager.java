@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 import ca.etsmtl.ticketz.data.ShowBank;
-import ca.etsmtl.ticketz.model.Billet;
-import ca.etsmtl.ticketz.model.Billet.Etat;
+import ca.etsmtl.ticketz.model.Ticket;
+import ca.etsmtl.ticketz.model.Ticket.State;
 import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
@@ -46,14 +46,14 @@ public class SessionManager implements HttpSessionListener {
 			
 			
 			for(int i=0;i<billetPanier.size();i++){
-				List<Billet>lstBillet = spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).getBillets();
+				List<Ticket>lstBillet = spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).getBillets();
 				
 				for(int j=0;j<lstBillet.size();j++){
-					if(lstBillet.get(j).getEtat().equals(Etat.Reserve)){
-						lstBillet.get(j).setEtat(Etat.EnVente);
+					if(lstBillet.get(j).getState().equals(State.Reserve)){
+						lstBillet.get(j).setState(State.EnVente);
 						//cptRestored++;
 					}
-					spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).setBilletReserve(0);
+					//spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).setBilletReserve(0);
 					//if(cptRestored==billetPanier)
 					
 				}

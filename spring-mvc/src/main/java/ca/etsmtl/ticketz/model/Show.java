@@ -3,21 +3,43 @@ package ca.etsmtl.ticketz.model;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 
+@Entity
+@Table(name="Show")
 public class Show implements Serializable {
 	
+	@Id
+	@Column(name="id")
+	@GeneratedValue
 	private int id;
+	@Column(name="name")
 	private String name;
+	@Column(name="description")
 	private String description;
-	private String salle;
-	private String imageUrl;
+	@Column(name="venue")
+	private String venue;
+	@Column(name="address")
+	private String address;
+	@Column(name="imageFeaturedUrl")
+	private String imageFeaturedUrl;
+	@Column(name="imageThumbUrl")
+	private String imageThumbUrl;
+	@Column(name="imageDetailUrl")
+	private String imageDetailUrl;
 	private List<Representation> representations;
 	private List<Artist> artists;
-	private DateTime dateStart;
-	private DateTime dateEnd;
+	@Column(name="featured")
 	private boolean featured;
 	
 	
@@ -25,28 +47,29 @@ public class Show implements Serializable {
 		representations = new ArrayList<Representation>();
 		artists = new ArrayList<Artist>();
 	}
-	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd) {
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, List<Artist> _artists) {
 		id = _id;
 		name = _name;
 		description = _description;
-		salle = _salle;
-		imageUrl = _imageUrl;
+		venue = _venue;
+		address = _address;
+		imageFeaturedUrl = _imageUrl;
+		imageThumbUrl = _imageUrl;
+		imageDetailUrl = _imageUrl;
 		representations = _representations;
 		artists = _artists;
-		dateStart = _dateStart;
-		dateEnd = _dateEnd;
 	}
-	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd) {
-		this(_id, _name, _description, _salle, _imageUrl, new ArrayList<Representation>(), new ArrayList<Artist>(), _dateStart, _dateEnd);
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, Representation _representation, Artist _artist) {
+		this(_id, _name, _description, _venue, _address, _imageUrl, new ArrayList<Representation>(), new ArrayList<Artist>());
 		representations.add(_representation);
 		artists.add(_artist);
 	}
-	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, List<Representation> _representations, List<Artist> _artists, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
-		this(_id, _name, _description, _salle, _imageUrl, _representations, _artists, _dateStart, _dateEnd);
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, List<Artist> _artists, boolean _featured) {
+		this(_id, _name, _description, _venue, _address, _imageUrl, _representations, _artists);
 		featured = _featured;
 	}
-	public Show(int _id, String _name, String _description, String _salle, String _imageUrl, Representation _representation, Artist _artist, DateTime _dateStart, DateTime _dateEnd, boolean _featured) {
-		this(_id, _name, _description, _salle, _imageUrl, _representation, _artist, _dateStart, _dateEnd);
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, Representation _representation, Artist _artist, boolean _featured) {
+		this(_id, _name, _description, _venue, _address, _imageUrl, _representation, _artist);
 		featured = _featured;
 	}
 	
@@ -69,17 +92,35 @@ public class Show implements Serializable {
 	public void setDescription(String _descr) {
 		description = _descr;
 	}
-	public String getSalle() {
-		return salle;
+	public String getVenue() {
+		return venue;
 	}
-	public void setSalle(String _salle) {
-		salle = _salle;
+	public void setVenue(String _venue) {
+		venue = _venue;
 	}
-	public String getImageUrl() {
-		return imageUrl;
+	public String getAddress() {
+		return address;
 	}
-	public void setImageUrl(String _imageUrl) {
-		imageUrl = _imageUrl;
+	public void setAddress(String _address) {
+		address = _address;
+	}
+	public String getImageFeaturedUrl() {
+		return imageFeaturedUrl;
+	}
+	public void setImageFeaturedUrl(String _imageFeaturedUrl) {
+		imageFeaturedUrl = _imageFeaturedUrl;
+	}
+	public String getImageThumbUrl() {
+		return imageThumbUrl;
+	}
+	public void setImageThumbUrl(String _imageThumbUrl) {
+		imageThumbUrl = _imageThumbUrl;
+	}
+	public String getImageDetailUrl() {
+		return imageDetailUrl;
+	}
+	public void setImageDetailurl(String _imageDetailUrl) {
+		imageDetailUrl = _imageDetailUrl;
 	}
 	public List<Representation> getRepresentations() {
 		return representations;
@@ -104,16 +145,26 @@ public class Show implements Serializable {
 		artists.add(_artist);
 	}
 	public DateTime getDateStart() {
-		return dateStart;
-	}
-	public void setDateStart(DateTime _dateStart) {
-		dateStart = _dateStart;
+		if (representations.size() == 0) {
+			return null;
+		}
+		Collections.sort(representations, new Comparator<Representation>() {
+			public int compare(Representation r1, Representation r2) {
+				return r1.getDate().compareTo(r2.getDate());
+			}
+		});
+		return representations.get(0).getDate();
 	}
 	public DateTime getDateEnd() {
-		return dateEnd;
-	}
-	public void setDateEnd(DateTime _dateEnd) {
-		dateEnd = _dateEnd;
+		if (representations.size() == 0) {
+			return null;
+		}
+		Collections.sort(representations, new Comparator<Representation>() {
+			public int compare(Representation r1, Representation r2) {
+				return r1.getDate().compareTo(r2.getDate());
+			}
+		});
+		return representations.get(representations.size() - 1).getDate();
 	}
 	public boolean isFeatured() {
 		return featured;

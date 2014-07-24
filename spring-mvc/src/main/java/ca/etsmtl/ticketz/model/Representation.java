@@ -1,24 +1,38 @@
 package ca.etsmtl.ticketz.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.joda.time.DateTime;
 
+@Entity
+@Table(name="Representation")
 public class Representation {
+	
+	@Id
+	@Column(name="id")
+	@GeneratedValue
 	private int id;
-	private double prix;
+	@Column(name="price")
+	private BigDecimal price;
+	@Column(name="date")
 	private DateTime date;
-	private List<Billet> billets;
-	private int billetReserve;
+	private List<Ticket> billets;
 	
 	
 	public Representation() {
-		billets = new ArrayList<Billet>();
+		billets = new ArrayList<Ticket>();
 	}
-	public Representation(int _id, double _prix, DateTime _date, List<Billet> _billets) {
+	public Representation(int _id, BigDecimal _prix, DateTime _date, List<Ticket> _billets) {
 		id = _id;
-		prix = _prix;
+		price = _prix;
 		date = _date;
 		billets = _billets;
 	}
@@ -27,21 +41,11 @@ public class Representation {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public BigDecimal getPrice() {
+		return price;
 	}
-	public double getPrix() {
-		return prix;
-	}
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-	
-	public int getBilletReserve() {
-		return billetReserve;
-	}
-	public void setBilletReserve(int billetReserve) {
-		this.billetReserve = billetReserve;
+	public void setPrice(BigDecimal _price) {
+		this.price = _price;
 	}
 	public DateTime getDate() {
 		return date;
@@ -49,10 +53,10 @@ public class Representation {
 	public void setDate(DateTime _date) {
 		date = _date;
 	}
-	public List<Billet> getBillets() {
+	public List<Ticket> getBillets() {
 		return billets;
 	}
-	public void setBillets(List<Billet> billets) {
+	public void setBillets(List<Ticket> billets) {
 		this.billets = billets;
 	}
 }

@@ -35,7 +35,7 @@
                 <hr/>
                 <div class="row show-grid">
                     <div class="col-md-4">
-                        <img class="img-rounded" src="<c:out value="${ spectacle.imageUrl }" />" width="200px" height="133px" alt="<c:out value="${ spectacle.name }" />">
+                        <img class="img-rounded" src="<c:out value="${ spectacle.imageThumbUrl }" />" width="200px" height="133px" alt="<c:out value="${ spectacle.name }" />">
                     </div>
 
                     <div class="col-md-6">

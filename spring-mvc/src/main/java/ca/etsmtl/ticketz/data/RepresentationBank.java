@@ -1,11 +1,12 @@
 package ca.etsmtl.ticketz.data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
 
-import ca.etsmtl.ticketz.model.Billet;
+import ca.etsmtl.ticketz.model.Ticket;
 import ca.etsmtl.ticketz.model.Representation;
 
 
@@ -16,9 +17,9 @@ public class RepresentationBank {
 	
 	
 	protected RepresentationBank() {
-		ArrayList<Billet> billets = new ArrayList<Billet>(BilletBank.getInstance().getBillets());
+		ArrayList<Ticket> billets = new ArrayList<Ticket>(BilletBank.getInstance().getBillets());
 		representations = new ArrayList<Representation>();
-		representations.add(new Representation(1, 50.00, DateTime.now(), billets));		
+		representations.add(new Representation(1, new BigDecimal(50.00), DateTime.now(), billets));		
 	}
 	
 	
