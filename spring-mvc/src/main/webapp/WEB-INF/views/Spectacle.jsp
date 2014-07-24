@@ -50,5 +50,7 @@
             
             </c:forEach>
 	</div>
+	<%@ include file="templates/elements/footer.jsp" %>
+	<%@ include file="templates/baseFooterComponents.jsp" %>
 </body>
 </html>
