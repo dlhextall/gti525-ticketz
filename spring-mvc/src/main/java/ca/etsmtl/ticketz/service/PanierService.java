@@ -87,6 +87,7 @@ public class PanierService implements IService{
 		//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);		
 		//represBilletReserve = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBilletReserve();
 		cptAdded=0;
+		int panierCheck=nbItemsPanier+billetPanier.getNbBillets();
 		
 		for(Ticket ticket:lstBillet){
 			if(ticket.getState().equals(State.Reserve)){
@@ -94,17 +95,19 @@ public class PanierService implements IService{
 			}
 		}
 		
+		if(panierCheck<=LIMITE_TICKET){
+		
 		for (int i = 0; i < lstBillet.size(); i++) {
-			int panierCheck=nbItemsPanier+billetPanier.getNbBillets();
+			
 			
 					if(lstBillet.get(i).getState().equals(State.EnVente)){
 					
-					if(nbItemsPanier<=cptReserve&&panierCheck<=LIMITE_TICKET){
-
+					if(nbItemsPanier<=cptReserve){
+						nbItemsPanier+=1;
 						lstBillet.get(i).setState(State.Reserve);
 						cptAdded++;
-						//cptReserve++;
-						nbItemsPanier +=cptAdded;
+						cptReserve++;
+						//nbItemsPanier +=cptAdded;
 						//panier.getLstBilletPanier().add(billetPanier); 
 						//nbItemsPanier+=billetPanier.getNbBillets();
 						//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve++);
@@ -127,7 +130,7 @@ public class PanierService implements IService{
 				}
 			}
 			
-			
+			}
 		}
 		
 	
