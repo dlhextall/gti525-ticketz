@@ -4,10 +4,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.joda.time.DateTime;
@@ -22,8 +26,12 @@ public class Representation {
 	private int id;
 	@Column(name="price")
 	private BigDecimal price;
-	@Column(name="date")
+	@Column(name="moment")
 	private DateTime date;
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Representation_Ticket",
+				joinColumns={@JoinColumn(name="r_id")},
+				inverseJoinColumns={@JoinColumn(name="t_id")})
 	private List<Ticket> billets;
 	
 	

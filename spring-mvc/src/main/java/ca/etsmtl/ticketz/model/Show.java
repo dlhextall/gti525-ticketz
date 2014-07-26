@@ -1,16 +1,20 @@
 package ca.etsmtl.ticketz.model;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.joda.time.DateTime;
@@ -37,7 +41,15 @@ public class Show implements Serializable {
 	private String imageThumbUrl;
 	@Column(name="imageDetailUrl")
 	private String imageDetailUrl;
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Show_Representation",
+				joinColumns={@JoinColumn(name="s_id")},
+				inverseJoinColumns={@JoinColumn(name="r_id")})
 	private List<Representation> representations;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Show_Artist",
+				joinColumns={@JoinColumn(name="s_id")},
+				inverseJoinColumns={@JoinColumn(name="a_id")})
 	private List<Artist> artists;
 	@Column(name="featured")
 	private boolean featured;
@@ -111,13 +123,13 @@ public class Show implements Serializable {
 		imageFeaturedUrl = _imageFeaturedUrl;
 	}
 	public String getImageThumbUrl() {
-		return imageThumbUrl;
+		return (imageThumbUrl != null) ? imageThumbUrl : imageFeaturedUrl;
 	}
 	public void setImageThumbUrl(String _imageThumbUrl) {
 		imageThumbUrl = _imageThumbUrl;
 	}
 	public String getImageDetailUrl() {
-		return imageDetailUrl;
+		return (imageDetailUrl != null) ? imageDetailUrl : imageFeaturedUrl;
 	}
 	public void setImageDetailurl(String _imageDetailUrl) {
 		imageDetailUrl = _imageDetailUrl;
