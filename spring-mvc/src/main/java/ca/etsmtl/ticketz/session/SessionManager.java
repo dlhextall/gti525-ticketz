@@ -49,8 +49,8 @@ public class SessionManager implements HttpSessionListener {
 				List<Ticket>lstBillet = spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).getBillets();
 				
 				for(int j=0;j<lstBillet.size();j++){
-					if(lstBillet.get(j).getState().equals(State.Reserve)){
-						lstBillet.get(j).setState(State.EnVente);
+					if(lstBillet.get(j).getState().equals(State.RESERVED)){
+						lstBillet.get(j).setState(State.AVAILABLE);
 						//cptRestored++;
 					}
 					//spectacle.get(billetPanier.get(i).getIdSpectacle()).getRepresentations().get(billetPanier.get(i).getIdRepresentation()).setBilletReserve(0);

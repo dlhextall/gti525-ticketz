@@ -90,7 +90,7 @@ public class PanierService implements IService{
 		int panierCheck=nbItemsPanier+billetPanier.getNbBillets();
 		
 		for(Ticket ticket:lstBillet){
-			if(ticket.getState().equals(State.Reserve)){
+			if(ticket.getState().equals(State.RESERVED)){
 				cptReserve++;
 			}
 		}
@@ -100,11 +100,11 @@ public class PanierService implements IService{
 		for (int i = 0; i < lstBillet.size(); i++) {
 			
 			
-					if(lstBillet.get(i).getState().equals(State.EnVente)){
+					if(lstBillet.get(i).getState().equals(State.AVAILABLE)){
 					
 					if(nbItemsPanier<=cptReserve){
 						nbItemsPanier+=1;
-						lstBillet.get(i).setState(State.Reserve);
+						lstBillet.get(i).setState(State.RESERVED);
 						cptAdded++;
 						cptReserve++;
 						//nbItemsPanier +=cptAdded;
@@ -146,8 +146,8 @@ public class PanierService implements IService{
 		
 		
 		for(int i=0;i<lstBillet.size();i++){
-			if(lstBillet.get(i).getState().equals(State.Reserve)){
-				lstBillet.get(i).setState(State.EnVente);
+			if(lstBillet.get(i).getState().equals(State.RESERVED)){
+				lstBillet.get(i).setState(State.AVAILABLE);
 				//cptReserve--;
 				//lstShows.get(idSpectacle).getRepresentations().get(idRepresentation).setBilletReserve(cptReserve--);
 				cptRemoved++;
@@ -168,7 +168,7 @@ public class PanierService implements IService{
 	public void deleteFinal(int idSpectacle,int idRepresentation, int indexPanier){
 		List<Ticket>lstBillet = lstShows.get(idSpectacle).getRepresentations().get(idRepresentation).getBillets();
 		for(int i=0;i<lstBillet.size();i++){
-			if(lstBillet.get(i).getState().equals(State.Reserve)){
+			if(lstBillet.get(i).getState().equals(State.RESERVED)){
 				lstBillet.remove(i);
 				
 			}
@@ -179,7 +179,7 @@ public class PanierService implements IService{
 		for (Show show : lstShows) {
 			for (Representation representation : lstShows.get(show.getId()).getRepresentations()) {
 				for (Ticket billet : representation.getBillets()) {
-					if (billet.getState().equals(State.Reserve)) {
+					if (billet.getState().equals(State.RESERVED)) {
 						representation.getBillets().remove(billet);
 					}
 				}
