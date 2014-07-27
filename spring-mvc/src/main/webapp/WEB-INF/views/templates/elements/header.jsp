@@ -3,7 +3,7 @@
 
 <!-- Header image -->
 <a href="/ticketz/" >
-<div class="header-image"></div>
+<div class="header-image container"></div>
 </a>
 <!-- Navbar -->
 <div class="navbar navbar-default" role="navigation">
