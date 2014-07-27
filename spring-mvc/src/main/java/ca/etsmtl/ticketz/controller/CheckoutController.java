@@ -5,14 +5,20 @@ import gti525.paiement.InformationsPaiementTO;
 import gti525.paiement.ReponseSystemePaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 
+import java.io.StringReader;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 
 
@@ -30,7 +36,14 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.CharacterData;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import ca.etsmtl.ticketz.form.CheckoutForm;
 import ca.etsmtl.ticketz.model.Panier;
@@ -62,7 +75,7 @@ public class CheckoutController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
+	//@RequestMapping(value = "/checkout", method = RequestMethod.POST)
 	public ModelAndView checkoutPOST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm, BindingResult _res, HttpServletRequest _req) {
 		ModelAndView model;
 		
@@ -121,4 +134,90 @@ public class CheckoutController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
+	public ModelAndView checkoutPOSTREST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm, BindingResult _res, HttpServletRequest _req){
+		RestTemplate restTemplate = new RestTemplate();
+		ModelAndView model;
+		String transactionId;
+//		Errors in checkout form
+		if (_res.hasErrors()) {			 
+			model = new ModelAndView("redirect:/checkout");
+			model.addObject("errors", _res.getAllErrors());
+//			_req.setAttribute("errors", _res.getAllErrors());
+			return model;
+		}
+		
+		HttpSession session = _req.getSession();
+		Panier panier = (Panier) session.getAttribute("panier");
+		model = new ModelAndView("redirect:/");
+		Map<String, String> vars = new HashMap<String, String>();
+		vars.put("api_key", "ea657f99f7511a9bf170");
+		vars.put("store_id", "1");
+		vars.put("order_id", "1");
+		vars.put("first_name", _checkoutForm.getCcFirstName());
+		vars.put("last_name", _checkoutForm.getCcLastName());
+		vars.put("card_number", _checkoutForm.getCcNumber());
+		vars.put("security_code", _checkoutForm.getCcCVC());
+		vars.put("year", _checkoutForm.getCcYear());
+		vars.put("month", _checkoutForm.getCcMonth());
+		vars.put("amount", panier.getPrixTotal().toString());
+		
+		String url = "http://gti525.herokuapp.com/transactions.xml?api_key={api_key}&store_id={store_id}&order_id={order_id}"+
+						"&first_name={first_name}&last_name={last_name}&card_number={card_number}&security_code={security_code}"+
+						"&year={year}&month={month}&amount={amount}";
+
+		String result = restTemplate.postForObject(url, null, String.class, vars);
+		System.out.println(result);
+		
+		try {
+			transactionId= getTransactionId(result);
+			Map<String, String> varsAuth = new HashMap<String, String>();
+			String orderId = "1";
+			varsAuth.put("api_key", "ea657f99f7511a9bf170");
+			varsAuth.put("store_id", "1");
+			varsAuth.put("order_id", "1");
+			System.out.println(transactionId);
+			String urlAuth = "http://gti525.herokuapp.com/transactions/"+Integer.parseInt(transactionId)+".xml?api_key={api_key}&store_id={store_id}&order_id={order_id}";
+			String resultAuth = restTemplate.getForObject(urlAuth, String.class, null, varsAuth);
+			System.out.println(resultAuth);
+		} catch (Exception e) {
+			
+			//System.out.println("Transaction Failed");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return model;
+	}
+	
+	public String getTransactionId(String xml) throws Exception{
+		String id="";
+		DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+	    InputSource is = new InputSource();
+	    is.setCharacterStream(new StringReader(xml));
+	    
+	    Document doc = db.parse(is);
+	    NodeList nodes = doc.getElementsByTagName("order");
+	    for (int i = 0; i < nodes.getLength(); i++) {
+	    	Element element = (Element) nodes.item(i);
+	    	NodeList transactionId = element.getElementsByTagName("transaction-id");
+	        Element line = (Element) transactionId.item(0);
+	        id= getCharacterDataFromElement(line);
+	    }
+	    	if(!id.equals(null)){
+	    		return id;
+	    	}
+		
+		return "";
+	}
+	
+	 public static String getCharacterDataFromElement(Element e) {
+		    Node child = e.getFirstChild();
+		    if (child instanceof CharacterData) {
+		      CharacterData cd = (CharacterData) child;
+		      return cd.getData();
+		    }
+		    return "";
+		  }
 }
