@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 $montant = $("#totalPrice").val();	
+$montant = parseInt($montant,10);
 	
 $( "#nbTickets" ).change(function() {
 	
@@ -11,8 +12,6 @@ $( "#nbTickets" ).change(function() {
 	
 	
 $('#form_btn').click(function() {
-	
-	
 	
 	var body = $("html, body");
 	body.animate({scrollTop:0}, '500', 'swing', function() { 
@@ -30,13 +29,10 @@ function ajaxForm(){
 	
 	$.get( "panier/add", { nbTickets: $nbTicket, unityPrice: $unityPrice , nomSpectacle: $nomSpectacle, idSpectacle: idSpectacle } )
 	  .done(function( data ) {
+		  
 	    
-	  });
-	  
-	
+	  }); 	
 }
-
-
 
 
 });
