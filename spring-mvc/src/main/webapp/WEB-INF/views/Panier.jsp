@@ -28,7 +28,7 @@
 			            <tr>
 			              <td class="col-sm-8 col-md-6">
 			                <div class="media">
-			                  <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+			                  <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/128/Data-Ticket-icon.png" style="width: 72px; height: 72px;"> </a>
 			                  <div class="media-body">
 			                   <h4 class="media-heading"><a href="/ticketz/detail?id=<c:out value="${ billets.getIdSpectacle() }" />">${billets.getNomSpectacle()}</a></h4>
 			                   <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
