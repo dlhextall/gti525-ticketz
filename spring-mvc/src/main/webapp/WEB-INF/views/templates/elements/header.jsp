@@ -3,7 +3,7 @@
 
 <!-- Header image -->
 <a href="/ticketz/" >
-<div class="header-image"></div>
+<div class="header-image container"></div>
 </a>
 <!-- Navbar -->
 <div class="navbar navbar-default" role="navigation">
@@ -24,8 +24,8 @@
                     <li><a href="/ticketz/panier" id="panier">Panier (${ sessionScope.billets.size() })</a></li>
                 </ul>
                 <form action="/ticketz/recherche" method="get" class="nav navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" id="searching" name="criteria" class="form-control" placeholder="Search" data-provide="typeahead" autocomplete="off">
+                    <div id="the-basics" class="form-group">
+                        <input type="text" id="searching" name="criteria"  class="form-control typeahead" placeholder="Search" data-provide="typeahead" autocomplete="off">
                     </div>
                     <button class="btn btn-default">Rechercher</button>
                 </form>

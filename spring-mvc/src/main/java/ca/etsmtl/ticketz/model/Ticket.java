@@ -16,17 +16,20 @@ public class Ticket {
 	@Column(name="id")
 	@GeneratedValue
 	private int id;
-	public enum State {EnVente, Reserve, Vendu};
+
+
+	public enum State { AVAILABLE, RESERVED,SOLD };
+
 	@Column(name="state")
 	@Enumerated(EnumType.STRING)
 	private State state;
 	
 	
 	public Ticket() {
-		state = State.EnVente;
+		state = State.AVAILABLE;
 	}
 	public Ticket(int _id) {
-		this(_id, State.EnVente);
+		this(_id, State.AVAILABLE);
 	}
 	public Ticket(int _id, State _state) {
 		id = _id;

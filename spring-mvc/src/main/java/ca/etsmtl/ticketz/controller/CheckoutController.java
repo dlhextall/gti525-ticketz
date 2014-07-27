@@ -44,7 +44,7 @@ import ca.etsmtl.ticketz.service.PanierService;
  */
 @Controller
 public class CheckoutController {
-	Logger log = Logger.getLogger( CheckoutController.class.getName());	
+	private static final Logger logger = Logger.getLogger(CheckoutController.class);
 	
 	PanierService pService = PanierService.getInstance();
 	
@@ -102,7 +102,11 @@ public class CheckoutController {
 //			Succès
 			if (reponseApprouver.getCode() / 100 == 2) {
 				
-			    log.info(_checkoutForm.toString());
+				logger.info("-----------------CONFIRMATION ACHAT-----------------");
+				StringBuffer log = new StringBuffer();
+				log.append(_checkoutForm.toString());
+				logger.info(log.toString());
+				logger.info("----------------------------------------------------");
 				pService.deleteAll();
 				session.invalidate();
 			} else {
