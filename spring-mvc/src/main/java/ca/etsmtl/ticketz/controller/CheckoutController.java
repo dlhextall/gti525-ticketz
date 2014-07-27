@@ -172,18 +172,16 @@ public class CheckoutController {
 		try {
 			transactionId= getTransactionId(result);
 			Map<String, String> varsAuth = new HashMap<String, String>();
-			String orderId = "1";
 			varsAuth.put("api_key", "ea657f99f7511a9bf170");
 			varsAuth.put("store_id", "1");
-			varsAuth.put("order_id", "1");
 			System.out.println(transactionId);
-			String urlAuth = "http://gti525.herokuapp.com/transactions/"+Integer.parseInt(transactionId)+".xml?api_key={api_key}&store_id={store_id}&order_id={order_id}";
-			String resultAuth = restTemplate.getForObject(urlAuth, String.class, null, varsAuth);
+			String urlAuth = "http://gti525.herokuapp.com/transactions/"+Integer.parseInt(transactionId)+".xml?api_key={api_key}&store_id={store_id}";
+			String resultAuth = restTemplate.getForObject(urlAuth, String.class, varsAuth);
 			System.out.println(resultAuth);
 		} catch (Exception e) {
 			
-			//System.out.println("Transaction Failed");
-			e.printStackTrace();
+			System.out.println("Transaction Failed");
+			//e.printStackTrace();
 		}
 		
 		
