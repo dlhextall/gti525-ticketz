@@ -13,7 +13,7 @@ $('#form_btn').click(function() {
 	
 	var body = $("html, body");
 	body.animate({scrollTop:0}, '500', 'swing').promise().done(function(){
-		$('#panier').html('Panier (+1)');		
+		$('#panier').html('Panier (+'+$("#nbTickets").val()+')');		
 		ajaxForm();
 	});	
 
