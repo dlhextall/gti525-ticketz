@@ -53,6 +53,9 @@ var substringMatcher = function(strs) {
 	  template: '<strong>{{name}}</strong>'
 	  
 	});
+	
+		
+	$('#popOver').popover({ trigger: "hover" });
 
 	
 });
