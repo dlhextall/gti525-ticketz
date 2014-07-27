@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ca.etsmtl.ticketz.dao.ShowDaoStub;
 import ca.etsmtl.ticketz.data.BilletBank;
 import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Ticket;
@@ -18,6 +19,7 @@ import ca.etsmtl.ticketz.model.Ticket.State;
 public class PanierService implements IService{
 	private static PanierService instance = null;
 	private Panier panier =new Panier();
+	ShowDaoStub showStub = new ShowDaoStub();
 	private List<Show> lstShows;
 	private int cptAdded = 0;
 	private int cptRemoved = 0;
@@ -28,7 +30,7 @@ public class PanierService implements IService{
 	
 	protected PanierService(){
 		//panier = new Panier();
-		lstShows = ShowBank.getInstance().getShows();
+		lstShows = showStub.getAllShows();
 	}
 	
 	public static PanierService getInstance(){
@@ -180,7 +182,7 @@ public class PanierService implements IService{
 			for (Representation representation : lstShows.get(show.getId()).getRepresentations()) {
 				for (Ticket billet : representation.getBillets()) {
 					if (billet.getState().equals(State.Reserve)) {
-						representation.getBillets().remove(billet);
+						billet.setState(State.Vendu);
 					}
 				}
 			}

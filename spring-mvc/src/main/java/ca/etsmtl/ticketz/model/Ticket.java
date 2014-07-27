@@ -16,7 +16,7 @@ public class Ticket {
 	@Column(name="id")
 	@GeneratedValue
 	private int id;
-	public enum State {EnVente, Reserve};
+	public enum State {EnVente, Reserve, Vendu};
 	@Column(name="state")
 	@Enumerated(EnumType.STRING)
 	private State state;
