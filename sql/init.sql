@@ -24,7 +24,7 @@ CREATE TABLE Show (
 CREATE TABLE Representation (
   id SERIAL,
   price numeric NOT NULL,
-  moment timestamp with time zone NOT NULL
+  moment timestamp NOT NULL
 );
 
 CREATE TABLE Ticket (
@@ -34,7 +34,7 @@ CREATE TABLE Ticket (
 
 CREATE TABLE ClientOrder (
   id SERIAL,
-  moment timestamp with time zone NOT NULL
+  moment timestamp NOT NULL
 );
 
 CREATE TABLE Client (

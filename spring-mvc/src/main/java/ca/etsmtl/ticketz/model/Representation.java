@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 @Entity
@@ -27,6 +28,7 @@ public class Representation {
 	@Column(name="price")
 	private BigDecimal price;
 	@Column(name="moment")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime date;
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="Representation_Ticket",

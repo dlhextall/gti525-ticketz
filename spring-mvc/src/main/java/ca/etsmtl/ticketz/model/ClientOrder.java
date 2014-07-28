@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 @Entity
@@ -25,6 +26,7 @@ public class ClientOrder {
 	@GeneratedValue
 	private int id;
 	@Column(name="moment")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime date;
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="ClientOrder_Representation",
