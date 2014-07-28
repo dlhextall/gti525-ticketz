@@ -1,13 +1,11 @@
 package ca.etsmtl.ticketz.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import ca.etsmtl.ticketz.exceptions.ShowNotFoundException;
 import ca.etsmtl.ticketz.model.Show;
 
 @Scope(value="singleton")
@@ -20,11 +18,11 @@ public class TicketzProvider {
 	public TicketzProvider() { }
 	
 	
-	public List<Show> getAllShows(){
+	public List<Show> getAllShows() {
 		return showDao.getAllShows();
 	}
 	
-	public Show getShowAt(int id){
+	public Show getShowAt(int id) throws ShowNotFoundException {
 		return showDao.getShowAt(id);
 	}
 	
