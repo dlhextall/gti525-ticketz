@@ -1,30 +1,38 @@
 package ca.etsmtl.ticketz.dao;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 
 import ca.etsmtl.ticketz.model.Show;
 
+@Scope(value="singleton")
 public class TicketzProvider {
 	
-	public static ShowDaoStub stubs;
+	@Autowired
+	private IShowDao showDao;
 	
-	public static ArrayList<Show> getAllShows(){
-		stubs = new ShowDaoStub();
-		return stubs.getAllShows();
+	
+	public TicketzProvider() { }
+	
+	
+	public List<Show> getAllShows(){
+		return showDao.getAllShows();
 	}
 	
-	public static Show getShowAt(int id){
-		stubs = new ShowDaoStub();
-		return stubs.getShowAt(id);
+	public Show getShowAt(int id){
+		return showDao.getShowAt(id);
 	}
 	
-	public static ArrayList<Show> getFeaturedShows() {
-		stubs = new ShowDaoStub();
-		return stubs.getFeaturedShows();
+	public List<Show> getFeaturedShows() {
+		return showDao.getFeaturedShows();
 	}
 	
-	public static ArrayList<Show> getMatchingShows(String _criteria) {
-		stubs = new ShowDaoStub();
-		return stubs.getShowsMatching(_criteria);
+	public List<Show> getMatchingShows(String _criteria) {
+		return showDao.getShowsMatching(_criteria);
 	}
 }

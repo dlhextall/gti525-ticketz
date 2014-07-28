@@ -1,21 +1,24 @@
 package ca.etsmtl.ticketz.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Show;
 
-public class ShowDaoStub implements ShowDao {
-
+public class ShowDaoStub implements IShowDao {
+	
 	ShowBank shows;
 	
-	public ShowDaoStub(){
+	
+	public ShowDaoStub() {
 		shows = ShowBank.getInstance();
 	}
 	
+	
 	@Override
-	public ArrayList<Show> getAllShows() {
+	public List<Show> getAllShows() { 
 		return new ArrayList<Show>(shows.getShows());
 	}
 	
@@ -25,7 +28,7 @@ public class ShowDaoStub implements ShowDao {
 	}
 
 	@Override
-	public ArrayList<Show> getFeaturedShows() {
+	public List<Show> getFeaturedShows() {
 		ArrayList<Show> featuredShows = new ArrayList<Show>();
 		for (Show show : shows.getShows()) {
 			if (show.isFeatured()) {
@@ -36,7 +39,7 @@ public class ShowDaoStub implements ShowDao {
 	}
 
 	@Override
-	public ArrayList<Show> getShowsMatching(String _criteria) {
+	public List<Show> getShowsMatching(String _criteria) {
 		ArrayList<Show> matchingShows = new ArrayList<Show>();
 		for (Show show : shows.getShows()) {
 			if (show.getName().toLowerCase().contains(_criteria.toLowerCase()) || show.getDescription().toLowerCase().contains(_criteria.toLowerCase())) {

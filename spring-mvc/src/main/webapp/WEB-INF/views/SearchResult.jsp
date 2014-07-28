@@ -5,7 +5,7 @@
 <%@page import="ca.etsmtl.ticketz.model.Show"%>
 <%@page import="ca.etsmtl.ticketz.dao.TicketzProvider"%>
 <%
-		ArrayList<Show> spectacles = TicketzProvider.getAllShows();
+		ArrayList<Show> spectacles = (ArrayList<Show>) request.getAttribute("spectacles");
 		JSONArray arr = new JSONArray() ;   
         
         for (Show spectacle : spectacles ){

@@ -28,6 +28,8 @@
 	
 	<task:annotation-driven/>
         
+    <beans:bean class="ca.etsmtl.ticketz.dao.ShowDaoStub"></beans:bean>
+    <beans:bean class="ca.etsmtl.ticketz.dao.TicketzProvider"></beans:bean>
   
 	
 </beans:beans>

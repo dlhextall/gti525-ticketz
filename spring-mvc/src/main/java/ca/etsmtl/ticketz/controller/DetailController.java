@@ -6,6 +6,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,10 @@ import ca.etsmtl.ticketz.model.Show;
 
 @Controller
 public class DetailController extends AbstractController {
+	
+	@Autowired
+	private TicketzProvider provider = null;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -32,11 +37,11 @@ public class DetailController extends AbstractController {
 		try {
 			model = new ModelAndView("Detail");
 			int id = Integer.parseInt(idStr);
-			model.addObject("spectacle", TicketzProvider.getShowAt(id));
+			model.addObject("spectacle", provider.getShowAt(id));
 			return model;
 		} catch (NumberFormatException _e) {
 			model = new ModelAndView("redirect:/");
-			model.addObject("spectacles", TicketzProvider.getFeaturedShows());
+			model.addObject("spectacles", provider.getFeaturedShows());
 			return model;
 		}
 	}

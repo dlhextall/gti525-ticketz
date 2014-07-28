@@ -17,8 +17,8 @@ import javax.persistence.Table;
 import org.joda.time.DateTime;
 
 @Entity
-@Table(name="Order")
-public class Order {
+@Table(name="ClientOrder")
+public class ClientOrder {
 
 	@Id
 	@Column(name="id")
@@ -27,18 +27,21 @@ public class Order {
 	@Column(name="moment")
 	private DateTime date;
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="Order_Representation",
-				joinColumns={@JoinColumn(name="order_id")},
-				inverseJoinColumns={@JoinColumn(name="representation_id")})
+	@JoinTable(name="ClientOrder_Representation",
+				joinColumns={@JoinColumn(name="co_id")},
+				inverseJoinColumns={@JoinColumn(name="r_id")})
 	private List<Representation> representations;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinTable(name="ClientOrder_Client",
+				joinColumns={@JoinColumn(name="co_id")},
+				inverseJoinColumns={@JoinColumn(name="c_id")})
 	private Client client;
 	
 	
-	public Order(DateTime _date, Client _client) {
+	public ClientOrder(DateTime _date, Client _client) {
 		this(_date, new ArrayList<Representation>(), _client);
 	}
-	public Order(DateTime _date, List<Representation> _lstRepresentations, Client _client) {
+	public ClientOrder(DateTime _date, List<Representation> _lstRepresentations, Client _client) {
 		date = _date;
 		representations = _lstRepresentations;
 		client = _client;

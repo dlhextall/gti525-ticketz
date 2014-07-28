@@ -2,7 +2,9 @@ package ca.etsmtl.ticketz.dao;
 
 import java.util.ArrayList;
 
-public class ShowDaoImpl implements ShowDao{
+import ca.etsmtl.ticketz.model.Show;
+
+public class ShowDaoImpl implements IShowDao {
 
 	@Override
 	public ArrayList getAllShows() {
@@ -11,7 +13,7 @@ public class ShowDaoImpl implements ShowDao{
 	}
 
 	@Override
-	public Object getShowAt(int id) {
+	public Show getShowAt(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
