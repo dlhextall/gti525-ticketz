@@ -1,23 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
+<c:redirect url="/home.html"/>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 	    <%@ include file="templates/baseHeaderComponents.jsp" %>        
-	    <title>Not found</title>      
-	    		<meta http-equiv="Refresh" content="7; url=${ contextPath }">  
+	    <title>Confirmation de votre achat</title>        
 	</head>
 	<body>
 	    <%@ include file="templates/elements/header.jsp" %>
 	    
 	    <div class="container">
-	    	<h2>You seem lost.</h2>
+	    	<h2>Votre achat a été effectué avec succès .</h2>
 	    	<p class="lead">
 	    		Go back to the <a href="${ contextPath }">homepage</a>?
-	    		
-	    
 	    	</p>
 	    </div>
 	    
