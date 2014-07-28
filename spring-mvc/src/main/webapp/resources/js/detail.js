@@ -11,11 +11,14 @@ $( "#nbTickets" ).change(function() {
 	
 $('#form_btn').click(function() {	
 	
-	var body = $("html, body");
-	body.animate({scrollTop:0}, '500', 'swing').promise().done(function(){
-		$('#panier').html('Panier (+'+$("#nbTickets").val()+')');		
-		ajaxForm();
-	});	
+			var body = $("html, body");
+			body.animate({scrollTop:0}, '500', 'swing').promise().done(function(){
+				$('#panier').html('Panier (+'+$("#nbTickets").val()+')');		
+				ajaxForm();
+			
+	
+		});
+	
 
 });
 
