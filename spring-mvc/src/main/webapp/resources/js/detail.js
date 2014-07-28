@@ -11,10 +11,18 @@ $( "#nbTickets" ).change(function() {
 	
 $('#form_btn').click(function() {	
 	
-	var body = $("html, body");
-	body.animate({scrollTop:0}, '500', 'swing').promise().done(function(){
-		$('#panier').html('Panier (+'+$("#nbTickets").val()+')');		
-		ajaxForm();
+
+		if($nbBillet > 6){
+			alert("Selon nos informations, vous avez atteint le nombre d'achat maximale d'achat de billets");
+		}else{
+		
+			var body = $("html, body");
+			body.animate({scrollTop:0}, '500', 'swing').promise().done(function(s){
+				$('#panier').html('Panier (+'+$("#nbTickets").val()+')');		
+				ajaxForm();
+			
+		});
+		}
 	});	
 
 });
