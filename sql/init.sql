@@ -1,5 +1,5 @@
 -- BEGIN Type creation
-CREATE TYPE ticketState AS ENUM ("AVAILABLE", "RESERVED");
+CREATE TYPE ticketstate AS ENUM ('AVAILABLE', 'RESERVED', 'SOLD');
 -- END Type creation
 
 -- BEGIN Object table creation
@@ -23,18 +23,18 @@ CREATE TABLE Show (
 
 CREATE TABLE Representation (
   id SERIAL,
-  price numeric(2) NOT NULL,
-  moment timestamp NOT NULL
+  price numeric NOT NULL,
+  moment timestamp with time zone NOT NULL
 );
 
 CREATE TABLE Ticket (
   id SERIAL,
-  state ticketState NOT NULL default "AVAILABLE"
+  state ticketstate NOT NULL default 'AVAILABLE'
 );
 
-CREATE TABLE Order (
+CREATE TABLE ClientOrder (
   id SERIAL,
-  moment timestamp NOT NULL
+  moment timestamp with time zone NOT NULL
 );
 
 CREATE TABLE Client (
@@ -73,13 +73,13 @@ CREATE TABLE Representation_Ticket (
   t_id int NOT NULL
 );
 
-CREATE TABLE Order_Representation (
-  o_id int NOT NULL,
+CREATE TABLE ClientOrder_Representation (
+  co_id int NOT NULL,
   r_id int NOT NULL
 );
 
-CREATE TABLE Order_Client (
-  o_id int NOT NULL,
+CREATE TABLE ClientOrder_Client (
+  co_id int NOT NULL,
   c_id int NOT NULL
 );
 
