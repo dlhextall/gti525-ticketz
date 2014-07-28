@@ -1,6 +1,5 @@
 package ca.etsmtl.ticketz.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,7 +20,7 @@ import org.joda.time.DateTime;
 
 @Entity
 @Table(name="Show")
-public class Show implements Serializable {
+public class Show {
 	
 	@Id
 	@Column(name="id")

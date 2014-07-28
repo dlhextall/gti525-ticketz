@@ -1,30 +1,20 @@
 package ca.etsmtl.ticketz.controller;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
-import org.apache.mina.filter.reqres.Request;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.context.request.WebRequest;
 
 import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
-import ca.etsmtl.ticketz.model.Show;
-import ca.etsmtl.ticketz.service.IService;
 import ca.etsmtl.ticketz.service.PanierService;
 
 @Controller
