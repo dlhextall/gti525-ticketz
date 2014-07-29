@@ -91,7 +91,7 @@ public class PanierServiceImpl implements IPanierService{
 	@Override
 	public void add(LignePanier billetPanier) {
 		lstShows = showDao.getAllShows();
-		List<Ticket>lstBillet = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBillets();
+		List<Ticket>lstBillet = lstShows.get(billetPanier.getIdSpectacle()-1).getRepresentations().get(billetPanier.getIdRepresentation()).getBillets();
 		//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);		
 		//represBilletReserve = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBilletReserve();
 		cptAdded=0;
