@@ -118,21 +118,24 @@ public class CheckoutController {
 		paiementInfo.setStore_id(1);
 		
 		ReponseSystemePaiementTO reponsePreauth = paiementDao.effectuerPreauthorisation(paiementInfo);
-		
-		try {
+		if (reponsePreauth.getStatus().equals("Accepted")) {
+			logger.info("Transaction #" + reponsePreauth.getTransactionId() + " accepted");
 			RequeteAuthorisationTO requeteAuthorisationTO = new RequeteAuthorisationTO();
 			requeteAuthorisationTO.setApi_key(API_KEY);
 			requeteAuthorisationTO.setStore_id(paiementInfo.getStore_id());
 			requeteAuthorisationTO.setTransaction_id(reponsePreauth.getTransactionId());
 			
 			ReponseSystemePaiementTO reponseApprouver = paiementDao.approuverTransaction(requeteAuthorisationTO);
-			
-			checkoutService.processClientOrder(_checkoutForm);
-			logger.info("-----------------CONFIRMATION ACHAT-----------------");
-			logger.info(reponseApprouver.getStatus());
-			logger.info("----------------/CONFIRMATION ACHAT-----------------");
-		} catch (Exception e) {
-			logger.error("Transaction failed : " + e.getMessage());
+			if (reponseApprouver.getStatus().equals("Completed")) {
+				checkoutService.processClientOrder(_checkoutForm);
+				logger.info("-----------------CONFIRMATION ACHAT-----------------");
+				logger.info(reponseApprouver.getStatus() + " : " + reponseApprouver.getMessage());
+				logger.info("----------------/CONFIRMATION ACHAT-----------------");
+			} else {
+				logger.error("Transaction failed (" + reponseApprouver.getStatus() + ") : " + reponseApprouver.getMessage());
+			}			
+		} else {
+			logger.error("Preauthorization failed (" + reponsePreauth.getStatus() + ") : " + reponsePreauth.getMessage());
 		}
 		
 		return model;
