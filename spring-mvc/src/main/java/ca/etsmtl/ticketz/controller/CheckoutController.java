@@ -124,13 +124,13 @@ public class CheckoutController {
 			requeteAuthorisationTO.setApi_key(API_KEY);
 			requeteAuthorisationTO.setStore_id(paiementInfo.getStore_id());
 			requeteAuthorisationTO.setTransaction_id(reponsePreauth.getTransactionId());
-			
 			ReponseSystemePaiementTO reponseApprouver = paiementDao.approuverTransaction(requeteAuthorisationTO);
 			if (reponseApprouver.getStatus().equals("Completed")) {
 				checkoutService.processClientOrder(_checkoutForm);
 				logger.info("-----------------CONFIRMATION ACHAT-----------------");
 				logger.info(reponseApprouver.getStatus() + " : " + reponseApprouver.getMessage());
 				logger.info("----------------/CONFIRMATION ACHAT-----------------");
+				model = new ModelAndView("redirect:/Corfirm");
 			} else {
 				logger.error("Transaction failed (" + reponseApprouver.getStatus() + ") : " + reponseApprouver.getMessage());
 			}			
