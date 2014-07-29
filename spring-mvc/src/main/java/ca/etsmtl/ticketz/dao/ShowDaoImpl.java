@@ -28,6 +28,8 @@ public class ShowDaoImpl implements IShowDao {
 			session = sessionFactory.getCurrentSession();
 		} catch (HibernateException e) {
 			session = sessionFactory.openSession();
+		}catch(Exception e){
+			session = sessionFactory.openSession();
 		}
 		List<Show> shows = (List<Show>) session.createQuery("from Show").list();
 		return shows;

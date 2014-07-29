@@ -42,6 +42,7 @@
     <beans:bean class="ca.etsmtl.ticketz.dao.CheckoutDaoImpl"></beans:bean>
     <beans:bean class="ca.etsmtl.ticketz.service.CheckoutServiceImpl"></beans:bean>
     <beans:bean class="ca.etsmtl.ticketz.service.PaiementImpl"></beans:bean>
+    <beans:bean class="ca.etsmtl.ticketz.service.PanierServiceImpl"></beans:bean>
     
     
     <beans:bean id="jspViewResolver"
