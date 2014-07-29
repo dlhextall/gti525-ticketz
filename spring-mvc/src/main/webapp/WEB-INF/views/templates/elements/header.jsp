@@ -21,7 +21,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/ticketz/spectacle">Spectacles</a></li>
-                    <li id='popOver' data-html="true" data-content="<c:choose><c:when test="${ sessionScope.billets.size() == 0 }">Votre panier est vide</c:when><c:otherwise> <c:forEach items="${ sessionScope.billets }" var="billets" varStatus="loop">${billets.nbBillets} : ${ billets.nomSpectacle} </br> </c:forEach></c:otherwise></c:choose>" rel="popover" data-placement="top" data-original-title="Contenue de votre Panier"><a href="/ticketz/panier" id="panier">Panier (${ sessionScope.billets.size() })</a></li>
+                    <li id='popOver' data-html="true" data-content="<c:choose><c:when test="${ sessionScope.billets.size() == 0 }">Votre panier est vide</c:when><c:otherwise> <c:forEach items="${ sessionScope.billets }" var="billets" varStatus="loop">${billets.nbBillets} : ${ billets.nomSpectacle} </br> </c:forEach></c:otherwise></c:choose>" rel="popover" data-placement="top" data-original-title="Contenu de votre Panier"><a href="/ticketz/panier" id="panier">Panier (${ sessionScope.billets.size() })</a></li>
                 </ul>
                 <form action="/ticketz/recherche" method="get" class="nav navbar-form navbar-right">
                     <div id="the-basics" class="form-group">
