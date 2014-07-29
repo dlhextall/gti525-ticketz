@@ -28,7 +28,7 @@ public class SessionManager implements HttpSessionListener {
 		service.setPanier(new Panier());
 		sessionEvent.getSession().setAttribute("panier",service.getPanier());
 		sessionEvent.getSession().setAttribute("billets", service.getAllBilletPanier());
-		sessionEvent.getSession().setMaxInactiveInterval(60);
+		sessionEvent.getSession().setMaxInactiveInterval(120);
 		System.out.println("session created");
 		
 	}

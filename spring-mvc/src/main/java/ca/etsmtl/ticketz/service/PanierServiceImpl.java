@@ -2,6 +2,7 @@ package ca.etsmtl.ticketz.service;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +22,14 @@ import ca.etsmtl.ticketz.model.Ticket.State;
 @Service("service")
 public class PanierServiceImpl implements IPanierService{
 	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	private static PanierServiceImpl instance = null;
 	private Panier panier =new Panier();
-	@Autowired
-	IShowDao showDao; 
+	//@Autowired
+	//IShowDao showDao; 
+	ShowDaoStub showStub = new ShowDaoStub();
 	private List<Show> lstShows;
 	private int cptAdded = 0;
 	private int cptRemoved = 0;
@@ -35,7 +40,7 @@ public class PanierServiceImpl implements IPanierService{
 	
 	protected PanierServiceImpl(){
 		//panier = new Panier();
-		//lstShows = showStub.getAllShows();
+		lstShows = showStub.getAllShows();
 	}
 	
 	public static PanierServiceImpl getInstance(){
@@ -90,8 +95,8 @@ public class PanierServiceImpl implements IPanierService{
 	
 	@Override
 	public void add(LignePanier billetPanier) {
-		lstShows = showDao.getAllShows();
-		List<Ticket>lstBillet = lstShows.get(billetPanier.getIdSpectacle()-1).getRepresentations().get(billetPanier.getIdRepresentation()).getBillets();
+		//lstShows = showDao.getAllShows();
+		List<Ticket>lstBillet = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBillets();
 		//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);		
 		//represBilletReserve = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBilletReserve();
 		cptAdded=0;
@@ -113,6 +118,7 @@ public class PanierServiceImpl implements IPanierService{
 					if(nbItemsPanier<=cptReserve){
 						nbItemsPanier+=1;
 						lstBillet.get(i).setState(State.RESERVED);
+						//sessionFactory.getCurrentSession().update(lstBillet);
 						cptAdded++;
 						cptReserve++;
 						//nbItemsPanier +=cptAdded;
@@ -149,7 +155,7 @@ public class PanierServiceImpl implements IPanierService{
 	public void delete(int idSpectacle,int idRepresentation, int indexPanier){
 		int cpt =0;
 		cptRemoved=0;
-		lstShows = showDao.getAllShows();
+		//lstShows = showDao.getAllShows();
 		List<Ticket>lstBillet = lstShows.get(idSpectacle).getRepresentations().get(idRepresentation).getBillets();
 		
 		
