@@ -75,6 +75,7 @@
 	                            <input type="hidden" id='idSpectacle' name="idSpectacle" value="${ spectacle.id }">
 	                            <input type="hidden" id='unityPrice' name="unityPrice" value="${ spectacle.getRepresentationAt(0).price }">
 	                            <input type="hidden" id='nomSpectacle' name="nomSpectacle" value="${ spectacle.name }">
+	                            <input type="hidden" id='nomBilletPanier' name="nomBilletPanier" value="${ nbBilletPanier }">
 	                        </div>
 	                    </div>
 	                    <div class="clearfix"></div>

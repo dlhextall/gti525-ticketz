@@ -15,14 +15,12 @@ $('#form_btn').click(function() {
 			body.animate({scrollTop:0}, '500', 'swing').promise().done(function(){
 				$('#panier').html('Panier (+'+$("#nbTickets").val()+')');		
 				ajaxForm();
-			
-	
-		});
-	
+				
+					alert("allo" + $("#nbItemsPanier").val());
+
+			});
 
 });
-
-
 
 
 function ajaxForm(){
