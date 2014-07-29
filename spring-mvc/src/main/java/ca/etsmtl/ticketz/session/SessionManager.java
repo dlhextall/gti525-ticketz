@@ -13,11 +13,11 @@ import ca.etsmtl.ticketz.model.Ticket.State;
 import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
-import ca.etsmtl.ticketz.service.PanierService;
+import ca.etsmtl.ticketz.service.PanierServiceImpl;
 
 public class SessionManager implements HttpSessionListener {
 
-	private PanierService service = PanierService.getInstance();
+	private PanierServiceImpl service = PanierServiceImpl.getInstance();
 	private List<Show> spectacle = ShowBank.getInstance().getShows();
 
 	@Override

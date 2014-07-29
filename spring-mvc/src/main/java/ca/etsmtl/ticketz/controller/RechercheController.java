@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import ca.etsmtl.ticketz.dao.TicketzProvider;
+import ca.etsmtl.ticketz.service.TicketzProvider;
 
 @Controller
 public class RechercheController extends AbstractController {

@@ -1,10 +1,11 @@
-package ca.etsmtl.ticketz.dao;
+package ca.etsmtl.ticketz.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import ca.etsmtl.ticketz.dao.IShowDao;
 import ca.etsmtl.ticketz.exceptions.ShowNotFoundException;
 import ca.etsmtl.ticketz.model.Show;
 

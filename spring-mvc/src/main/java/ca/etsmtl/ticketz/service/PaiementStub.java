@@ -5,7 +5,7 @@ import gti525.paiement.InformationsPaiementTO;
 import gti525.paiement.ReponseSystemePaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 
-public class IPaiementStub implements IPaiementDAO {
+public class PaiementStub implements IPaiementDAO {
 
 	@Override
 	public ReponseSystemePaiementTO approuverTransaction(

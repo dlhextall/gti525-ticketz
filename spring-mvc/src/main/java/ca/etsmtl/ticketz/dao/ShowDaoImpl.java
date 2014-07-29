@@ -29,7 +29,8 @@ public class ShowDaoImpl implements IShowDao {
 		} catch (HibernateException e) {
 			session = sessionFactory.openSession();
 		}
-		return (List<Show>) session.createQuery("from Show").list();
+		List<Show> shows = (List<Show>) session.createQuery("from Show").list();
+		return shows;
 	}
 
 	@Override
@@ -40,7 +41,8 @@ public class ShowDaoImpl implements IShowDao {
 		} catch (HibernateException e) {
 			session = sessionFactory.openSession();
 		}
-		return (Show) session.get(Show.class, id);
+		Show show = (Show) session.get(Show.class, id);
+		return show;
 	}
 
 	@Override
@@ -51,7 +53,8 @@ public class ShowDaoImpl implements IShowDao {
 		} catch (HibernateException e) {
 			session = sessionFactory.openSession();
 		}
-		return (List<Show>) session.createQuery("from Show where featured=true").list();
+		List<Show> shows = (List<Show>) session.createQuery("from Show where featured=true").list();
+		return shows;
 	}
 
 	@Override

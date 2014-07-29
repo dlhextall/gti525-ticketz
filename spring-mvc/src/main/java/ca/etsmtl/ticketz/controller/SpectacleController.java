@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ca.etsmtl.ticketz.dao.TicketzProvider;
 import ca.etsmtl.ticketz.model.Show;
+import ca.etsmtl.ticketz.service.TicketzProvider;
 
 @Controller
 public class SpectacleController {

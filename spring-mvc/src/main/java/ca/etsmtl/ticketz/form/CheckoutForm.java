@@ -16,6 +16,8 @@ public class CheckoutForm {
 	private String city;
 	@Pattern(regexp = "\\w{2}")
 	private String province;
+	@NotNull
+	private String country;
 	@Pattern(regexp = "\\w\\d\\w\\d\\w\\d")
 	private String postalCode;
 	@Pattern(regexp = "\\d{10,11}")
@@ -69,6 +71,12 @@ public class CheckoutForm {
 	}
 	public void setProvince(String province) {
 		this.province = province;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String _country) {
+		country = _country;
 	}
 	public String getPostalCode() {
 		return postalCode;

@@ -26,8 +26,12 @@ import javax.xml.parsers.ParserConfigurationException;
 
 
 
+
+
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,8 +51,9 @@ import org.xml.sax.InputSource;
 
 import ca.etsmtl.ticketz.form.CheckoutForm;
 import ca.etsmtl.ticketz.model.Panier;
-import ca.etsmtl.ticketz.service.IPaiementStub;
-import ca.etsmtl.ticketz.service.PanierService;
+import ca.etsmtl.ticketz.service.ICheckoutService;
+import ca.etsmtl.ticketz.service.PaiementStub;
+import ca.etsmtl.ticketz.service.PanierServiceImpl;
 
 
 
@@ -57,9 +62,15 @@ import ca.etsmtl.ticketz.service.PanierService;
  */
 @Controller
 public class CheckoutController {
-	private static final Logger logger = Logger.getLogger(CheckoutController.class);
 	
-	PanierService pService = PanierService.getInstance();
+	private static final Logger logger = Logger.getLogger(CheckoutController.class);
+	private static final String API_KEY = "ea657f99f7511a9bf170";
+	
+	PanierServiceImpl pService = PanierServiceImpl.getInstance();
+	@Autowired
+	ICheckoutService checkoutService;
+	@Autowired
+	IPaiementDAO paiementDao;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -75,15 +86,18 @@ public class CheckoutController {
 		return model;
 	}
 	
-	//@RequestMapping(value = "/checkout", method = RequestMethod.POST)
-	public ModelAndView checkoutPOST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm, BindingResult _res, HttpServletRequest _req) {
+	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
+	public ModelAndView checkoutPOSTREST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm, BindingResult _res, HttpServletRequest _req) {
 		ModelAndView model;
 		
 //		Errors in checkout form
 		if (_res.hasErrors()) {			 
 			model = new ModelAndView("redirect:/checkout");
 			model.addObject("errors", _res.getAllErrors());
-//			_req.setAttribute("errors", _res.getAllErrors());
+			logger.error("CheckoutForm has errors");
+			for (ObjectError err : _res.getAllErrors()) {
+				logger.error("CheckoutForm error : " + err);
+			}
 			return model;
 		}
 		
@@ -91,131 +105,36 @@ public class CheckoutController {
 		Panier panier = (Panier) session.getAttribute("panier");
 		model = new ModelAndView("redirect:/");
 		
-		IPaiementStub paiement = new IPaiementStub();
-		
 		InformationsPaiementTO paiementInfo = new InformationsPaiementTO();
 		paiementInfo.setAmount(panier.getPrixTotal());
-//		paiementInfo.setApi_key(api_key);
+		paiementInfo.setApi_key(API_KEY);
 		paiementInfo.setCard_number(Long.parseLong(_checkoutForm.getCcNumber()));
 		paiementInfo.setLast_name(_checkoutForm.getCcLastName());
 		paiementInfo.setFirst_name(_checkoutForm.getCcFirstName());
 		paiementInfo.setMonth(Integer.parseInt(_checkoutForm.getCcMonth()));
 		paiementInfo.setYear(Integer.parseInt(_checkoutForm.getCcYear()));
 		paiementInfo.setSecurity_code(Integer.parseInt(_checkoutForm.getCcCVC()));
-//		paiementInfo.setOrder_id(order_id);
-//		paiementInfo.setStore_id(store_id);
+		paiementInfo.setOrder_id(1);
+		paiementInfo.setStore_id(1);
 		
-		ReponseSystemePaiementTO reponsePreauthorisation = paiement.effectuerPreauthorisation(paiementInfo);
-		if (reponsePreauthorisation.getCode() / 100 == 2) {
-			RequeteAuthorisationTO requete = new RequeteAuthorisationTO();
-			requete.setApi_key(paiementInfo.getApi_key());
-			requete.setStore_id(paiementInfo.getStore_id());
-//			requete.setTransaction_id();
-			ReponseSystemePaiementTO reponseApprouver = paiement.approuverTransaction(requete);
-//			Succès
-			if (reponseApprouver.getCode() / 100 == 2) {
-				
-				logger.info("-----------------CONFIRMATION ACHAT-----------------");
-				StringBuffer log = new StringBuffer();
-				log.append(_checkoutForm.toString());
-				logger.info(log.toString());
-				logger.info("----------------------------------------------------");
-				pService.deleteAll();
-				session.invalidate();
-			} else {
-				model.setViewName("redirect:/checkout");
-			}
-			
-		} else {
-			model.setViewName("redirect:/checkout");
-		}
-		
-		
-		return model;
-	}
-	
-	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
-	public ModelAndView checkoutPOSTREST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm, BindingResult _res, HttpServletRequest _req){
-		RestTemplate restTemplate = new RestTemplate();
-		ModelAndView model;
-		String transactionId;
-//		Errors in checkout form
-		if (_res.hasErrors()) {			 
-			model = new ModelAndView("redirect:/checkout");
-			model.addObject("errors", _res.getAllErrors());
-//			_req.setAttribute("errors", _res.getAllErrors());
-			return model;
-		}
-		
-		HttpSession session = _req.getSession();
-		Panier panier = (Panier) session.getAttribute("panier");
-		model = new ModelAndView("redirect:/");
-		Map<String, String> vars = new HashMap<String, String>();
-		vars.put("api_key", "ea657f99f7511a9bf170");
-		vars.put("store_id", "1");
-		vars.put("order_id", "1");
-		vars.put("first_name", _checkoutForm.getCcFirstName());
-		vars.put("last_name", _checkoutForm.getCcLastName());
-		vars.put("card_number", _checkoutForm.getCcNumber());
-		vars.put("security_code", _checkoutForm.getCcCVC());
-		vars.put("year", _checkoutForm.getCcYear());
-		vars.put("month", _checkoutForm.getCcMonth());
-		vars.put("amount", panier.getPrixTotal().toString());
-		
-		String url = "http://gti525.herokuapp.com/transactions.xml?api_key={api_key}&store_id={store_id}&order_id={order_id}"+
-						"&first_name={first_name}&last_name={last_name}&card_number={card_number}&security_code={security_code}"+
-						"&year={year}&month={month}&amount={amount}";
-
-		String result = restTemplate.postForObject(url, null, String.class, vars);
-		System.out.println(result);
+		ReponseSystemePaiementTO reponsePreauth = paiementDao.effectuerPreauthorisation(paiementInfo);
 		
 		try {
-			transactionId= getTransactionId(result);
-			Map<String, String> varsAuth = new HashMap<String, String>();
-			varsAuth.put("api_key", "ea657f99f7511a9bf170");
-			varsAuth.put("store_id", "1");
-			System.out.println(transactionId);
-			String urlAuth = "http://gti525.herokuapp.com/transactions/"+Integer.parseInt(transactionId)+".xml?api_key={api_key}&store_id={store_id}";
-			String resultAuth = restTemplate.getForObject(urlAuth, String.class, varsAuth);
-			System.out.println(resultAuth);
-		} catch (Exception e) {
+			RequeteAuthorisationTO requeteAuthorisationTO = new RequeteAuthorisationTO();
+			requeteAuthorisationTO.setApi_key(API_KEY);
+			requeteAuthorisationTO.setStore_id(paiementInfo.getStore_id());
+			requeteAuthorisationTO.setTransaction_id(reponsePreauth.getTransactionId());
 			
-			System.out.println("Transaction Failed");
-			//e.printStackTrace();
+			ReponseSystemePaiementTO reponseApprouver = paiementDao.approuverTransaction(requeteAuthorisationTO);
+			
+			checkoutService.processClientOrder(_checkoutForm);
+			logger.info("-----------------CONFIRMATION ACHAT-----------------");
+			logger.info(reponseApprouver.getStatus());
+			logger.info("----------------/CONFIRMATION ACHAT-----------------");
+		} catch (Exception e) {
+			logger.error("Transaction failed : " + e.getMessage());
 		}
-		
-		
 		
 		return model;
 	}
-	
-	public String getTransactionId(String xml) throws Exception{
-		String id="";
-		DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-	    InputSource is = new InputSource();
-	    is.setCharacterStream(new StringReader(xml));
-	    
-	    Document doc = db.parse(is);
-	    NodeList nodes = doc.getElementsByTagName("order");
-	    for (int i = 0; i < nodes.getLength(); i++) {
-	    	Element element = (Element) nodes.item(i);
-	    	NodeList transactionId = element.getElementsByTagName("transaction-id");
-	        Element line = (Element) transactionId.item(0);
-	        id= getCharacterDataFromElement(line);
-	    }
-	    	if(!id.equals(null)){
-	    		return id;
-	    	}
-		
-		return "";
-	}
-	
-	 public static String getCharacterDataFromElement(Element e) {
-		    Node child = e.getFirstChild();
-		    if (child instanceof CharacterData) {
-		      CharacterData cd = (CharacterData) child;
-		      return cd.getData();
-		    }
-		    return "";
-		  }
 }

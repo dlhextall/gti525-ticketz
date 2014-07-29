@@ -16,8 +16,8 @@ import ca.etsmtl.ticketz.model.Ticket.State;
 
 
 @Service("service")
-public class PanierService implements IService{
-	private static PanierService instance = null;
+public class PanierServiceImpl implements IPanierService{
+	private static PanierServiceImpl instance = null;
 	private Panier panier =new Panier();
 	ShowDaoStub showStub = new ShowDaoStub();
 	private List<Show> lstShows;
@@ -28,14 +28,14 @@ public class PanierService implements IService{
 	private int nbItemsPanier;
 	private final int LIMITE_TICKET = 6;
 	
-	protected PanierService(){
+	protected PanierServiceImpl(){
 		//panier = new Panier();
 		lstShows = showStub.getAllShows();
 	}
 	
-	public static PanierService getInstance(){
+	public static PanierServiceImpl getInstance(){
 		if (instance == null) {
-			instance = new PanierService();
+			instance = new PanierServiceImpl();
 		}
 		return instance;
 	}

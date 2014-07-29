@@ -3,7 +3,6 @@
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ca.etsmtl.ticketz.model.Show"%>
-<%@page import="ca.etsmtl.ticketz.dao.TicketzProvider"%>
 <%
 		ArrayList<Show> spectacles = (ArrayList<Show>) request.getAttribute("spectacles");
 		JSONArray arr = new JSONArray() ;   

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ca.etsmtl.ticketz.dao.TicketzProvider;
 import ca.etsmtl.ticketz.model.Show;
+import ca.etsmtl.ticketz.service.TicketzProvider;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

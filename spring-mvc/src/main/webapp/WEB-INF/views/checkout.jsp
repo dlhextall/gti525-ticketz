@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="Province">Province</label>
+                                <label class="control-label" for="province">Province</label>
                                 <form:select path="province" class="form-control">
                                     <form:option value="AB" label="Alberta" />
                                     <form:option value="BC" label="British Columbia" />
@@ -78,14 +78,21 @@
                                 </form:select> 
                                 <form:errors path="province" />
                             </div>
+                            <div class="form-group">
+                                <label class="control-label" for="country">Country</label>
+                                <form:select path="country" class="form-control">
+                                    <form:option value="Canada" label="Canada" />
+                                </form:select> 
+                                <form:errors path="province" />
+                            </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="codePostal">Code-Postal</label>
+                                <label class="control-label" for="postalCode">Code-Postal</label>
                                 <form:input path="postalCode" type="text" class="form-control" id="postalCode" placeholder="A1A1A1" required="true" />
                                 <form:errors path="postalCode" />
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="noTel">No. Téléphone</label>
+                                <label class="control-label" for="telephone">No. Téléphone</label>
                                 <form:input path="telephone" type="tel" class="form-control" id="telephone" placeholder="5141234567" required="true" />
                                 <form:errors path="telephone" />
                             </div>
@@ -99,39 +106,39 @@
                             <h1 class="text-center"> ÉTAPE 2</h1>
                             <div class="row">
                                 <div class="form-group">
-                                    <label class="control-label" for="cc-lastName">Nom indiqué sur la carte</label>
-                                    <form:input path="ccLastName" type="text" class="form-control" placeholder="Nom" id="cc-lastName" required="true" />
+                                    <label class="control-label" for="ccLastName">Nom indiqué sur la carte</label>
+                                    <form:input path="ccLastName" type="text" class="form-control" placeholder="Nom" id="ccLastName" required="true" />
                                     <form:errors path="ccLastName" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="cc-firstName">Prénom indiqué sur la carte</label>
-                                    <form:input path="ccFirstName" type="text" class="form-control" placeholder="Prénom" id="cc-firstName" required="true" />
+                                    <label class="control-label" for="ccFirstName">Prénom indiqué sur la carte</label>
+                                    <form:input path="ccFirstName" type="text" class="form-control" placeholder="Prénom" id="ccFirstName" required="true" />
                                     <form:errors path="ccFirstName" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="cc-number">Numéro de carte</label>
-                                    <form:input path="ccNumber" type="number" class="form-control" placeholder="123456789101121" id="cc-number" required="true" />
+                                    <label class="control-label" for="ccNumber">Numéro de carte</label>
+                                    <form:input path="ccNumber" type="number" class="form-control" placeholder="123456789101121" id="ccNumber" required="true" />
                                     <form:errors path="ccNumber" />
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label" for="cc-month">Exp Month</label>
-                                            <form:input path="ccMonth" type="number" min="1" max="12" class="form-control" placeholder="1" id="cc-month" required="true" />
+                                            <label class="control-label" for="ccMonth">Exp Month</label>
+                                            <form:input path="ccMonth" type="number" min="1" max="12" class="form-control" placeholder="1" id="ccMonth" required="true" />
                                             <form:errors path="ccMonth" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label" for="cc-year">Exp Year</label>
-                                            <form:input path="ccYear" type="number" min="${ currentYear }" max="${ currentYear + 10 }" class="form-control" placeholder="${ currentYear }" id="cc-year" required="true" />
+                                            <label class="control-label" for="ccYear">Exp Year</label>
+                                            <form:input path="ccYear" type="number" min="${ currentYear }" max="${ currentYear + 10 }" class="form-control" placeholder="${ currentYear }" id="ccYear" required="true" />
                                             <form:errors path="ccYear" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label" for="cc-cvc">CVC</label>
-                                            <form:input path="ccCVC" type="number" min="0" max="999" class="form-control" placeholder="123" id="cc-cvc" required="true" />
+                                            <label class="control-label" for="ccCVC">CVC</label>
+                                            <form:input path="ccCVC" type="number" min="0" max="999" class="form-control" placeholder="123" id="ccCVC" required="true" />
                                             <form:errors path="ccCVC" />
                                         </div>
                                     </div>
