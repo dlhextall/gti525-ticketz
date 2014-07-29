@@ -13,11 +13,9 @@ $('#form_btn').click(function() {
 	
 			var body = $("html, body");
 			body.animate({scrollTop:0}, '500', 'swing').promise().done(function(){
-				$('#panier').html('Panier (+'+$("#nbTickets").val()+')');		
-				ajaxForm();
-				
-					alert("allo" + $("#nbItemsPanier").val());
-
+				$('#panier').html('+1');		
+				ajaxForm();				
+					//alert("allo" + $("#nbItemsPanier").val());
 			});
 
 });
@@ -32,10 +30,7 @@ function ajaxForm(){
 	
 	
 	$.get( "panier/add", { nbTickets: $nbTicket, unityPrice: $unityPrice , nomSpectacle: $nomSpectacle, idSpectacle: idSpectacle } )
-	  .done(function( data ) {
-		  
-		  
-		  
+	  .done(function( data ) {	  
 	    
 	  }); 	
 }
