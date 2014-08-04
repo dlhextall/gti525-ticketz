@@ -50,4 +50,20 @@ public class Artist implements Serializable {
 	public void setBiography(String _biography) {
 		biography = _biography;
 	}
+	
+	
+	public String toString() {
+		return id + " - " + name + " : " + biography;
+	}
+	
+	public boolean equals(Object _obj) {
+		if (_obj == this) {
+			return true;
+		}
+		if (!(_obj instanceof Artist)) {
+			return false;
+		}
+		Artist other = (Artist) _obj;
+		return id == other.getId() && name == other.getName() && biography == other.getBiography();
+	}
 }
