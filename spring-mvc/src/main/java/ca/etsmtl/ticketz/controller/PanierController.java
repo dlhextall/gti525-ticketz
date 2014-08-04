@@ -16,18 +16,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
-import ca.etsmtl.ticketz.service.PanierServiceImpl;
+import ca.etsmtl.ticketz.service.IPanierService;
 
 @Controller
 @SessionAttributes("panier")
 public class PanierController {
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@Autowired
-	private PanierServiceImpl service = PanierServiceImpl.getInstance();
-	private static final Logger log = Logger.getLogger(PanierController.class.getName());
 	
+	private static final Logger LOGGER = Logger.getLogger(PanierController.class.getName());
+	@Autowired
+	private IPanierService service;
 	
 	
 	@RequestMapping(value = "/panier", method = RequestMethod.GET)

@@ -19,17 +19,14 @@ import ca.etsmtl.ticketz.model.Show;
 import ca.etsmtl.ticketz.model.Ticket.State;
 
 
-@Service("service")
 public class PanierServiceImpl implements IPanierService{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	@Autowired
+	private IShowDao showDao;
 	
-	private static PanierServiceImpl instance = null;
-	private Panier panier =new Panier();
-	//@Autowired
-	//IShowDao showDao; 
-	ShowDaoStub showStub = new ShowDaoStub();
+	private Panier panier = new Panier();
 	private List<Show> lstShows;
 	private int cptAdded = 0;
 	private int cptRemoved = 0;
@@ -38,17 +35,8 @@ public class PanierServiceImpl implements IPanierService{
 	private int nbItemsPanier;
 	private final int LIMITE_TICKET = 6;
 	
-	protected PanierServiceImpl(){
-		//panier = new Panier();
-		lstShows = showStub.getAllShows();
-	}
+	public PanierServiceImpl() { }
 	
-	public static PanierServiceImpl getInstance(){
-		if (instance == null) {
-			instance = new PanierServiceImpl();
-		}
-		return instance;
-	}
 	
 	public Panier getPanier() {
 		return panier;
@@ -96,6 +84,9 @@ public class PanierServiceImpl implements IPanierService{
 	@Override
 	public void add(LignePanier billetPanier) {
 		//lstShows = showDao.getAllShows();
+		if (lstShows == null || lstShows.size() <= 0) {
+			lstShows = showDao.getAllShows();
+		}
 		List<Ticket>lstBillet = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBillets();
 		//lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).setBilletReserve(cptReserve);		
 		//represBilletReserve = lstShows.get(billetPanier.getIdSpectacle()).getRepresentations().get(billetPanier.getIdRepresentation()).getBilletReserve();
@@ -152,7 +143,10 @@ public class PanierServiceImpl implements IPanierService{
 	
 
 	@Override
-	public void delete(int idSpectacle,int idRepresentation, int indexPanier){
+	public void delete(int idSpectacle,int idRepresentation, int indexPanier) {
+		if (lstShows == null || lstShows.size() <= 0) {
+			lstShows = showDao.getAllShows();
+		}
 		int cpt =0;
 		cptRemoved=0;
 		//lstShows = showDao.getAllShows();
@@ -181,6 +175,9 @@ public class PanierServiceImpl implements IPanierService{
 	
 	@Override
 	public void deleteFinal(int idSpectacle,int idRepresentation, int indexPanier){
+		if (lstShows == null || lstShows.size() <= 0) {
+			lstShows = showDao.getAllShows();
+		}
 		List<Ticket>lstBillet = lstShows.get(idSpectacle).getRepresentations().get(idRepresentation).getBillets();
 		for(int i=0;i<lstBillet.size();i++){
 			if(lstBillet.get(i).getState().equals(State.RESERVED)){
@@ -191,6 +188,9 @@ public class PanierServiceImpl implements IPanierService{
 	}
 	
 	public void deleteAll() {
+		if (lstShows == null || lstShows.size() <= 0) {
+			lstShows = showDao.getAllShows();
+		}
 		for (Show show : lstShows) {
 			for (Representation representation : lstShows.get(show.getId()).getRepresentations()) {
 				for (Ticket billet : representation.getBillets()) {

@@ -29,6 +29,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 
 
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,7 @@ import org.xml.sax.InputSource;
 import ca.etsmtl.ticketz.form.CheckoutForm;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.service.ICheckoutService;
+import ca.etsmtl.ticketz.service.IPanierService;
 import ca.etsmtl.ticketz.service.PaiementStub;
 import ca.etsmtl.ticketz.service.PanierServiceImpl;
 
@@ -66,7 +68,8 @@ public class CheckoutController {
 	private static final Logger logger = Logger.getLogger(CheckoutController.class);
 	private static final String API_KEY = "ea657f99f7511a9bf170";
 	
-	PanierServiceImpl pService = PanierServiceImpl.getInstance();
+	@Autowired
+	IPanierService pService;
 	@Autowired
 	ICheckoutService checkoutService;
 	@Autowired
