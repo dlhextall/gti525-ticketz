@@ -60,7 +60,7 @@
 	                </div>
 	            </div>
 	            <div class="description"></div>
-	            <p class="text-right"><a href="detail?id=" class="btn btn-default show-id">Détails</a></p>
+	            <p class="text-right"><a href="detail/" class="btn btn-default show-id">Détails</a></p>
 	        </div>
         </c:if>
 
