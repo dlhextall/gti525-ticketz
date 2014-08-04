@@ -3,7 +3,9 @@ package ca.etsmtl.ticketz.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,16 +53,16 @@ public class Show {
 	@JoinTable(name="Show_Artist",
 				joinColumns={@JoinColumn(name="s_id")},
 				inverseJoinColumns={@JoinColumn(name="a_id")})
-	private List<Artist> artists;
+	private Set<Artist> artists;
 	@Column(name="featured")
 	private boolean featured;
 	
 	
 	public Show() {
 		representations = new ArrayList<Representation>();
-		artists = new ArrayList<Artist>();
+		artists = new HashSet<Artist>();
 	}
-	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, List<Artist> _artists) {
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, Set<Artist> _artists) {
 		id = _id;
 		name = _name;
 		description = _description;
@@ -73,11 +75,11 @@ public class Show {
 		artists = _artists;
 	}
 	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, Representation _representation, Artist _artist) {
-		this(_id, _name, _description, _venue, _address, _imageUrl, new ArrayList<Representation>(), new ArrayList<Artist>());
+		this(_id, _name, _description, _venue, _address, _imageUrl, new ArrayList<Representation>(), new HashSet<Artist>());
 		representations.add(_representation);
 		artists.add(_artist);
 	}
-	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, List<Artist> _artists, boolean _featured) {
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, Set<Artist> _artists, boolean _featured) {
 		this(_id, _name, _description, _venue, _address, _imageUrl, _representations, _artists);
 		featured = _featured;
 	}
@@ -144,13 +146,10 @@ public class Show {
 	public void setRepresentations(List<Representation> _representations) {
 		representations = _representations;
 	}
-	public List<Artist> getArtists() {
+	public Set<Artist> getArtists() {
 		return artists;
 	}
-	public Artist getArtistAt(int _index) {
-		return artists.get(_index);
-	}
-	public void setArtists(List<Artist> _artists) {
+	public void setArtists(Set<Artist> _artists) {
 		artists = _artists;
 	}
 	public void addArtist(Artist _artist) {
