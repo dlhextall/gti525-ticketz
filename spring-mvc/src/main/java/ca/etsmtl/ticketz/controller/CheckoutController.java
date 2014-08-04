@@ -130,7 +130,7 @@ public class CheckoutController {
 				logger.info("-----------------CONFIRMATION ACHAT-----------------");
 				logger.info(reponseApprouver.getStatus() + " : " + reponseApprouver.getMessage());
 				logger.info("----------------/CONFIRMATION ACHAT-----------------");
-				model = new ModelAndView("redirect:/Corfirm");
+				model = new ModelAndView("redirect:/Confirm");
 			} else {
 				logger.error("Transaction failed (" + reponseApprouver.getStatus() + ") : " + reponseApprouver.getMessage());
 			}			

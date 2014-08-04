@@ -24,7 +24,7 @@ $(document).ready(function() {
     $('#activate-step-2').click(function(e) {
 		$('ul.setup-panel li:eq(1)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-2"]').trigger('click');
-    })
+    });
     
     $("#frmCheckout input, #frmCheckout select").focusout(function(input) {
     	if ($(this)[0].checkValidity()) {
