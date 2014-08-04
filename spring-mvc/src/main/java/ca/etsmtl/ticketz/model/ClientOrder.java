@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,18 +30,21 @@ public class ClientOrder {
 	@Column(name="moment")
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime date;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="ClientOrder_Representation",
 				joinColumns={@JoinColumn(name="co_id")},
 				inverseJoinColumns={@JoinColumn(name="r_id")})
 	private List<Representation> representations;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="ClientOrder_Client",
 				joinColumns={@JoinColumn(name="co_id")},
 				inverseJoinColumns={@JoinColumn(name="c_id")})
 	private Client client;
 	
 	
+	public ClientOrder() {
+		this(DateTime.now(), new Client());
+	}
 	public ClientOrder(DateTime _date, Client _client) {
 		this(_date, new ArrayList<Representation>(), _client);
 	}

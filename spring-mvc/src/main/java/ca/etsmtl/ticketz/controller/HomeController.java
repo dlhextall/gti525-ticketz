@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
 
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
+import ca.etsmtl.ticketz.service.IShowService;
 import ca.etsmtl.ticketz.service.TicketzProvider;
 
 /**
@@ -32,7 +33,7 @@ import ca.etsmtl.ticketz.service.TicketzProvider;
 public class HomeController extends AbstractController {
 	
 	@Autowired
-	private TicketzProvider provider = null;
+	private IShowService provider;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	HttpSession session;

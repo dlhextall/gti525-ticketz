@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import ca.etsmtl.ticketz.service.IShowService;
 import ca.etsmtl.ticketz.service.TicketzProvider;
 
 @Controller
 public class RechercheController extends AbstractController {
 	
 	@Autowired
-	private TicketzProvider provider = null;
+	private IShowService provider;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

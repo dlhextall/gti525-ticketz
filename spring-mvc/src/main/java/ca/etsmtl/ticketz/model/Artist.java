@@ -23,6 +23,9 @@ public class Artist implements Serializable {
 	private String biography;
 	
 	
+	public Artist() {
+		this("", "");
+	}
 	public Artist(String _name) {
 		this(_name, "");
 	}

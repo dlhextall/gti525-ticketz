@@ -19,8 +19,8 @@ public class CheckoutServiceImpl implements ICheckoutService {
 		CreditCard creditCard = new CreditCard(_form.getCcNumber(), _form.getCcLastName(), _form.getCcFirstName());
 		Client client = new Client(_form.getLastName(), _form.getFirstName(), _form.getAddress(), _form.getCity(), _form.getProvince(),
 				_form.getCountry(), _form.getPostalCode(), _form.getTelephone(), creditCard);
-		checkoutDao.addClient(client);
 		ClientOrder clientOrder = new ClientOrder(DateTime.now(), client);
+		checkoutDao.addClient(client);
 		checkoutDao.addClientOrder(clientOrder);
 	}
 

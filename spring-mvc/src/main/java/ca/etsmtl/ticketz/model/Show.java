@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,12 +42,12 @@ public class Show {
 	private String imageThumbUrl;
 	@Column(name="imageDetailUrl")
 	private String imageDetailUrl;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="Show_Representation",
 				joinColumns={@JoinColumn(name="s_id")},
 				inverseJoinColumns={@JoinColumn(name="r_id")})
 	private List<Representation> representations;
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="Show_Artist",
 				joinColumns={@JoinColumn(name="s_id")},
 				inverseJoinColumns={@JoinColumn(name="a_id")})
@@ -138,8 +139,7 @@ public class Show {
 		return representations;
 	}
 	public Representation getRepresentationAt(int _index) {
-		 
-	return representations.get(_index);
+		 return representations.get(_index);
 	}
 	public void setRepresentations(List<Representation> _representations) {
 		representations = _representations;
@@ -157,7 +157,7 @@ public class Show {
 		artists.add(_artist);
 	}
 	public DateTime getDateStart() {
-		if (representations.size() == 0) {
+		if (representations == null || representations.size() == 0) {
 			return null;
 		}
 		Collections.sort(representations, new Comparator<Representation>() {
@@ -168,7 +168,7 @@ public class Show {
 		return representations.get(0).getDate();
 	}
 	public DateTime getDateEnd() {
-		if (representations.size() == 0) {
+		if (representations == null || representations.size() == 0) {
 			return null;
 		}
 		Collections.sort(representations, new Comparator<Representation>() {
