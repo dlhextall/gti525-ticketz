@@ -1,8 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.joda.org/joda/time/tags" prefix="joda" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:setLocale value="en_CA" />
+<c:set var="artists" value="${ spectacle.artists }" />
 
 <!DOCTYPE html >
 <html>
@@ -37,7 +39,19 @@
             <div class="container">
                 <h2>Détails</h2>
                 <div class="col-md-12">
+                	<h3>Description</h3>
                     <p><c:out value="${ spectacle.description }" /></p>
+                </div>
+                <div class="col-md-12">
+                	<h3>Artistes</h3>
+                    <div class="list-group">
+                    	<c:forEach items="${ artists }" var="artist">
+                    	<a href="#" class="list-group-item">
+                    		<h4 class="list-group-item-heading"><c:out value="${ artist.name }" /></h4>
+                    		<p class="list-group-item-text"><c:out value="${ artist.biography }" /></p>
+                    	</a>
+                    	</c:forEach>
+                    </div>
                 </div>
             </div>
         </div>

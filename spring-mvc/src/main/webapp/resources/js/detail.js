@@ -27,9 +27,10 @@ function ajaxForm(){
 	$unityPrice = parseInt($("#unityPrice").val(),10);
 	var idSpectacle = $("#idSpectacle").val();
 	
+		
 	
 	
-	$.get( "panier/add", { nbTickets: $nbTicket, unityPrice: $unityPrice , nomSpectacle: $nomSpectacle, idSpectacle: idSpectacle } )
+	$.get( "../panier/add", { nbTickets: $nbTicket, unityPrice: $unityPrice , nomSpectacle: $nomSpectacle, idSpectacle: idSpectacle } )
 	  .done(function( data ) {	  
 	    
 	  }); 	

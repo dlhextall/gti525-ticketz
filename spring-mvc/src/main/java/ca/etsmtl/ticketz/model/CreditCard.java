@@ -23,6 +23,7 @@ public class CreditCard {
 	private String firstName;
 	
 	
+	public CreditCard() { }
 	public CreditCard(String _ccNumber, String _lastName, String _firstName) {
 		last4 = _ccNumber.substring(_ccNumber.length() - 4);
 		lastName = _lastName;

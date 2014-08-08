@@ -79,7 +79,7 @@
                                 <form:errors path="province" />
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="country">Country</label>
+                                <label class="control-label" for="country">Pays</label>
                                 <form:select path="country" class="form-control">
                                     <form:option value="Canada" label="Canada" />
                                 </form:select> 
@@ -123,14 +123,14 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label" for="ccMonth">Exp Month</label>
+                                            <label class="control-label" for="ccMonth">Mois d'expiration</label>
                                             <form:input path="ccMonth" type="number" min="1" max="12" class="form-control" placeholder="1" id="ccMonth" required="true" />
                                             <form:errors path="ccMonth" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label" for="ccYear">Exp Year</label>
+                                            <label class="control-label" for="ccYear">Année d'expiration</label>
                                             <form:input path="ccYear" type="number" min="${ currentYear }" max="${ currentYear + 10 }" class="form-control" placeholder="${ currentYear }" id="ccYear" required="true" />
                                             <form:errors path="ccYear" />
                                         </div>

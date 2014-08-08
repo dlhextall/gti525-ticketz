@@ -6,17 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
 import ca.etsmtl.ticketz.dao.IShowDao;
-import ca.etsmtl.ticketz.exceptions.ShowNotFoundException;
+import ca.etsmtl.ticketz.exception.ShowNotFoundException;
 import ca.etsmtl.ticketz.model.Show;
 
-@Scope(value="singleton")
-public class TicketzProvider {
+public class TicketzProvider implements IShowService {
 	
 	@Autowired
 	private IShowDao showDao;
-	
-	
-	public TicketzProvider() { }
 	
 	
 	public List<Show> getAllShows() {

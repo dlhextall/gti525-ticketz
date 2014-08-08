@@ -7,17 +7,21 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import ca.etsmtl.ticketz.data.ShowBank;
 import ca.etsmtl.ticketz.model.Ticket;
 import ca.etsmtl.ticketz.model.Ticket.State;
 import ca.etsmtl.ticketz.model.LignePanier;
 import ca.etsmtl.ticketz.model.Panier;
 import ca.etsmtl.ticketz.model.Show;
+import ca.etsmtl.ticketz.service.IPanierService;
 import ca.etsmtl.ticketz.service.PanierServiceImpl;
 
 public class SessionManager implements HttpSessionListener {
 
-	private PanierServiceImpl service = PanierServiceImpl.getInstance();
+	@Autowired
+	private IPanierService service;
 	private List<Show> spectacle = ShowBank.getInstance().getShows();
 
 	@Override

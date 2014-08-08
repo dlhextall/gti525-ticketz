@@ -3,11 +3,14 @@ package ca.etsmtl.ticketz.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,25 +44,25 @@ public class Show {
 	private String imageThumbUrl;
 	@Column(name="imageDetailUrl")
 	private String imageDetailUrl;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="Show_Representation",
 				joinColumns={@JoinColumn(name="s_id")},
 				inverseJoinColumns={@JoinColumn(name="r_id")})
 	private List<Representation> representations;
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="Show_Artist",
 				joinColumns={@JoinColumn(name="s_id")},
 				inverseJoinColumns={@JoinColumn(name="a_id")})
-	private List<Artist> artists;
+	private Set<Artist> artists;
 	@Column(name="featured")
 	private boolean featured;
 	
 	
 	public Show() {
 		representations = new ArrayList<Representation>();
-		artists = new ArrayList<Artist>();
+		artists = new HashSet<Artist>();
 	}
-	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, List<Artist> _artists) {
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, Set<Artist> _artists) {
 		id = _id;
 		name = _name;
 		description = _description;
@@ -72,11 +75,11 @@ public class Show {
 		artists = _artists;
 	}
 	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, Representation _representation, Artist _artist) {
-		this(_id, _name, _description, _venue, _address, _imageUrl, new ArrayList<Representation>(), new ArrayList<Artist>());
+		this(_id, _name, _description, _venue, _address, _imageUrl, new ArrayList<Representation>(), new HashSet<Artist>());
 		representations.add(_representation);
 		artists.add(_artist);
 	}
-	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, List<Artist> _artists, boolean _featured) {
+	public Show(int _id, String _name, String _description, String _venue, String _address, String _imageUrl, List<Representation> _representations, Set<Artist> _artists, boolean _featured) {
 		this(_id, _name, _description, _venue, _address, _imageUrl, _representations, _artists);
 		featured = _featured;
 	}
@@ -138,26 +141,22 @@ public class Show {
 		return representations;
 	}
 	public Representation getRepresentationAt(int _index) {
-		 
-	return representations.get(_index);
+		 return representations.get(_index);
 	}
 	public void setRepresentations(List<Representation> _representations) {
 		representations = _representations;
 	}
-	public List<Artist> getArtists() {
+	public Set<Artist> getArtists() {
 		return artists;
 	}
-	public Artist getArtistAt(int _index) {
-		return artists.get(_index);
-	}
-	public void setArtists(List<Artist> _artists) {
+	public void setArtists(Set<Artist> _artists) {
 		artists = _artists;
 	}
 	public void addArtist(Artist _artist) {
 		artists.add(_artist);
 	}
 	public DateTime getDateStart() {
-		if (representations.size() == 0) {
+		if (representations == null || representations.size() == 0) {
 			return null;
 		}
 		Collections.sort(representations, new Comparator<Representation>() {
@@ -168,7 +167,7 @@ public class Show {
 		return representations.get(0).getDate();
 	}
 	public DateTime getDateEnd() {
-		if (representations.size() == 0) {
+		if (representations == null || representations.size() == 0) {
 			return null;
 		}
 		Collections.sort(representations, new Comparator<Representation>() {

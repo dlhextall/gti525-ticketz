@@ -1,0 +1,10 @@
+.panel {
+	margin-top: 15px;
+}
+.panel-heading {
+	font-size: 2em;
+}
+.panel-heading a:link, .panel-heading a:visited, .panel-heading a:hover, .panel-heading a:active {
+	color: inherit;
+	text-decoration: none;
+}

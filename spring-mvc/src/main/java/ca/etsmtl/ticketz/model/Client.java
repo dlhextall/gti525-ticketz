@@ -3,6 +3,7 @@ package ca.etsmtl.ticketz.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,13 +37,14 @@ public class Client {
 	private String country;
 	@Column(name="telephone")
 	private String telephone;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="Client_CreditCard",
 				joinColumns={@JoinColumn(name="c_id")},
 				inverseJoinColumns={@JoinColumn(name="cc_id")})
 	private CreditCard creditCard;
 	
 	
+	public Client() { }
 	public Client(String _lastName, String _firstName, String _address, String _city, String _province, String _country, String _postalCode, String _telephone, CreditCard _crediCard) {
 		lastName = _lastName;
 		firstName = _firstName;

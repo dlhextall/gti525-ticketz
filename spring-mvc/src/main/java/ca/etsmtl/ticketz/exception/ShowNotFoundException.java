@@ -1,4 +1,4 @@
-package ca.etsmtl.ticketz.exceptions;
+package ca.etsmtl.ticketz.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

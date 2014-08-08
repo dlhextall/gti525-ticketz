@@ -1,0 +1,8 @@
+DO
+$do$
+BEGIN
+FOR i in 1..40 LOOP
+  INSERT INTO ticket (state) VALUES (DEFAULT);
+END LOOP;
+END
+$do$
