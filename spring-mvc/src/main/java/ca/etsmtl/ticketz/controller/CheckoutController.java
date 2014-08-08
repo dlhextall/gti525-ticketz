@@ -43,6 +43,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -90,7 +91,7 @@ public class CheckoutController {
 	}
 	
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
-	public ModelAndView checkoutPOSTREST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm, BindingResult _res, HttpServletRequest _req) {
+	public ModelAndView checkoutPOSTREST(@Validated @ModelAttribute("checkoutForm") CheckoutForm _checkoutForm,RedirectAttributes redirectAttributes, BindingResult _res, HttpServletRequest _req) {
 		ModelAndView model;
 		
 //		Errors in checkout form
@@ -133,7 +134,17 @@ public class CheckoutController {
 				logger.info("-----------------CONFIRMATION ACHAT-----------------");
 				logger.info(reponseApprouver.getStatus() + " : " + reponseApprouver.getMessage());
 				logger.info("----------------/CONFIRMATION ACHAT-----------------");
-				//model = new ModelAndView("redirect:/Confirm");
+				
+				redirectAttributes.addFlashAttribute("nom", _checkoutForm.getCcLastName());
+				redirectAttributes.addFlashAttribute("prenom", _checkoutForm.getCcFirstName());
+				redirectAttributes.addFlashAttribute("adresse", _checkoutForm.getAddress());
+				redirectAttributes.addFlashAttribute("ville", _checkoutForm.getCity());
+				redirectAttributes.addFlashAttribute("province", _checkoutForm.getProvince());
+				redirectAttributes.addFlashAttribute("codePostal", _checkoutForm.getPostalCode());
+				
+				redirectAttributes.addFlashAttribute("panier", panier);
+				
+				model = new ModelAndView("redirect:/Confirm");
 			} else {
 				logger.error("Transaction failed (" + reponseApprouver.getStatus() + ") : " + reponseApprouver.getMessage());
 			}			
